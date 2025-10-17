@@ -1,34 +1,50 @@
-// --- 控制電腦版下拉選單的 JavaScript ---
-const journeyButtonDesktop = document.getElementById('journey-button-desktop');
-const journeyMenuDesktop = document.getElementById('journey-menu-desktop');
-const journeyContainerDesktop = document.getElementById('journey-dropdown-container-desktop');
+// 封裝 dropdown 功能，方便重複使用
+function setupDropdown(containerId, buttonId, menuId) {
+    const container = document.getElementById(containerId);
+    const button = document.getElementById(buttonId);
+    const menu = document.getElementById(menuId);
 
-// 只有當元素存在時才綁定事件監聽，避免錯誤
-if (journeyButtonDesktop) {
-    journeyButtonDesktop.addEventListener('click', (event) => {
-        // 阻止事件冒泡，這樣點擊按鈕不會觸發下面的 document 點擊事件
-        event.stopPropagation(); 
-        journeyMenuDesktop.classList.toggle('hidden');
+    if (!container || !button || !menu) {
+        // 如果有任何一個元素找不到，就直接返回，避免錯誤
+        return;
+    }
+
+    button.addEventListener('click', (event) => {
+        // 阻止事件冒泡，避免觸發下面的 document 點擊事件
+        event.stopPropagation();
+        menu.classList.toggle('hidden');
+    });
+
+    // 點擊頁面其他地方時，隱藏這個選單
+    document.addEventListener('click', (event) => {
+        if (!menu.classList.contains('hidden') && !container.contains(event.target)) {
+            menu.classList.add('hidden');
+        }
     });
 }
 
-// 點擊頁面任何地方來關閉下拉選單
-document.addEventListener('click', (event) => {
-    // 檢查 journeyMenuDesktop 是否存在且當前不是隱藏狀態
-    if (journeyMenuDesktop && !journeyMenuDesktop.classList.contains('hidden')) {
-        // 如果點擊的目標不在下拉選單容器內
-        if (!journeyContainerDesktop.contains(event.target)) {
-            journeyMenuDesktop.classList.add('hidden');
-        }
-    }
-});
+// --- 控制電腦版下拉選單 ---
+
+// 設置 "開始你的旅程" 下拉選單
+setupDropdown(
+    'journey-dropdown-container-desktop', 
+    'journey-button-desktop', 
+    'journey-menu-desktop'
+);
+
+// ✨ 設置新的 "其它資源" 下拉選單
+setupDropdown(
+    'resources-dropdown-container-desktop',
+    'resources-button-desktop',
+    'resources-menu-desktop'
+);
 
 
-// --- 控制手機版漢堡選單的 JavaScript ---
+// --- 控制手機版漢堡選單 ---
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
-if (mobileMenuButton) {
+if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
     });
