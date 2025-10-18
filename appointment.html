@@ -1,96 +1,94 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>希靜瑞沙催眠 - 預約前溫馨提醒</title>
-    
-<script src="https://cdn.tailwindcss.com"></script>
+    <title>潛意識催眠旅程-預約須知</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto Sans TC', sans-serif; /* 使用一致的字體 */
-            line-height: 1.8;
-            color: #333;
-            background-color: #f7f1e3; /* 與首頁背景色一致 */
-            margin: 0;
-            padding: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f7f1e3; /* 預設的溫暖背景色，在圖片載入失敗時作為備用 */
+            /* 🚀 新增的背景圖樣式：使用 Raw 連結確保圖片能正確顯示 */
+            background-image: url('https://raw.githubusercontent.com/sacha693/sachalai-hypnosis/main/indexBk.jpg');
+            background-size: cover; /* 覆蓋整個視窗 */
+            background-attachment: fixed; /* 固定背景，創造視差感 */
+            background-repeat: no-repeat;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px; /* 增加與返回按鈕的間距 */
+        /* 確保下拉選單平滑過渡 */
+        .dropdown-menu {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(-10px);
+            opacity: 0;
+            pointer-events: none; /* 讓隱藏時不佔空間且無法點擊 */
         }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            font-size: 2.5em; /* 調整標題大小 */
-            font-weight: 700;
+        .dropdown-menu.visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
         }
-        .intro-text {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            color: #555;
-        }
+        
+        /* 針對您提供內容的樣式進行 Tailwind 轉換輔助 */
         .section {
-            margin-bottom: 30px;
+            background-color: #fff; /* 白色背景 */
+            padding: 1.5rem; /* 增加內邊距 */
+            border-radius: 0.75rem; /* 圓角 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+            margin-bottom: 2rem; /* 區塊間距 */
+            border-left: 5px solid #f59e0b; /* 琥珀色左側邊條增加專業感 */
         }
-        h2 {
-            color: #a0522d; /* 調整小標題顏色 */
-            border-left: 5px solid #a0522d;
-            padding-left: 10px;
-            font-size: 2.5em; /* 調整小標題大小 */
-            font-weight: bold;
-            margin-bottom: 15px;
+        .section h2 {
+            font-size: 1.75rem; /* H2 字體放大 */
+            font-weight: 700; /* 加粗 */
+            color: #d97706; /* 琥珀色，與導覽列主色系一致 */
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #fcd34d; /* 虛線分隔線 */
+            padding-bottom: 0.5rem;
         }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .section p {
+            color: #4b5563; /* 深灰色內文 */
+            line-height: 1.8; /* 行距調整 */
         }
-        li {
-            background: #fdf6e3; /* 調整列表背景色 */
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        
+        /* Q&A 區塊樣式微調 (保持原有互動設計，但優化視覺) */
+        .qna-item.active {
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -4px rgba(245, 158, 11, 0.3); /* 活躍時增加琥珀色陰影 */
+            border-left: 4px solid #f59e0b; /* 活躍時左側加粗 */
         }
-        .poster {
-            text-align: center;
-            margin: 40px 0;
+        .qna-icon {
+            transition: transform 0.3s ease-in-out;
+            font-size: 2rem; /* 讓加減號更明顯 */
+            font-weight: 400;
         }
-        .poster img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: block;
-            margin: 0 auto;
+        .qna-item.active .qna-icon {
+            transform: rotate(45deg); /* 將 + 旋轉成 X 或 − */
+            color: #ef4444; /* 改變顏色突顯 */
         }
-        .footer-text {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #7f8c8d;
+        .qna-answer {
+             max-height: 0;
+             overflow: hidden;
+             transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+             opacity: 0;
+             padding-top: 0;
         }
-     
+        .qna-answer.visible-animate { /* 透過 JS 移除 hidden 後，添加這個 class 來觸發動畫 */
+            max-height: 500px; /* 設置一個足夠大的高度 */
+            opacity: 1;
+            padding-top: 1rem;
+        }
+
     </style>
 </head>
-<body>
-  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
-        <div class="container mx-auto px-4">
+<body class="text-gray-800 min-h-screen flex flex-col">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 max-w-7xl">
             <div class="flex items-center justify-between h-16">
                 <div class="text-xl font-bold text-zinc-800">
-                      <a href="https://sacha693.github.io/sachalai-hypnosis/index.html" class="hover:text-amber-600 transition-colors">希靜瑞沙｜催眠療癒</a>
+                    <a href="index.html" class="hover:text-amber-600 transition-colors">希靜瑞沙｜首頁</a>
                 </div>
-
+                
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
                     <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
@@ -99,10 +97,10 @@
                         <div>
                             <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
                                 開始你的旅程
-                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="journey-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
-                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
                             <div class="py-1">
                                 <a href="appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
                                 <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
@@ -110,15 +108,15 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
                         <div>
                             <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
                                 其它資源
-                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="resources-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
-                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
                             <div class="py-1">
                                 <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.74 2 8.47 2.014 7.42 2.06c-1.03.047-1.75.217-2.37.465a4.9 4.9 0 00-2.14 1.082A4.9 4.9 0 002.525 5.687c-.248.62-.418 1.34-.465 2.37C2.014 8.47 2 8.74 2 12s.014 3.53.06 4.58c.047 1.03.217 1.75.465 2.37a4.9 4.9 0 001.082 2.14 4.9 4.9 0 002.14 1.082c.62.248 1.34.418 2.37.465C8.47 21.986 8.74 22 12 22s3.53-.014 4.58-.06c1.03-.047 1.75-.217 2.37-.465a4.9 4.9 0 002.14-1.082 4.9 4.9 0 001.082-2.14c.248-.62.418-1.34.465-2.37.046-1.05.06-1.32.06-4.58s-.014-3.53-.06-4.58c-.047-1.03-.217-1.75-.465-2.37a4.9 4.9 0 00-1.082-2.14A4.9 4.9 0 0018.94 2.525c-.62-.248-1.34-.418-2.37-.465C15.53 2.014 15.26 2 12 2zm0 1.8a8.2 8.2 0 014.47.054c.97.043 1.5.197 1.88.347a3.1 3.1 0 011.33 1.33c.15.38.304.91.347 1.88A8.2 8.2 0 0120.2 12a8.2 8.2 0 01-.054 4.47c-.043.97-.197 1.5-.347 1.88a3.1 3.1 0 01-1.33 1.33c-.38.15-.91.304-1.88.347A8.2 8.2 0 0112 20.2a8.2 8.2 0 01-4.47-.054c-.97-.043-1.5-.197-1.88-.347a3.1 3.1 0 01-1.33-1.33c-.15-.38-.304.91-.347-1.88A8.2 8.2 0 013.8 12a8.2 8.2 0 01.054-4.47c.043-.97.197-1.5.347-1.88a3.1 3.1 0 011.33-1.33c.38-.15.91-.304 1.88-.347A8.2 8.2 0 0112 3.8zm0 3.35A4.85 4.85 0 1012 16.8a4.85 4.85 0 000-9.65zm0 1.8a3.05 3.05 0 110 6.1 3.05 3.05 0 010-6.1zM16.95 6.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"></path></svg>
@@ -132,17 +130,17 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
             </div>
-
+            
             <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <a href="#articles" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">文章分享</a>
-                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">個案回饋</a>
+                <a href="#articles" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">文章分享</a>
+                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">個案回饋</a>
                 <div class="border-t border-gray-200 mt-2 pt-2">
                     <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
                     <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
@@ -155,150 +153,236 @@
             </div>
         </div>
     </nav>
-
-    <div class="container">
-        <h1>潛意識催眠旅程</h1>
+    <main class="flex-grow container mx-auto px-4 py-12 md:py-20 max-w-4xl">
         
-        <p style="text-align: center; font-size: 1em; font-weight: bold; margin-top: 30px; color: #a0522d;margin-bottom: 50px;">HI～親愛的朋友😊<br>
-        當你考慮預約在進行這趟美好的旅程前，<br>想先跟你說一些小提醒，見面時就能更放鬆、更順利地體驗催眠的美好～</p>
-   
-
-        <div class="section">
-            <h2>催眠無法取代醫療</h2>
-            <p>我們可以將催眠想像成一把能打開內心深處那扇門的鑰匙，而不是可以治百病的萬能藥。它不能取代專業的醫療診斷與治療。當身體或心理出現病症時，需要尋求專業醫師或心理師的幫助。</p>
-        </div>
-
-        <div class="section">
-            <h2>尊重當事者意願</h2>
-            <p>預約催眠療癒須年滿 18歲，並請接受催眠療癒的本人親自與希靜瑞沙聯繫，不接受代理或代約，被療癒者需有願意接受改變的想法。</p>
-        </div>
-        
-         <div class="section">
-            <h2>關於預約與費用</h2>
-            <p>與您確認預約時間後，請於三日內請匯款訂金，餘額於催眠當日收費。預約前四天前改約或取消可進行退費作業，超過後恕不退費。</p>
-        </div>
-
-        <div class="section">
-            <h2>關於療癒場地</h2>
-            <p>療癒地點為專屬的租賃空間，確保環境安全且能量乾淨且舒適的療癒場所。若您有任何考量，請給自己一點時間思考。期待您在最自在的狀態下進行預約。</p>
-        </div>
-
-<div class="section">
-    <h2>不適合催眠療癒的情況 </h2>
-    <p>以下是幾類不建議或需特別謹慎的對象，這不僅是為了保護當事人，也是為了確保潛意識探索及催眠瘱癒的有效性。</p>
-    <div class="space-y-4">
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>精神與身心狀態不穩定者</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>思覺失調症、躁鬱症或解離性人格、重度憂鬱症患者、患有癲癇症或心臟疾病者</p>
-            </div>
-        </div>
-
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>有認知功能障礙</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>催眠需要個案能夠理解催眠師的指令與引導，並具備一定的專注力，若認知能力受限，催眠將難以順利進行，另因藥物或酒精影響而意識不清者，將無法達到有效的催眠狀態。</p>
-            </div>
-        </div>
-
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>質疑的心態與動機</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>如果是被迫前來，或者抱持著懷疑、抗拒的態度，催眠將難以發揮作用。如果認為催眠可以「控制」自己，或抱持著「催眠可以讓我變得不像自己」的錯誤期待，可能因此感到失望。</p>
-            </div>
-        </div>
-    </div>
-</div>
-        
-<div class="section">
-    <h2>催眠常見問題 </h2>
-    <div class="space-y-4">
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>Q： 催眠是睡著了嗎？還是失去意識？</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>這是一個最常見的誤解！催眠不是睡覺，也不是失去意識喔。你全程都會保持清醒，能聽到周圍的聲音，甚至可以思考和說話。催眠是一種高度專注且深層放鬆的狀態，就像你沉浸在一部電影裡，或是在冥想時一樣，你的意識只是暫時放鬆，但主控權永遠都在你身上。</p>
-            </div>
-        </div>
-
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>Q： 我會不會被催眠師控制，做出我不願意的事？</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>真實的催眠並不是這樣喔！你的潛意識有自己的保護機制，不會接受任何違背你價值觀或意願的指令。催眠師的角色是引導者，而你才是這場旅程的主人。如果我說了任何你不喜歡的話，你隨時都能終止催眠，甚至自己醒來。所以，請完全放心，你擁有百分之百的掌控權。</p>
-            </div>
-        </div>
-
-        <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-            <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
-                <span>Q： 萬一我說了什麼不該說的秘密怎麼辦？</span>
-                <span class="qna-icon text-2xl text-amber-500 transition-transform duration-300">+</span>
-            </h3>
-            <div class="qna-answer mt-4 text-gray-600 hidden">
-                <p>在催眠狀態下，你並不會說出任何你不想說的事情。你對自己的言行依然有篩選和控制的能力，就像在日常對話中一樣。催眠師的首要原則就是尊重和保密，你的隱私將會受到最嚴格的保護。這裡是一個絕對安全、可以讓你安心表達的空間。</p>
-            </div>
-        </div>
-    </div>
-</div>
-        <div class="poster">
-        <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true" alt="LOGO">
-        </div>
-        <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin-top: 30px; color: #a0522d;">
-        催眠就像是一趟探索自己內在世界的旅程，我是你的嚮導，而你才是這趟旅程的主人。<br>
-        就帶著輕鬆的心情來體驗吧，期待與您見面！😊
-        </p>
-        </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const qnaItems = document.querySelectorAll('.qna-item');
-        qnaItems.forEach(item => {
-            const question = item.querySelector('.qna-question');
-            const answer = item.querySelector('.qna-answer');
-            const icon = item.querySelector('.qna-icon');
+        <div class="container bg-white p-6 md:p-12 rounded-2xl shadow-2xl border-4 border-amber-100">
+            <h1 class="text-3xl md:text-3xl font-extrabold text-center mb-4 text-amber-700">潛意識催眠旅程</h1>
             
-            question.addEventListener('click', () => {
-                const isHidden = answer.classList.contains('hidden');
+            <p class="text-center text-lg md:text-xl font-bold mt-8 mb-12 text-amber-800 leading-relaxed">
+                HI～親愛的朋友😊<br>
+                當你考慮預約在進行這趟美好的旅程前，<br>想先跟你說一些小提醒，見面時就能更放鬆、更順利地體驗催眠的美好～
+            </p>
+            
+
+            <div class="section">
+                <h2>催眠無法取代醫療</h2>
+                <p>我們可以將催眠想像成一把能打開內心深處那扇門的鑰匙，而不是可以治百病的萬能藥。它不能取代專業的醫療診斷與治療。當身體或心理出現病症時，需要尋求專業醫師或心理師的幫助。</p>
+            </div>
+
+            <div class="section">
+                <h2>尊重當事者意願</h2>
+                <p>預約催眠療癒須年滿 18歲，並請接受催眠療癒的本人親自與希靜瑞沙聯繫，不接受代理或代約，被療癒者需有願意接受改變的想法。</p>
+            </div>
+            
+            <div class="section">
+                <h2>關於預約與費用</h2>
+                <p>與您確認預約時間後，請於三日內請匯款訂金，餘額於催眠當日收費。預約前四天前改約或取消可進行退費作業，超過後恕不退費。</p>
+            </div>
+
+            <div class="section">
+                <h2>關於療癒場地</h2>
+                <p>療癒地點為專屬的租賃空間，確保環境安全且能量乾淨且舒適的療癒場所。若您有任何考量，請給自己一點時間思考。期待您在最自在的狀態下進行預約。</p>
+            </div>
+
+            <div class="section">
+                <h2>不適合催眠療癒的情況 🚨</h2>
+                <p class="mb-6 text-red-600 font-medium">以下是幾類不建議或需特別謹慎的對象，這不僅是為了保護當事人，也是為了確保潛意識探索及催眠瘱癒的有效性。</p>
                 
-                // 關閉所有其他已開啟的答案
-                document.querySelectorAll('.qna-answer').forEach(ans => {
-                    if (ans !== answer && !ans.classList.contains('hidden')) {
-                        ans.classList.add('hidden');
-                        ans.parentNode.querySelector('.qna-icon').textContent = '+';
-                        ans.parentNode.classList.remove('active');
+                <div class="space-y-4">
+                    <div class="qna-item bg-amber-50 p-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl">
+                        <h3 class="qna-question text-xl font-bold cursor-pointer text-zinc-800 flex items-center justify-between">
+                            <span>精神與身心狀態不穩定者</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-700 hidden">
+                            <p>思覺失調症、躁鬱症或解離性人格、重度憂鬱症患者、患有癲癇症或心臟疾病者</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item bg-amber-50 p-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl">
+                        <h3 class="qna-question text-xl font-bold cursor-pointer text-zinc-800 flex items-center justify-between">
+                            <span>有認知功能障礙</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-700 hidden">
+                            <p>催眠需要個案能夠理解催眠師的指令與引導，並具備一定的專注力，若認知能力受限，催眠將難以順利進行，另因藥物或酒精影響而意識不清者，將無法達到有效的催眠狀態。</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item bg-amber-50 p-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl">
+                        <h3 class="qna-question text-xl font-bold cursor-pointer text-zinc-800 flex items-center justify-between">
+                            <span>質疑的心態與動機</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-700 hidden">
+                            <p>如果是被迫前來，或者抱持著懷疑、抗拒的態度，催眠將難以發揮作用。如果認為催眠可以「控制」自己，或抱持著「催眠可以讓我變得不像自己」的錯誤期待，可能因此感到失望。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>催眠常見問題  (FAQ)</h2>
+                <div class="space-y-4">
+                    <div class="qna-item bg-white p-6 rounded-xl shadow-md transition-all duration-300 transform hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
+                            <span>Q： 催眠是睡著了嗎？還是失去意識？</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-600 hidden">
+                            <p>這是一個最常見的誤解！催眠不是睡覺，也不是失去意識喔。你全程都會保持清醒，能聽到周圍的聲音，甚至可以思考和說話。催眠是一種高度專注且深層放鬆的狀態，就像你沉浸在一部電影裡，或是在冥想時一樣，你的意識只是暫時放鬆，但**主控權永遠都在你身上**。</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item bg-white p-6 rounded-xl shadow-md transition-all duration-300 transform hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
+                            <span>Q： 我會不會被催眠師控制，做出我不願意的事？</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-600 hidden">
+                            <p>真實的催眠並不是這樣喔！你的潛意識有自己的保護機制，不會接受任何違背你價值觀或意願的指令。催眠師的角色是引導者，而你才是這場旅程的主人。如果我說了任何你不喜歡的話，你隨時都能終止催眠，甚至自己醒來。所以，請完全放心，你擁有**百分之百的掌控權**。</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item bg-white p-6 rounded-xl shadow-md transition-all duration-300 transform hover:scale-[1.01] hover:shadow-lg">
+                        <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
+                            <span>Q： 萬一我說了什麼不該說的秘密怎麼辦？</span>
+                            <span class="qna-icon text-4xl text-amber-500 transition-transform duration-300">+</span>
+                        </h3>
+                        <div class="qna-answer mt-0 text-gray-600 hidden">
+                            <p>在催眠狀態下，你並不會說出任何你不想說的事情。你對自己的言行依然有篩選和控制的能力，就像在日常對話中一樣。催眠師的首要原則就是尊重和保密，你的隱私將會受到最嚴格的保護。這裡是一個絕對安全、可以讓你安心表達的空間。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 mb-6">
+                <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true" alt="希靜瑞沙 Logo" class="mx-auto w-32 h-auto rounded-full shadow-lg">
+            </div>
+            <p class="text-center text-xl font-bold mt-8 text-amber-800 leading-loose">
+                催眠就像是一趟探索自己內在世界的旅程，我是你的嚮導，而你才是這趟旅程的主人。<br>
+                就帶著輕鬆的心情來體驗吧，期待與您見面！😊
+            </p>
+            
+        </div>
+        
+    </main>
+    <footer class="mt-auto py-6 text-center text-sm text-gray-500 bg-white/50 border-t border-amber-200">
+        <p>Copyright © 2025 希靜瑞沙 All Rights Reserved</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // **********************************************
+            // 導覽列下拉選單功能 (桌面版)
+            // **********************************************
+            const setupDropdown = (buttonId, menuId, containerId, relatedMenuId) => {
+                const button = document.getElementById(buttonId);
+                const menu = document.getElementById(menuId);
+                const container = document.getElementById(containerId);
+                const icon = document.getElementById(buttonId.replace('-button-', '-icon-'));
+                const relatedMenu = relatedMenuId ? document.getElementById(relatedMenuId) : null;
+                const relatedIcon = relatedMenuId ? document.getElementById(relatedMenuId.replace('-menu-', '-icon-')) : null;
+
+                if (button && menu) {
+                    button.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        
+                        const isHidden = menu.classList.contains('hidden');
+                        
+                        // 處理當前選單
+                        menu.classList.toggle('hidden');
+                        menu.classList.toggle('visible');
+                        if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+                        
+                        // 關閉相關選單
+                        if (relatedMenu) {
+                            relatedMenu.classList.add('hidden');
+                            relatedMenu.classList.remove('visible');
+                        }
+                         if (relatedIcon) {
+                            relatedIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // 點擊外部關閉選單
+                    document.addEventListener('click', (event) => {
+                        if (container && !container.contains(event.target)) {
+                            menu.classList.add('hidden');
+                            menu.classList.remove('visible');
+                            if(icon) icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+            };
+
+            // 設定兩個下拉選單的互動
+            setupDropdown('journey-button-desktop', 'journey-menu-desktop', 'journey-dropdown-container-desktop', 'resources-menu-desktop');
+            setupDropdown('resources-button-desktop', 'resources-menu-desktop', 'resources-dropdown-container-desktop', 'journey-menu-desktop');
+
+            // 行動版選單切換
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+
+            // **********************************************
+            // Q&A 手風琴互動邏輯 (Accordion)
+            // **********************************************
+            const qnaItems = document.querySelectorAll('.qna-item');
+            
+            qnaItems.forEach(item => {
+                const question = item.querySelector('.qna-question');
+                const answer = item.querySelector('.qna-answer');
+                const icon = item.querySelector('.qna-icon');
+                
+                question.addEventListener('click', () => {
+                    const isHidden = answer.classList.contains('hidden');
+                    
+                    // 關閉所有其他已開啟的答案
+                    document.querySelectorAll('.qna-item').forEach(otherItem => {
+                        const otherAnswer = otherItem.querySelector('.qna-answer');
+                        const otherIcon = otherItem.querySelector('.qna-icon');
+                        
+                        if (otherAnswer !== answer && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            otherAnswer.classList.remove('visible-animate');
+                            otherAnswer.classList.add('hidden');
+                            otherIcon.textContent = '+';
+                        }
+                    });
+                    
+                    // 切換目前點擊的答案的顯示狀態和動畫
+                    if (isHidden) {
+                        // 展開
+                        answer.classList.remove('hidden');
+                        // 設置一個小的延遲以確保瀏覽器識別 `display:block` 後再應用動畫
+                        setTimeout(() => {
+                            answer.classList.add('visible-animate');
+                        }, 10); 
+                        
+                        icon.textContent = '×'; // 使用 '×' (乘號) 替換原來的 '−' (減號) 視覺效果更佳
+                        item.classList.add('active');
+                    } else {
+                        // 收合
+                        answer.classList.remove('visible-animate');
+                        // 動畫結束後再隱藏
+                        answer.addEventListener('transitionend', function handler() {
+                            answer.classList.add('hidden');
+                            answer.removeEventListener('transitionend', handler);
+                        }, {once: true});
+
+                        icon.textContent = '+';
+                        item.classList.remove('active');
                     }
                 });
-                
-                // 切換目前點擊的答案的顯示狀態
-                answer.classList.toggle('hidden');
-                
-                // 根據狀態切換圖示
-                if (isHidden) {
-                    icon.textContent = '−';
-                    item.classList.add('active');
-                } else {
-                    icon.textContent = '+';
-                    item.classList.remove('active');
-                }
             });
         });
-    });
-</script>
-    <footer class="mt-12 py-6 text-center text-sm text-gray-500">
-    <p>Copyright © 2025 希靜瑞沙 All Rights Reserved</p>
-    </footer>
-</body>
+    </script>
+    </body>
 </html>
