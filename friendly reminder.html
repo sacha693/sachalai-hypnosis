@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>希靜瑞沙催眠旅程 - 溫馨提醒</title>
-    
-<script src="https://cdn.tailwindcss.com"></script>
+    <title>希靜瑞沙｜催眠療癒 - 預約後溫馨提醒</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -13,73 +12,82 @@
         :root {
             --text-color: #4B5563;
             --background-start: #f7f1e3; /* 首頁背景色一致 */
-            --background-end: #f7f1e3; /* 保持單色背景 */
             --container-bg-color: #fff;
             --main-heading-color: #2c3e50; /* 首頁 H1 顏色 */
-            --section-heading-color: #a0522d; /* 首頁 H2 顏色 */
-            --list-item-bg-color: #fdf6e3; /* 首頁 li 背景色 */
-            --primary-btn-color: #f59e0b; /* 首頁按鈕色 */
-            --hover-btn-color: #d97706; /* 首頁按鈕 hover 色 */
-            --border-color: #e0e0e0; /* 首頁分隔線顏色 */
+            --section-heading-color: #a0522d; /* H2 顏色：溫暖的棕色 */
+            --list-item-bg-color: #fdf6e3; /* 列表項背景色 */
+            --primary-btn-color: #f59e0b; /* 按鈕色：琥珀黃 */
+            --hover-btn-color: #d97706; /* 按鈕 hover 色 */
+            --border-color: #e0e0e0; /* 分隔線顏色 */
             --qna-bg-color: #fdf6e3; /* FAQ 卡片背景色 */
-            --qna-answer-bg-color: #fffcf2; /* FAQ 回答背景色，與整體協調 */
+            --qna-answer-bg-color: #fffcf2; /* FAQ 回答背景色 */
         }
 
         body {
             font-family: 'Noto Sans TC', 'Fredoka', sans-serif;
-            line-height: 1.8;
+            background-color: var(--background-start);
             color: var(--text-color);
-            background: var(--background-start); /* 延續首頁的單色背景 */
-            margin: 0;
-            padding: 20px;
+            line-height: 1.8;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
         }
-        .container {
+
+        /* 導覽列下拉選單平滑過渡 */
+        .dropdown-menu {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(-10px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .dropdown-menu.visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* 頁面內容容器樣式 */
+        .page-container {
             max-width: 900px;
-            margin: auto;
+            margin: 40px auto;
             background: var(--container-bg-color);
             padding: 40px;
-            border-radius: 10px; /* 延續首頁圓角 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 延續首頁陰影 */
-            margin-bottom: 40px;
-            transform: translateY(0);
-            transition: transform 0.5s ease-in-out;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
         }
-        h1 {
+        
+        /* 內容標題樣式 */
+        h1.content-title {
             color: var(--main-heading-color);
             text-align: center;
-            font-family: 'Noto Sans TC', sans-serif; /* 保持首頁 H1 字體 */
-            font-size: 2.5em; /* 保持首頁 H1 大小 */
+            font-size: 2.5em;
             font-weight: 700;
-            border-bottom: 2px solid var(--border-color); /* 延續首頁分隔線 */
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 20px;
             margin-bottom: 30px;
-            text-shadow: none; /* 移除活潑風格的文字陰影 */
         }
+        h2 {
+            color: var(--section-heading-color);
+            font-size: 2.1em;
+            font-weight: bold;
+            border-left: 5px solid var(--section-heading-color);
+            padding-left: 10px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        
         .intro-text {
             text-align: center;
             font-size: 1.2em;
             margin-bottom: 50px;
-            color: var(--section-heading-color); /* 使用與首頁 H2 相同的顏色 */
+            color: var(--section-heading-color);
             font-weight: bold;
         }
-        .section {
-            margin-bottom: 50px;
-        }
-        h2 {
-            color: var(--section-heading-color); /* 延續首頁 H2 顏色 */
-            font-family: 'Noto Sans TC', sans-serif; /* 保持首頁 H2 字體 */
-            font-size: 2.1em; /* 保持首頁 H2 大小 */
-            font-weight: bold;
-            text-align: left; /* 與首頁 H2 對齊方式一致 */
-            border-left: 5px solid var(--section-heading-color); /* 延續首頁 H2 邊框 */
-            padding-left: 10px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        h2::after {
-            content: ''; /* 移除活潑風格的小裝飾 */
-        }
+
+        /* 提醒事項卡片樣式 */
         .reminders-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -88,55 +96,47 @@
             padding: 0;
         }
         .reminder-card {
-            background: var(--list-item-bg-color); /* 延續首頁 li 背景色 */
-            padding: 15px; /* 延續首頁 li padding */
-            border-radius: 5px; /* 延續首頁 li 圓角 */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 延續首頁 li 陰影 */
-            border-left: none; /* 移除活潑風格的邊框 */
+            background: var(--list-item-bg-color);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             display: flex;
             align-items: flex-start;
         }
         .reminder-card:hover {
-            transform: translateY(-2px); /* 輕微hover效果 */
+            transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .card-icon {
-            font-size: 1.5em; /* 調整圖標大小 */
+            font-size: 1.5em;
             margin-right: 10px;
-            color: var(--section-heading-color); /* 圖標顏色與標題色一致 */
-            transform: none; /* 移除旋轉動畫 */
-            transition: none;
-        }
-        .reminder-card:hover .card-icon {
-            transform: none; /* 移除hover旋轉動畫 */
-        }
-        .card-content {
-            flex-grow: 1;
-            color: var(--text-color); /* 內文顏色 */
+            color: var(--section-heading-color);
         }
         .card-content strong {
-            display: inline; /* 保持 strong 在同一行 */
-            font-size: 1em; /* 調整文字大小 */
-            color: var(--main-text-color); /* strong 文字顏色 */
-            margin-bottom: 0;
+            display: block; /* 讓標題與內容分行，更清晰 */
+            font-size: 1.1em;
+            color: var(--main-heading-color);
+            margin-bottom: 5px;
         }
+        
+        /* FAQ 樣式 */
         .qna-item {
-            background: var(--qna-bg-color); /* 使用與列表項相近的背景色 */
+            background: var(--qna-bg-color);
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-bottom: 10px;
             transition: all 0.3s ease-in-out;
         }
         .qna-item:hover {
-            transform: translateY(-2px); /* 輕微hover效果 */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .qna-question {
             cursor: pointer;
             font-size: 1.1em;
             font-weight: bold;
-            color: var(--text-color); /* FAQ 問題顏色 */
+            color: var(--text-color);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -144,246 +144,379 @@
         .qna-icon {
             font-size: 1.2em;
             transition: transform 0.3s ease;
-            color: var(--section-heading-color); /* FAQ 圖標顏色 */
-        }
-        .qna-question[aria-expanded="true"] .qna-icon {
-            transform: rotate(0deg); /* 移除旋轉效果，保持簡潔 */
-            content: '−'; /* 展開時顯示減號 */
+            color: var(--section-heading-color);
+            line-height: 1; /* 確保加號居中 */
         }
         .qna-answer {
             margin-top: 10px;
             padding: 15px;
-            border-left: 4px solid var(--section-heading-color); /* 延續首頁 H2 邊框顏色 */
+            border-left: 4px solid var(--section-heading-color);
             background: var(--qna-answer-bg-color);
-            border-radius: 5px;
+            border-radius: 0 5px 5px 0;
             color: var(--text-color);
         }
-        .poster img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px; /* 延續首頁圓角 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 延續首頁陰影 */
-            display: block;
-            margin: 0 auto;
-        }
+        
+        /* 按鈕樣式 */
         .back-to-home-btn {
             display: block;
             margin: 40px auto;
             padding: 15px 30px;
             font-size: 1.2em;
             font-weight: bold;
-            text-align: center;
-            text-decoration: none;
             color: white;
             border-radius: 9999px;
             background-color: var(--primary-btn-color);
-            background: var(--primary-btn-color); /* 移除漸層，與首頁按鈕一致 */
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-        .back-to-home-btn::before {
-            content: ''; /* 移除活潑風格的火箭emoji */
-        }
-        .back-to-home-btn:hover::before {
-            transform: none; /* 移除hover火箭動畫 */
+            text-decoration: none;
         }
         .back-to-home-btn:hover {
-            background-color: var(--hover-btn-color); /* 延續首頁按鈕 hover 色 */
+            background-color: var(--hover-btn-color);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-            transform: scale(1.05); /* 延續首頁按鈕 hover 放大效果 */
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>潛意識催眠旅程即將展開</h1>
-        
-        <p class="intro-text">
-            HI～親愛的朋友😊<br>
-            你即將化身成探索潛意識河流的探險家，而我將是你的領航員。<br>
-            在進行這趟美好的旅程前，先小小叮嚀，見面時就能更放鬆、順利地體驗美好的旅程～
-        </p>
+<body class="text-gray-800">
 
-        <div class="section">
-            <h2>告訴我你的期待</h2>
-            <p>我會在您填寫預約表單後，先跟您進行簡短的通話，聽聽您的想法及對催眠有什麼期待。</p>
-        </div>     
-        
-        <div class="section">
-            <h2>催眠前的溫馨提醒</h2>
-            <ul class="reminders-grid">
-                <li class="reminder-card">
-                    <span class="card-icon">💡</span>
-                    <div class="card-content">
-                        <strong>保持輕鬆的心情：</strong> 催眠是讓身心深度放鬆的自然狀態，並非神奇或魔幻的過程。請抱持著開放與好奇的心態，不用刻意期待會有什麼特殊反應，只需要像準備好好休息一樣，讓自己保持平靜與輕鬆。
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-xl font-bold text-zinc-800">
+                    <a href="index.html" class="hover:text-amber-600 transition-colors">希靜瑞沙｜催眠療癒</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
+                    <a href="index.html#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
+                    
+                    <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
+                        <div>
+                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
+                                開始你的旅程
+                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="journey-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            </button>
+                        </div>
+                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
+                            <div class="py-1">
+                                <a href="appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">👚</span>
-                    <div class="card-content">
-                        <strong>舒適的身體狀態：</strong> 請確保您已吃飽、喝足，並穿著舒適寬鬆的衣物。在預約催眠的幾天前，建議您放慢生活步調、充足睡眠，讓身心處於最舒適的狀態，這將有助於您更順利地進入催眠狀態。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">🤝</span>
-                    <div class="card-content">
-                        <strong>信任與安心：</strong> 催眠是一個安全的過程，您將全程保持意識，並能掌控一切。我會是您的領航員，引導您探索內在世界，但您才是這趟旅程的真正主人。請放心地將自己交給我，與我建立信任，讓您能更自在地體驗催眠的美好。
-                    </div>
-                 <li class="reminder-card">
-                    <span class="card-icon">🤝</span>
-                    <div class="card-content">
-                        <strong>尊重與隱私：</strong> 為了讓您在催眠中獲得最佳的療癒效果，希望您獨自前來。催眠是一個需要高度專注與放鬆的過程。這份專屬的療癒時光，是為了讓您的內心能夠完全敞開，不受外界影響，專心探索與療癒。
-                    </div>
-                </li>
-            </ul>
-        </div>
-             
-     
-        
-        <div class="section">
-            <h2>催眠後的溫馨提醒</h2>
-            <ul class="reminders-grid">
-                <li class="reminder-card">
-                    <span class="card-icon">🕰️</span>
-                    <div class="card-content">
-                        <strong>給自己一些時間：</strong> 催眠結束後，身心可能處於一個非常放鬆的狀態，有些人會感到輕微的頭暈或茫然，這是正常的。建議在結束後，給自己約10-15分鐘的時間靜坐或緩步，讓意識慢慢回歸。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">💧</span>
-                    <div class="card-content">
-                        <strong>補充水分：</strong> 催眠過程會消耗一些能量，身體可能會感到口渴。請記得補充溫開水，幫助身體代謝與排毒，讓身心狀態更加穩定。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">🌟</span>
-                    <div class="card-content">
-                        <strong>保持覺察與觀察：</strong> 催眠後，你的潛意識正在持續運作與整合。在接下來的幾天裡，請溫柔地觀察自己的情緒、想法和行為模式，你可能會發現一些意想不到的改變，這都是潛意識為你帶來的禮物。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">🚫</span>
-                    <div class="card-content">
-                        <strong>避免過度刺激：</strong> 剛結束催眠，請避免立刻接觸高強度的聲光刺激或劇烈活動，例如：開車、運動或玩手機遊戲。給予自己一個寧靜的空間，讓潛意識的訊息能更順利地浮現。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">💖</span>
-                    <div class="card-content">
-                        <strong>相信自己內在的力量：</strong> 催眠旅程結束後，你已經連結了內在的智慧與力量。請相信自己有能力去面對和解決問題，並將這份信念融入日常生活中。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">🛌</span>
-                    <div class="card-content">
-                        <strong>好好休息：</strong> 催眠過程就像是深度的心靈SPA，你可能感到前所未有的放鬆，甚至有些疲憊。回到家後，請好好休息，讓身體與心靈都能獲得充分的修復。
-                    </div>
-                </li>
-                <li class="reminder-card">
-                    <span class="card-icon">📞</span>
-                    <div class="card-content">
-                        <strong>有任何問題隨時與我聯絡：</strong> 催眠後若有任何感受或疑問，都歡迎隨時與我分享。這趟旅程的結束，是另一段美好轉變的開始，我會一直在這裡支持你。
-                    </div>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>催眠後需要做些什麼來鞏固效果？ </h2>
-            <div class="space-y-4">
-                <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-                    <h3 class="qna-question flex items-center justify-between" role="button" aria-expanded="false" aria-controls="answer1">
-                        <span>給自己時間消化 </span>
-                        <span class="qna-icon">+</span>
-                    </h3>
-                    <div id="answer1" class="qna-answer hidden">
-                        <p>剛結束催眠後，給自己一些安靜的時間，不要立刻投入繁忙的工作或社交活動。</p>
+                    
+                    <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
+                        <div>
+                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
+                                其它資源
+                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="resources-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            </button>
+                        </div>
+                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
+                            <div class="py-1">
+                                <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.74 2 8.47 2.014 7.42 2.06c-1.03.047-1.75.217-2.37.465a4.9 4.9 0 00-2.14 1.082A4.9 4.9 0 002.525 5.687c-.248.62-.418 1.34-.465 2.37C2.014 8.47 2 8.74 2 12s.014 3.53.06 4.58c.047 1.03.217 1.75.465 2.37a4.9 4.9 0 001.082 2.14 4.9 4.9 0 002.14 1.082c.62.248 1.34.418 2.37.465C8.47 21.986 8.74 22 12 22s3.53-.014 4.58-.06c1.03-.047 1.75-.217 2.37-.465a4.9 4.9 0 002.14-1.082 4.9 4.9 0 001.082-2.14c.248-.62.418-1.34.465-2.37.046-1.05.06-1.32.06-4.58s-.014-3.53-.06-4.58c-.047-1.03-.217-1.75-.465-2.37a4.9 4.9 0 00-1.082-2.14A4.9 4.9 0 0018.94 2.525c-.62-.248-1.34-.418-2.37-.465C15.53 2.014 15.26 2 12 2zm0 1.8a8.2 8.2 0 014.47.054c.97.043 1.5.197 1.88.347a3.1 3.1 0 011.33 1.33c.15.38.304.91.347 1.88A8.2 8.2 0 0120.2 12a8.2 8.2 0 01-.054 4.47c-.043.97-.197 1.5-.347 1.88a3.1 3.1 0 01-1.33 1.33c-.38.15-.91.304-1.88.347A8.2 8.2 0 0112 20.2a8.2 8.2 0 01-4.47-.054c-.97-.043-1.5-.197-1.88-.347a3.1 3.1 0 01-1.33-1.33c-.15-.38-.304.91-.347-1.88A8.2 8.2 0 013.8 12a8.2 8.2 0 01.054-4.47c.043-.97.197-1.5.347-1.88a3.1 3.1 0 011.33-1.33c.38-.15.91-.304 1.88-.347A8.2 8.2 0 0112 3.8zm0 3.35A4.85 4.85 0 1012 16.8a4.85 4.85 0 000-9.65zm0 1.8a3.05 3.05 0 110 6.1 3.05 3.05 0 010-6.1zM16.95 6.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"></path></svg>
+                                    Instagram
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                                    Facebook
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-                    <h3 class="qna-question flex items-center justify-between" role="button" aria-expanded="false" aria-controls="answer2">
-                        <span>保持開放和覺察</span>
-                        <span class="qna-icon">+</span>
-                    </h3>
-                    <div id="answer2" class="qna-answer hidden">
-                        <p>留意日常生活中的變化，不論是情緒、想法或行為上的微小改變。這些都是催眠帶來影響的證明。</p>
-                    </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
-
-                <div class="qna-item bg-white p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-                    <h3 class="qna-question flex items-center justify-between" role="button" aria-expanded="false" aria-controls="answer3">
-                        <span>練習催眠師教導的技巧</span>
-                        <span class="qna-icon">+</span>
-                    </h3>
-                    <div id="answer3" class="qna-answer hidden">
-                        <p>如果有教你任何放鬆或自我暗示的技巧，可以持續練習，這有助於強化效果。</p>
-                    </div>
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html#articles" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">文章分享</a>
+                <a href="index.html#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">個案回饋</a>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+                    <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                    <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                </div>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+                     <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
+                     <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <div class="poster">
-          <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true" alt="LOGO">
-        </div>
-        <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin-top: 30px; color: var(--section-heading-color);">
-            催眠就像是一趟探索自己內在世界的旅程，我是你的嚮導，而你才是這趟旅程的主人。<br>
-            就帶著輕鬆的心情來體驗吧，期待與您見面！😊
-        </p>
-    </div>
-
-    <a href="index.html" class="back-to-home-btn">
-        回到希靜瑞沙主頁
-    </a>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const qnaItems = document.querySelectorAll('.qna-item');
-
-        qnaItems.forEach((item, index) => {
-            const question = item.querySelector('.qna-question');
-            const answer = item.querySelector('.qna-answer');
-            const icon = item.querySelector('.qna-icon');
+    <main class="flex-grow container mx-auto px-4 max-w-7xl">
+        <div class="page-container">
+            <h1 class="content-title">潛意識催眠旅程即將展開</h1>
             
-            answer.id = `answer${index + 1}`;
-            question.setAttribute('aria-controls', answer.id);
-            question.setAttribute('tabindex', '0'); 
-            question.setAttribute('role', 'button'); 
+            <p class="intro-text">
+                HI～親愛的朋友😊<br>
+                你即將化身成探索潛意識河流的探險家，而我將是你的領航員。<br>
+                在進行這趟美好的旅程前，先小小叮嚀，見面時就能更放鬆、順利地體驗美好的旅程～
+            </p>
 
-            question.addEventListener('click', () => {
-                const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            <div class="section">
+                <h2>告訴我你的期待</h2>
+                <p>我會在您填寫預約表單後，先跟您進行簡短的通話，聽聽您的想法及對催眠有什麼期待。</p>
+            </div>
+            
+            <div class="section">
+                <h2>催眠前的溫馨提醒</h2>
+                <ul class="reminders-grid">
+                    <li class="reminder-card">
+                        <span class="card-icon">💡</span>
+                        <div class="card-content">
+                            <strong>保持輕鬆的心情：</strong> 催眠是讓身心深度放鬆的自然狀態，並非神奇或魔幻的過程。請抱持著開放與好奇的心態，不用刻意期待會有什麼特殊反應，只需要像準備好好休息一樣，讓自己保持平靜與輕鬆。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">👚</span>
+                        <div class="card-content">
+                            <strong>舒適的身體狀態：</strong> 請確保您已吃飽、喝足，並穿著舒適寬鬆的衣物。在預約催眠的幾天前，建議您放慢生活步調、充足睡眠，讓身心處於最舒適的狀態，這將有助於您更順利地進入催眠狀態。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">🤝</span>
+                        <div class="card-content">
+                            <strong>信任與安心：</strong> 催眠是一個安全的過程，您將全程保持意識，並能掌控一切。我會是您的領航員，引導您探索內在世界，但您才是這趟旅程的真正主人。請放心地將自己交給我，與我建立信任，讓您能更自在地體驗催眠的美好。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">🏠</span>
+                        <div class="card-content">
+                            <strong>尊重與隱私（獨自前來）：</strong> 為了讓您在催眠中獲得最佳的療癒效果，希望您能**獨自前來**。催眠是一個需要高度專注與放鬆的過程。這份專屬的療癒時光，是為了讓您的內心能夠完全敞開，不受外界影響，專心探索與療癒。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>催眠後的溫馨提醒</h2>
+                <ul class="reminders-grid">
+                    <li class="reminder-card">
+                        <span class="card-icon">🕰️</span>
+                        <div class="card-content">
+                            <strong>給自己一些時間：</strong> 催眠結束後，身心可能處於一個非常放鬆的狀態，有些人會感到輕微的頭暈或茫然，這是正常的。建議在結束後，給自己約10-15分鐘的時間靜坐或緩步，讓意識慢慢回歸。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">💧</span>
+                        <div class="card-content">
+                            <strong>補充水分：</strong> 催眠過程會消耗一些能量，身體可能會感到口渴。請記得補充溫開水，幫助身體代謝與排毒，讓身心狀態更加穩定。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">🌟</span>
+                        <div class="card-content">
+                            <strong>保持覺察與觀察：</strong> 催眠後，你的潛意識正在持續運作與整合。在接下來的幾天裡，請溫柔地觀察自己的情緒、想法和行為模式，你可能會發現一些意想不到的改變，這都是潛意識為你帶來的禮物。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">🚫</span>
+                        <div class="card-content">
+                            <strong>避免過度刺激：</strong> 剛結束催眠，請避免立刻接觸高強度的聲光刺激或劇烈活動，例如：開車、運動或玩手機遊戲。給予自己一個寧靜的空間，讓潛意識的訊息能更順利地浮現。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">💖</span>
+                        <div class="card-content">
+                            <strong>相信自己內在的力量：</strong> 催眠旅程結束後，你已經連結了內在的智慧與力量。請相信自己有能力去面對和解決問題，並將這份信念融入日常生活中。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">🛌</span>
+                        <div class="card-content">
+                            <strong>好好休息：</strong> 催眠過程就像是深度的心靈SPA，你可能感到前所未有的放鬆，甚至有些疲憊。回到家後，請好好休息，讓身體與心靈都能獲得充分的修復。
+                        </div>
+                    </li>
+                    <li class="reminder-card">
+                        <span class="card-icon">📞</span>
+                        <div class="card-content">
+                            <strong>有任何問題隨時與我聯絡：</strong> 催眠後若有任何感受或疑問，都歡迎隨時與我分享。這趟旅程的結束，是另一段美好轉變的開始，我會一直在這裡支持你。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>催眠後需要做些什麼來鞏固效果？ </h2>
+                <div class="space-y-4">
+                    <div class="qna-item" tabindex="0">
+                        <h3 class="qna-question" role="button" aria-expanded="false" aria-controls="answer1">
+                            <span>給自己時間消化 </span>
+                            <span class="qna-icon">+</span>
+                        </h3>
+                        <div id="answer1" class="qna-answer hidden">
+                            <p>剛結束催眠後，給自己一些安靜的時間，不要立刻投入繁忙的工作或社交活動。</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" tabindex="0">
+                        <h3 class="qna-question" role="button" aria-expanded="false" aria-controls="answer2">
+                            <span>保持開放和覺察</span>
+                            <span class="qna-icon">+</span>
+                        </h3>
+                        <div id="answer2" class="qna-answer hidden">
+                            <p>留意日常生活中的變化，不論是情緒、想法或行為上的微小改變。這些都是催眠帶來影響的證明。</p>
+                        </div>
+                    </div>
+
+                    <div class="qna-item" tabindex="0">
+                        <h3 class="qna-question" role="button" aria-expanded="false" aria-controls="answer3">
+                            <span>練習催眠師教導的技巧</span>
+                            <span class="qna-icon">+</span>
+                        </h3>
+                        <div id="answer3" class="qna-answer hidden">
+                            <p>如果有教你任何放鬆或自我暗示的技巧，可以持續練習，這有助於強化效果。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 mb-6">
+                <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true" alt="希靜瑞沙 Logo" class="mx-auto w-32 h-auto rounded-full shadow-lg">
+            </div>
+            <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin-top: 30px; color: var(--section-heading-color);">
+                催眠就像是一趟探索自己內在世界的旅程，我是你的嚮導，而你才是這趟旅程的主人。<br>
+                就帶著輕鬆的心情來體驗吧，期待與您見面！😊
+            </p>
+            </a>
+        </div>
+    </main>
+    <footer class="mt-auto py-6 text-center text-sm text-gray-500 bg-white/50 border-t border-amber-200">
+        <p>Copyright © 2025 希靜瑞沙 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. 導覽列下拉選單功能 (桌面版)
+            const setupDropdown = (buttonId, menuId, containerId, relatedMenuId) => {
+                const button = document.getElementById(buttonId);
+                const menu = document.getElementById(menuId);
+                const container = document.getElementById(containerId);
+                const icon = document.getElementById(buttonId.replace('-button-', '-icon-'));
+                const relatedMenu = relatedMenuId ? document.getElementById(relatedMenuId) : null;
+                const relatedIcon = relatedMenuId ? document.getElementById(relatedMenuId.replace('-menu-', '-icon-')) : null;
+
+                if (button && menu) {
+                    button.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        
+                        const isHidden = menu.classList.contains('hidden');
+                        
+                        // 處理當前選單
+                        menu.classList.toggle('hidden');
+                        // 延遲添加 visible 類別以啟動過渡效果
+                        if (!isHidden) {
+                            menu.classList.remove('visible');
+                        } else {
+                            setTimeout(() => menu.classList.add('visible'), 10);
+                        }
+                        if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+                        
+                        // 關閉相關選單
+                        if (relatedMenu) {
+                            relatedMenu.classList.add('hidden');
+                            relatedMenu.classList.remove('visible');
+                        }
+                        if (relatedIcon) {
+                            relatedIcon.style.transform = 'rotate(0deg)';
+                        }
+                        
+                        // 關閉所有 FAQ 選單
+                        document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
+                             q.setAttribute('aria-expanded', 'false');
+                             q.nextElementSibling.classList.add('hidden');
+                             q.querySelector('.qna-icon').textContent = '+';
+                        });
+                    });
+
+                    // 點擊外部關閉選單
+                    document.addEventListener('click', (event) => {
+                        if (container && !container.contains(event.target)) {
+                            menu.classList.add('hidden');
+                            menu.classList.remove('visible');
+                            if(icon) icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+            };
+
+            // 設定兩個下拉選單的互動
+            setupDropdown('journey-button-desktop', 'journey-menu-desktop', 'journey-dropdown-container-desktop', 'resources-menu-desktop');
+            setupDropdown('resources-button-desktop', 'resources-menu-desktop', 'resources-dropdown-container-desktop', 'journey-menu-desktop');
+
+            // 2. 行動版選單切換
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    // 確保點擊行動版選單時，桌面下拉選單是關閉的
+                    document.getElementById('journey-menu-desktop')?.classList.add('hidden');
+                    document.getElementById('journey-menu-desktop')?.classList.remove('visible');
+                    document.getElementById('resources-menu-desktop')?.classList.add('hidden');
+                    document.getElementById('resources-menu-desktop')?.classList.remove('visible');
+                });
+            }
+            
+            // 3. FAQ 收合功能
+            const qnaItems = document.querySelectorAll('.qna-item');
+
+            qnaItems.forEach((item, index) => {
+                const question = item.querySelector('.qna-question');
+                const answer = item.querySelector('.qna-answer');
+                const icon = item.querySelector('.qna-icon');
                 
-                document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
-                    if (q !== question) {
-                        q.setAttribute('aria-expanded', 'false');
-                        q.nextElementSibling.classList.add('hidden');
-                        q.querySelector('.qna-icon').textContent = '+';
-                        q.closest('.qna-item').classList.remove('active');
+                // 設定必要的屬性確保無障礙 (A11Y)
+                answer.id = `answer${index + 1}`;
+                question.setAttribute('aria-controls', answer.id);
+                question.setAttribute('aria-expanded', 'false');
+
+                const toggleAnswer = () => {
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                    
+                    // 關閉其他已展開的項目 (手風琴效果)
+                    document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
+                        if (q !== question) {
+                            q.setAttribute('aria-expanded', 'false');
+                            q.nextElementSibling.classList.add('hidden');
+                            q.querySelector('.qna-icon').textContent = '+';
+                        }
+                    });
+
+                    // 切換當前項目
+                    question.setAttribute('aria-expanded', !isExpanded);
+                    answer.classList.toggle('hidden');
+
+                    if (!isExpanded) {
+                        icon.textContent = '−';
+                    } else {
+                        icon.textContent = '+';
+                    }
+                };
+
+                question.addEventListener('click', toggleAnswer);
+                
+                // 支援鍵盤操作
+                question.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleAnswer();
                     }
                 });
-
-                question.setAttribute('aria-expanded', !isExpanded);
-                answer.classList.toggle('hidden');
-
-                if (!isExpanded) {
-                    icon.textContent = '−';
-                    item.classList.add('active');
-                } else {
-                    icon.textContent = '+';
-                    item.classList.remove('active');
-                }
             });
             
-            question.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    question.click();
-                }
-            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
