@@ -90,12 +90,10 @@
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
                     
                     <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
                         <div>
-                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
+                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors" aria-expanded="false">
                                 開始你的旅程
                                 <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="journey-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
@@ -109,9 +107,13 @@
                         </div>
                     </div>
                     
+                    <a href="#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
+                    
+                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
+                    
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
                         <div>
-                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
+                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors" aria-expanded="false">
                                 其它資源
                                 <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="resources-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
@@ -130,7 +132,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -139,13 +140,13 @@
             </div>
             
             <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="border-b border-gray-200 mb-2 pb-2">
+                    <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 2:</span> 填寫預約表單</a>
+                    <a href="friendly reminder.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                </div>
                 <a href="#articles" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">文章分享</a>
                 <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">個案回饋</a>
-                <div class="border-t border-gray-200 mt-2 pt-2">
-                    <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
-                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
-                    <a href="friendly reminder.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
-                </div>
                 <div class="border-t border-gray-200 mt-2 pt-2">
                      <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
                      <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
@@ -222,7 +223,7 @@
             </div>
             
             <div class="section">
-                <h2>催眠常見問題  (FAQ)</h2>
+                <h2>催眠常見問題 (FAQ)</h2>
                 <div class="space-y-4">
                     <div class="qna-item bg-white p-6 rounded-xl shadow-md transition-all duration-300 transform hover:scale-[1.01] hover:shadow-lg">
                         <h3 class="qna-question text-lg font-bold cursor-pointer text-gray-800 flex items-center justify-between">
@@ -274,51 +275,65 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // **********************************************
-            // 導覽列下拉選單功能 (桌面版)
+            // 專業優化：導覽列下拉選單功能 (桌面版)
+            // 將兩個下拉選單的邏輯合併，實現互相關閉
             // **********************************************
             const setupDropdown = (buttonId, menuId, containerId, relatedMenuId) => {
                 const button = document.getElementById(buttonId);
                 const menu = document.getElementById(menuId);
                 const container = document.getElementById(containerId);
-                const icon = document.getElementById(buttonId.replace('-button-', '-icon-'));
+                // 使用通用的方式取得 Icon，避免重複程式碼
+                const icon = button ? button.querySelector('svg') : null; 
                 const relatedMenu = relatedMenuId ? document.getElementById(relatedMenuId) : null;
-                const relatedIcon = relatedMenuId ? document.getElementById(relatedMenuId.replace('-menu-', '-icon-')) : null;
+                const relatedButton = relatedMenu ? document.getElementById(relatedMenuId.replace('-menu-', '-button-')) : null;
 
                 if (button && menu) {
+                    const closeMenu = (m, i) => {
+                        m.classList.add('hidden');
+                        m.classList.remove('visible');
+                        if (i) i.style.transform = 'rotate(0deg)';
+                        if (i && i.closest('button')) i.closest('button').setAttribute('aria-expanded', 'false');
+                    };
+
+                    const openMenu = (m, i) => {
+                        m.classList.remove('hidden');
+                        // 確保瀏覽器識別到 hidden 移除後再應用動畫
+                        setTimeout(() => m.classList.add('visible'), 10); 
+                        if (i) i.style.transform = 'rotate(180deg)';
+                        if (i && i.closest('button')) i.closest('button').setAttribute('aria-expanded', 'true');
+                    };
+
                     button.addEventListener('click', (event) => {
                         event.stopPropagation();
                         
                         const isHidden = menu.classList.contains('hidden');
                         
-                        // 處理當前選單
-                        menu.classList.toggle('hidden');
-                        menu.classList.toggle('visible');
-                        if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-                        
-                        // 關閉相關選單
+                        // 1. 關閉相關選單（如果有）
                         if (relatedMenu) {
-                            relatedMenu.classList.add('hidden');
-                            relatedMenu.classList.remove('visible');
+                            closeMenu(relatedMenu, relatedButton ? relatedButton.querySelector('svg') : null);
                         }
-                         if (relatedIcon) {
-                            relatedIcon.style.transform = 'rotate(0deg)';
+                        
+                        // 2. 切換當前選單
+                        if (isHidden) {
+                            openMenu(menu, icon);
+                        } else {
+                            closeMenu(menu, icon);
                         }
                     });
 
                     // 點擊外部關閉選單
                     document.addEventListener('click', (event) => {
                         if (container && !container.contains(event.target)) {
-                            menu.classList.add('hidden');
-                            menu.classList.remove('visible');
-                            if(icon) icon.style.transform = 'rotate(0deg)';
+                            closeMenu(menu, icon);
                         }
                     });
                 }
             };
 
-            // 設定兩個下拉選單的互動
+            // 設定兩個下拉選單的互動 (彼此是相關選單)
             setupDropdown('journey-button-desktop', 'journey-menu-desktop', 'journey-dropdown-container-desktop', 'resources-menu-desktop');
             setupDropdown('resources-button-desktop', 'resources-menu-desktop', 'resources-dropdown-container-desktop', 'journey-menu-desktop');
+
 
             // 行動版選單切換
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -352,7 +367,11 @@
                         if (otherAnswer !== answer && otherItem.classList.contains('active')) {
                             otherItem.classList.remove('active');
                             otherAnswer.classList.remove('visible-animate');
-                            otherAnswer.classList.add('hidden');
+                            // 使用 transitionend 確保收合動畫完成
+                            otherAnswer.addEventListener('transitionend', function handler() {
+                                otherAnswer.classList.add('hidden');
+                                otherAnswer.removeEventListener('transitionend', handler);
+                            }, {once: true});
                             otherIcon.textContent = '+';
                         }
                     });
@@ -361,23 +380,21 @@
                     if (isHidden) {
                         // 展開
                         answer.classList.remove('hidden');
-                        // 設置一個小的延遲以確保瀏覽器識別 `display:block` 後再應用動畫
                         setTimeout(() => {
                             answer.classList.add('visible-animate');
                         }, 10); 
                         
-                        icon.textContent = '×'; // 使用 '×' (乘號) 替換原來的 '−' (減號) 視覺效果更佳
+                        icon.textContent = '×'; // 展開時顯示 '×'
                         item.classList.add('active');
                     } else {
                         // 收合
                         answer.classList.remove('visible-animate');
-                        // 動畫結束後再隱藏
                         answer.addEventListener('transitionend', function handler() {
                             answer.classList.add('hidden');
                             answer.removeEventListener('transitionend', handler);
                         }, {once: true});
 
-                        icon.textContent = '+';
+                        icon.textContent = '+'; // 收合時顯示 '+'
                         item.classList.remove('active');
                     }
                 });
