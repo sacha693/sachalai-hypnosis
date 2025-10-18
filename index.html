@@ -59,8 +59,6 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
                     
                     <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
                         <div>
@@ -78,6 +76,10 @@
                         </div>
                     </div>
 
+                    <a href="#articles" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
+                    
+                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
+                    
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
                         <div>
                             <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
@@ -113,21 +115,19 @@
                 <div class="border-t border-gray-200 mt-2 pt-2">
                     <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
                     <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
-                    <a href="friendly reminder.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                    <a href="friendly reminder.html" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
                 </div>
                 <div class="border-t border-gray-200 mt-2 pt-2">
-                     <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
-                     <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
+                    <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
                 </div>
             </div>
         </div>
     </nav>
     
-    <script src="script.js" defer></script>
-
     <header class="h-screen flex items-center justify-center text-center text-zinc-800 header-with-bg">
     <div>
-      
+        
         <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-none mb-4 animate-fade-in-down">
             走遍千山萬水<br>看盡世界美景<br>但您曾經走進過自己內心探索嗎？
         </h1>
@@ -390,24 +390,67 @@
                 });
             });
 
-            // 導覽列下拉選單功能
-            const journeyButton = document.getElementById('journey-button');
-            const journeyMenu = document.getElementById('journey-menu');
-            const journeyContainer = document.getElementById('journey-dropdown-container');
+            // 導覽列下拉選單功能 - 開始你的旅程 (桌面版)
+            const journeyButtonDesktop = document.getElementById('journey-button-desktop');
+            const journeyMenuDesktop = document.getElementById('journey-menu-desktop');
+            const journeyContainerDesktop = document.getElementById('journey-dropdown-container-desktop');
 
-            journeyButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const isHidden = journeyMenu.classList.contains('hidden');
-                journeyMenu.classList.toggle('hidden');
-                journeyButton.setAttribute('aria-expanded', !isHidden);
-            });
+            if (journeyButtonDesktop && journeyMenuDesktop) {
+                journeyButtonDesktop.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // 關閉其他選單
+                    const resourcesMenu = document.getElementById('resources-menu-desktop');
+                    if (resourcesMenu && !resourcesMenu.classList.contains('hidden')) {
+                         resourcesMenu.classList.add('hidden');
+                    }
+                    
+                    const isHidden = journeyMenuDesktop.classList.toggle('hidden');
+                    journeyButtonDesktop.setAttribute('aria-expanded', !isHidden);
+                });
+                
+                document.addEventListener('click', (event) => {
+                    if (journeyContainerDesktop && !journeyContainerDesktop.contains(event.target)) {
+                        journeyMenuDesktop.classList.add('hidden');
+                        journeyButtonDesktop.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // 【已修復】導覽列下拉選單功能 - 其它資源 (桌面版)
+            const resourcesButtonDesktop = document.getElementById('resources-button-desktop');
+            const resourcesMenuDesktop = document.getElementById('resources-menu-desktop');
+            const resourcesContainerDesktop = document.getElementById('resources-dropdown-container-desktop');
+
+            if (resourcesButtonDesktop && resourcesMenuDesktop) {
+                 resourcesButtonDesktop.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // 關閉其他選單
+                    const journeyMenu = document.getElementById('journey-menu-desktop');
+                    if (journeyMenu && !journeyMenu.classList.contains('hidden')) {
+                        journeyMenu.classList.add('hidden');
+                    }
+                    
+                    const isHidden = resourcesMenuDesktop.classList.toggle('hidden');
+                    resourcesButtonDesktop.setAttribute('aria-expanded', !isHidden);
+                });
+                
+                document.addEventListener('click', (event) => {
+                    if (resourcesContainerDesktop && !resourcesContainerDesktop.contains(event.target)) {
+                        resourcesMenuDesktop.classList.add('hidden');
+                        resourcesButtonDesktop.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
             
-            document.addEventListener('click', (event) => {
-                if (!journeyContainer.contains(event.target)) {
-                    journeyMenu.classList.add('hidden');
-                    journeyButton.setAttribute('aria-expanded', 'false');
-                }
-            });
+            // 手機版選單切換功能
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
 </body>
