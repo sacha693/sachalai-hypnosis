@@ -29,6 +29,24 @@
             max-height: 500px;
             padding-top: 1rem;
         }
+      .header-with-bg {
+    /* 桌面版與預設樣式：固定背景 */
+    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* 預設為固定 */
+}
+
+/* 針對行動裝置/平板的修正：螢幕寬度小於或等於 1024px */
+@media (max-width: 1024px) {
+    .header-with-bg {
+        /* 將固定效果改為隨內容滾動 */
+        background-attachment: scroll; 
+        /* 或者使用 initial，讓它回到預設的滾動狀態 */
+        /* background-attachment: initial; */
+    }
+}
     </style>
 </head>
 <body class="text-gray-800">
@@ -37,7 +55,7 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="text-xl font-bold text-zinc-800">
-                    <a href="https://sacha693.github.io/sachalai-hypnosis/index.html" class="hover:text-amber-600 transition-colors">希靜瑞沙｜催眠療癒</a>
+                    <a href="#" class="hover:text-amber-600 transition-colors">希靜瑞沙｜催眠療癒</a>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
@@ -107,17 +125,17 @@
     
     <script src="script.js" defer></script>
 
-     <header class="h-screen flex items-center justify-center text-center text-zinc-800" style="background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <header class="h-screen flex items-center justify-center text-center text-zinc-800 header-with-bg">
     <div>
       
         <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-none mb-4 animate-fade-in-down">
-            你曾行千里尋美景<br>但是否想起<br>在心靈裡那最美的風景
+            走遍千山萬水<br>看盡世界美景<br>但您曾經走進過自己內心探索嗎？
         </h1>
         <a href="#about" class="inline-block py-3 px-8 text-lg font-bold rounded-full bg-amber-500 text-white hover:bg-amber-600 transition-all duration-300 transform hover:scale-105">
             我是您的潛意識領航員
         </a>
     </div>
-    </header>
+</header>
 
     <main class="container mx-auto px-4 py-16 md:py-24 max-w-6xl">
         
@@ -185,7 +203,7 @@
         </section>
 
         <section id="services" class="section-reveal mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-zinc-800">我能為您做什麼？</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-zinc-800">我能為你做什麼？</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
