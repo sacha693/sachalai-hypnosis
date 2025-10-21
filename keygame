@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <body class="text-gray-800">
+
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-xl font-bold text-zinc-800">
+                    <a href="#" class="hover:text-amber-600 transition-colors">瑞光沙舟心流所</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    
+                    <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
+                        <div>
+                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
+                                開始你的旅程
+                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            </button>
+                        </div>
+                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                            <div class="py-1">
+                                <a href="appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                                <a href="friendly reminder.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://cjrs693.wordpress.com/" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
+                    
+                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
+                    
+                    <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
+                        <div>
+                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
+                                其它資源
+                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            </button>
+                        </div>
+                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                            <div class="py-1">
+                                <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.74 2 8.47 2.014 7.42 2.06c-1.03.047-1.75.217-2.37.465a4.9 4.9 0 00-2.14 1.082A4.9 4.9 0 002.525 5.687c-.248.62-.418 1.34-.465 2.37C2.014 8.47 2 8.74 2 12s.014 3.53.06 4.58c.047 1.03.217 1.75.465 2.37a4.9 4.9 0 001.082 2.14 4.9 4.9 0 002.14 1.082c.62.248 1.34.418 2.37.465C8.47 21.986 8.74 22 12 22s3.53-.014 4.58-.06c1.03-.047 1.75-.217 2.37-.465a4.9 4.9 0 002.14-1.082 4.9 4.9 0 001.082-2.14c.248-.62.418-1.34.465-2.37.046-1.05.06-1.32.06-4.58s-.014-3.53-.06-4.58c-.047-1.03-.217-1.75-.465-2.37a4.9 4.9 0 00-1.082-2.14A4.9 4.9 0 0018.94 2.525c-.62-.248-1.34-.418-2.37-.465C15.53 2.014 15.26 2 12 2zm0 1.8a8.2 8.2 0 014.47.054c.97.043 1.5.197 1.88.347a3.1 3.1 0 011.33 1.33c.15.38.304.91.347 1.88A8.2 8.2 0 0120.2 12a8.2 8.2 0 01-.054 4.47c-.043.97-.197 1.5-.347 1.88a3.1 3.1 0 01-1.33 1.33c-.38.15-.91.304-1.88.347A8.2 8.2 0 0112 20.2a8.2 8.2 0 01-4.47-.054c-.97-.043-1.5-.197-1.88-.347a3.1 3.1 0 01-1.33-1.33c-.15-.38-.304.91-.347-1.88A8.2 8.2 0 013.8 12a8.2 8.2 0 01.054-4.47c.043-.97.197-1.5.347-1.88a3.1 3.1 0 011.33-1.33c.38-.15.91-.304 1.88-.347A8.2 8.2 0 0112 3.8zm0 3.35A4.85 4.85 0 1012 16.8a4.85 4.85 0 000-9.65zm0 1.8a3.05 3.05 0 110 6.1 3.05 3.05 0 010-6.1zM16.95 6.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"></path></svg>
+                                    Instagram
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                                    Facebook
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="https://cjrs693.wordpress.com/" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">文章分享</a>
+                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">個案回饋</a>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+                    <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                    <a href="friendly reminder.html" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                </div>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+                    <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鎖心之謬：一場互動式哲學思辨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Harmony -->
+    <!-- Application Structure Plan: 本應用程式採用了主題式分區結構，旨在引導使用者從理解核心隱喻，到探索其在生活中的應用，最終透過視覺化互動體驗心態的轉變。結構依序為：1. **介紹核心隱喻**：以視覺和文字建立「鎖與鑰匙」的場景。2. **互動情境探索**：採用頁籤式設計，讓使用者自主選擇探索「職場」、「人際」、「學習」三個場景中的「鎖心之謬」，這比線性閱讀更能引發代入感與反思。3. **心態轉變視覺化**：利用互動式圖表，將抽象的「心態轉變」具象化，讓使用者透過點擊，親眼看見從「歸咎外因」到「反求諸己」的比例變化，加深理解。這個結構旨在將被動閱讀轉化為主動探索，提升資訊的吸收與記憶。 -->
+    <!-- Visualization & Content Choices: 1. **核心概念** -> 目標: 告知 -> 呈現方式: 圖文並茂的HTML區塊 -> 互動: 無 -> 理由: 建立情境基礎。 2. **三大生活情境** -> 目標: 組織與比較 -> 呈現方式: 頁籤式(Tab)介面 -> 互動: 點擊切換內容 -> 理由: 讓使用者能清晰地比較隱喻在不同領域的應用，結構化資訊。 -> 技術: Vanilla JS。 3. **心態轉變** -> 目標: 傳達衝擊與告知 -> 呈現方式: 環圈圖 (Donut Chart) -> 互動: 按鈕觸發圖表數據與說明文字的動態更新 -> 理由: 將抽象的心態轉變過程視覺化，互動操作能有效強化「改變是可控的」這一核心訊息。 -> 技術: Chart.js (Canvas)。 -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDFBF8;
+            color: #3D352F;
+        }
+        .tab-active {
+            background-color: #A67B5B;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        .tab-inactive {
+            background-color: #EFEAE6;
+            color: #A67B5B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto max-w-5xl px-4 py-8 md:py-16">
+
+        <!-- Header -->
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#A67B5B] mb-2">鎖心之謬</h1>
+            <p class="text-lg md:text-xl text-stone-600">當鑰匙轉不動時，我們為什麼總拒絕反思？</p>
+        </header>
+
+        <main>
+            <!-- Section 1: The Metaphor -->
+            <section id="metaphor" class="mb-12 md:mb-20">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-stone-200">
+                    <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                        <div class="text-6xl md:text-8xl text-stone-400">
+                            <span>🔑</span>
+                            <span class="text-stone-300 mx-2">→</span>
+                            <span>🔒</span>
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-[#A67B5B] mb-3">一個熟悉的場景</h2>
+                            <p class="text-stone-700 leading-relaxed">當我們站在家門口，手中的黃銅鑰匙在鎖心裡怎麼也轉不動時，一股挫折感會油然而生。我們的慣性思維幾乎是瞬間導向一個結論：「一定是這該死的鎖又壞了。」我們很少會第一時間退後一步，拿出鑰匙，在陽光下仔細檢查：是拿錯了鑰匙、齒紋上卡了異物，抑或，是我們過去那套方法（鑰匙）已經被時間磨鈍了？</p>
+                            <p class="mt-4 text-stone-500 italic">這種「鎖壞了，不是我鑰匙有問題」的反應，其實是人類思維中一種深刻的自我保護機制。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Interactive Scenarios -->
+            <section id="scenarios" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A67B5B]">舉一反三：從鎖到人生的三道難題</h2>
+                    <p class="mt-2 text-stone-600">這種思維模式在生活中處處可見。點擊下方頁籤，探索你的「鑰匙」在哪個情境中卡住了。</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex justify-center space-x-2 md:space-x-4 mb-6">
+                    <button id="tab-work" class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 tab-active">職場的鎖</button>
+                    <button id="tab-relations" class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 tab-inactive">人際的鎖</button>
+                    <button id="tab-learning" class="tab-btn px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 tab-inactive">學習的鎖</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-content" class="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-stone-200 min-h-[280px]">
+                    <div id="content-work" class="tab-panel">
+                        <h3 class="text-xl font-bold text-stone-800 mb-3">情境：工作成果總是被否決</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-semibold text-red-700">慣性指責 (鎖心壞了)</p>
+                                <p class="text-stone-600">抱怨「公司缺乏遠見」、「老闆不懂欣賞」。</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-700">反思的可能 (鑰匙問題)</p>
+                                <p class="text-stone-600">我的「鑰匙」（十年前的技術或溝通方式）是否已經過時，需要更新知識結構了？</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="content-relations" class="tab-panel hidden">
+                         <h3 class="text-xl font-bold text-stone-800 mb-3">情境：與親人、伴侶頻頻爭吵</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-semibold text-red-700">慣性指責 (鎖心壞了)</p>
+                                <p class="text-stone-600">歸咎於「對方總是聽不懂」、「他就是太固執」。</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-700">反思的可能 (鑰匙問題)</p>
+                                <p class="text-stone-600">我慣用的「鑰匙」（表達愛意或解決衝突的方式）是否不對？能否換種更溫和的方式，才能真正打開對方的心房？</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="content-learning" class="tab-panel hidden">
+                        <h3 class="text-xl font-bold text-stone-800 mb-3">情境：面對新學科或技能難以入門</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-semibold text-red-700">慣性指責 (鎖心壞了)</p>
+                                <p class="text-stone-600">咒罵「教材太爛」、「老師教得不好」。</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-700">反思的可能 (鑰匙問題)</p>
+                                <p class="text-stone-600">我習慣的「鑰匙」（讀書方法）是否不適用？是否需要一種全新的、更主動的學習策略？</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Mindset Shift -->
+            <section id="mindset-shift" class="text-center">
+                <h2 class="text-3xl font-bold text-[#A67B5B]">反求諸己：轉動心態的鑰匙</h2>
+                <p class="mt-2 text-stone-600 mb-8">一個真正具有成長心態的人，在鑰匙轉不動的那一刻，會選擇反求諸己。按下按鈕，看看心態的焦點如何轉變。</p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="w-full md:w-1/2 order-2 md:order-1 text-left bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+                        <h3 id="mindset-title" class="text-2xl font-bold text-red-700 transition-colors duration-500">慣性思維：90% 歸咎外因</h3>
+                        <p id="mindset-text" class="mt-3 text-stone-700 leading-relaxed transition-opacity duration-500">
+                            承認「鑰匙有問題」，就等於承認我們過去賴以生存的工具可能失效。這份否定自我的代價太大，不如直接將問題外包給「鎖心」——那個外在、獨立且可以被指責的對象。
+                        </p>
+                    </div>
+                    <div class="w-full md:w-1/2 order-1 md:order-2 flex flex-col items-center">
+                        <div class="chart-container">
+                            <canvas id="mindsetChart"></canvas>
+                        </div>
+                        <button id="shift-button" class="mt-6 px-8 py-3 bg-[#A67B5B] text-white font-bold rounded-full hover:bg-[#8e6a4d] transition-all duration-300 shadow-lg">
+                            轉變心態
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 區塊滑入動畫效果
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            document.querySelectorAll('.section-reveal').forEach(section => {
+                observer.observe(section);
+            });
+
+            // 服務項目卡片展開效果
+            document.querySelectorAll('.card-expandable').forEach(card => {
+                const header = card.querySelector('h3');
+                const plusIcon = header.querySelector('span:last-child');
+                card.addEventListener('click', () => {
+                    const isActive = card.classList.toggle('active');
+                    if (isActive) {
+                        plusIcon.style.transform = 'rotate(45deg)';
+                    } else {
+                        plusIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // 導覽列下拉選單功能 - 開始你的旅程 (桌面版)
+            const journeyButtonDesktop = document.getElementById('journey-button-desktop');
+            const journeyMenuDesktop = document.getElementById('journey-menu-desktop');
+            const journeyContainerDesktop = document.getElementById('journey-dropdown-container-desktop');
+
+            if (journeyButtonDesktop && journeyMenuDesktop) {
+                journeyButtonDesktop.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // 關閉其他選單
+                    const resourcesMenu = document.getElementById('resources-menu-desktop');
+                    if (resourcesMenu && !resourcesMenu.classList.contains('hidden')) {
+                         resourcesMenu.classList.add('hidden');
+                    }
+                    
+                    const isHidden = journeyMenuDesktop.classList.toggle('hidden');
+                    journeyButtonDesktop.setAttribute('aria-expanded', !isHidden);
+                });
+                
+                document.addEventListener('click', (event) => {
+                    if (journeyContainerDesktop && !journeyContainerDesktop.contains(event.target)) {
+                        journeyMenuDesktop.classList.add('hidden');
+                        journeyButtonDesktop.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // 【已修復】導覽列下拉選單功能 - 其它資源 (桌面版)
+            const resourcesButtonDesktop = document.getElementById('resources-button-desktop');
+            const resourcesMenuDesktop = document.getElementById('resources-menu-desktop');
+            const resourcesContainerDesktop = document.getElementById('resources-dropdown-container-desktop');
+
+            if (resourcesButtonDesktop && resourcesMenuDesktop) {
+                 resourcesButtonDesktop.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // 關閉其他選單
+                    const journeyMenu = document.getElementById('journey-menu-desktop');
+                    if (journeyMenu && !journeyMenu.classList.contains('hidden')) {
+                        journeyMenu.classList.add('hidden');
+                    }
+                    
+                    const isHidden = resourcesMenuDesktop.classList.toggle('hidden');
+                    resourcesButtonDesktop.setAttribute('aria-expanded', !isHidden);
+                });
+                
+                document.addEventListener('click', (event) => {
+                    if (resourcesContainerDesktop && !resourcesContainerDesktop.contains(event.target)) {
+                        resourcesMenuDesktop.classList.add('hidden');
+                        resourcesButtonDesktop.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // 手機版選單切換功能
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+        <!-- Footer -->
+        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-stone-200">
+            <p class="text-stone-700 font-bold text-lg">人生的難題，是在提醒我們升級手中的「鑰匙」。</p>
+            <p class="text-stone-500 mt-2">當我們願意承擔「我的鑰匙可能出了問題」的責任時，也就掌握了讓一切改變的起點。</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(item => {
+                        item.classList.remove('tab-active');
+                        item.classList.add('tab-inactive');
+                    });
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+
+                    const targetPanelId = 'content-' + tab.id.split('-')[1];
+                    
+                    panels.forEach(panel => {
+                        if (panel.id === targetPanelId) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Chart.js functionality
+            const ctx = document.getElementById('mindsetChart').getContext('2d');
+            const titleEl = document.getElementById('mindset-title');
+            const textEl = document.getElementById('mindset-text');
+            const shiftButton = document.getElementById('shift-button');
+            
+            let isShifted = false;
+
+            const initialData = {
+                labels: ['歸咎外因 (鎖)', '反思自我 (鑰匙)'],
+                datasets: [{
+                    label: '心態分佈',
+                    data: [90, 10],
+                    backgroundColor: ['#EF4444', '#22C55E'],
+                    borderColor: '#FDFBF8',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            };
+            
+            const shiftedData = {
+                data: [10, 90]
+            };
+            
+            const chartConfig = {
+                type: 'doughnut',
+                data: initialData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: "'Noto Sans TC', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const mindsetChart = new Chart(ctx, chartConfig);
+
+            shiftButton.addEventListener('click', () => {
+                isShifted = !isShifted;
+                
+                if(isShifted) {
+                    mindsetChart.data.datasets[0].data = shiftedData.data;
+                    titleEl.textContent = "成長心態：90% 反思自我";
+                    titleEl.classList.remove('text-red-700');
+                    titleEl.classList.add('text-green-700');
+                    textEl.style.opacity = 0;
+                    setTimeout(() => {
+                        textEl.textContent = "真正的專業與成熟，不是在指責鎖心的那一刻，而是在我們將鑰匙緩緩拔出、冷靜檢查的那份時刻。因為我們明白，外在的『鎖心』無法控制，但手中的『鑰匙』卻是唯一能被我們審視和重新打磨的變數。";
+                        textEl.style.opacity = 1;
+                    }, 300);
+                    shiftButton.textContent = '回到慣性';
+                } else {
+                    mindsetChart.data.datasets[0].data = initialData.datasets[0].data;
+                    titleEl.textContent = "慣性思維：90% 歸咎外因";
+                    titleEl.classList.remove('text-green-700');
+                    titleEl.classList.add('text-red-700');
+                     textEl.style.opacity = 0;
+                    setTimeout(() => {
+                        textEl.textContent = "承認「鑰匙有問題」，就等於承認我們過去賴以生存的工具可能失效。這份否定自我的代價太大，不如直接將問題外包給「鎖心」——那個外在、獨立且可以被指責的對象。";
+                        textEl.style.opacity = 1;
+                    }, 300);
+                    shiftButton.textContent = '轉變心態';
+                }
+
+                mindsetChart.update();
+            });
+        });
+    </script>
+</body>
+   <footer class="mt-4 py-6 text-center text-sm text-gray-500">
+        <p>Copyright © 2025 瑞光沙舟 All Rights Reserved</p>
+    </footer>
+</html>
+
