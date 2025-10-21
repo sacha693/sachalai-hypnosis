@@ -4,48 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瑞光沙舟｜催眠療癒</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f7f1e3;
-        }
-        .section-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .section-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .card-expandable .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-        }
-        .card-expandable.active .card-content {
-            max-height: 500px;
-            padding-top: 1rem;
-        }
-      .header-with-bg {
-        /* 桌面版與預設樣式：固定背景 */
-        background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed; /* 預設為固定 */
-    }
-
-    /* 針對行動裝置/平板的修正：螢幕寬度小於或等於 1024px */
-    @media (max-width: 1024px) {
-        .header-with-bg {
-            /* 將固定效果改為隨內容滾動，提升行動裝置體驗 */
-            background-attachment: scroll; 
-        }
-    }
-    </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-gray-800">
 
@@ -57,7 +21,6 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    
                     <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
                         <div>
                             <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
@@ -68,14 +31,13 @@
                         <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                             <div class="py-1">
                                 <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
-                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank"rel="noopener noreferrer" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
                                 <a href="https://sacha693.github.io/sachalai-hypnosis/friendly reminder.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
                             </div>
                         </div>
                     </div>
 
                     <a href="https://cjrs693.wordpress.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
-                    
                     <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
                     
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
@@ -88,7 +50,7 @@
                         <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                             <div class="py-1">
                                 <a href="https://sacha693.github.io/sachalai-hypnosis/keygame.html" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                     <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.00098C6.477 2.00098 2 6.47798 2 12.0009C2 17.524 6.477 22.001 12 22.001C17.524 22.001 22 17.524 22 12.0009C22 6.47798 17.524 2.00098 12 2.00098ZM17.152 18.04C16.539 17.304 15.655 16.924 14.773 16.924C13.891 16.924 13.007 17.304 12.394 18.04C11.781 17.304 10.897 16.924 10.015 16.924C9.133 16.924 8.249 17.304 7.636 18.04C7.023 17.304 6.139 16.924 5.257 16.924C4.375 16.924 3.491 17.304 2.878 18.04C2.265 17.304 1.381 16.924 0.499 16.924C-0.383 16.924 -1.267 17.304 -1.88 18.04C-2.493 17.304 -3.377 16.924 -4.259 16.924C-5.141 16.924 -6.025 17.304 -6.638 18.04C-7.251 17.304 -8.135 16.924 -9.017 16.924C-9.899 16.924 -10.783 17.304 -11.396 18.04C-12.009 17.304 -12.893 16.924 -13.775 16.924C-14.657 16.924 -15.541 17.304 -16.154 18.04C-16.767 17.304 -17.651 16.924 -18.533 16.924C-19.415 16.924 -20.299 17.304 -20.912 18.04Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(12 3.5) scale(0.6)"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.864 8.163 6.83 9.49C9.07 21.6 9.35 21.46 9.35 21.24c0-.11-.005-.41-.005-.81c-2.78 0-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1.01.07 1.54 1.03 1.54 1.03.9 1.54 2.37 1.09 2.94.84.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.63-.33 2.47-.33.84 0 1.68.11 2.47.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.65.64.71 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.75c0 .22.28.36.69.31A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+                                    <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.00098C6.477 2.00098 2 6.47798 2 12.0009C2 17.524 6.477 22.001 12 22.001C17.524 22.001 22 17.524 22 12.0009C22 6.47798 17.524 2.00098 12 2.00098ZM17.152 18.04C16.539 17.304 15.655 16.924 14.773 16.924C13.891 16.924 13.007 17.304 12.394 18.04C11.781 17.304 10.897 16.924 10.015 16.924C9.133 16.924 8.249 17.304 7.636 18.04C7.023 17.304 6.139 16.924 5.257 16.924C4.375 16.924 3.491 17.304 2.878 18.04C2.265 17.304 1.381 16.924 0.499 16.924C-0.383 16.924 -1.267 17.304 -1.88 18.04C-2.493 17.304 -3.377 16.924 -4.259 16.924C-5.141 16.924 -6.025 17.304 -6.638 18.04C-7.251 17.304 -8.135 16.924 -9.017 16.924C-9.899 16.924 -10.783 17.304 -11.396 18.04C-12.009 17.304 -12.893 16.924 -13.775 16.924C-14.657 16.924 -15.541 17.304 -16.154 18.04C-16.767 17.304 -17.651 16.924 -18.533 16.924C-19.415 16.924 -20.299 17.304 -20.912 18.04Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(12 3.5) scale(0.6)"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.864 8.163 6.83 9.49C9.07 21.6 9.35 21.46 9.35 21.24c0-.11-.005-.41-.005-.81c-2.78 0-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1.01.07 1.54 1.03 1.54 1.03.9 1.54 2.37 1.09 2.94.84.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.63-.33 2.47-.33.84 0 1.68.11 2.47.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.65.64.71 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.75c0 .22.28.36.69.31A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
                                     轉動思維
                                 </a>
                                 <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -129,16 +91,15 @@
     </nav>
     
     <header class="h-screen flex items-center justify-center text-center text-zinc-800 header-with-bg">
-    <div>
-        
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-none mb-4 animate-fade-in-down">
-            走遍千山萬水<br>看盡世界美景<br>但您曾經走進過自己內心探索嗎？
-        </h1>
-        <a href="#about" class="inline-block py-3 px-8 text-lg font-bold rounded-full bg-amber-500 text-white hover:bg-amber-600 transition-all duration-300 transform hover:scale-105">
-            我是您的潛意識領航員
-        </a>
-    </div>
-</header>
+        <div>
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-none mb-4 animate-fade-in-down">
+                走遍千山萬水<br>看盡世界美景<br>但您曾經走進過自己內心探索嗎？
+            </h1>
+            <a href="#about" class="inline-block py-3 px-8 text-lg font-bold rounded-full bg-amber-500 text-white hover:bg-amber-600 transition-all duration-300 transform hover:scale-105">
+                我是您的潛意識領航員
+            </a>
+        </div>
+    </header>
 
     <main class="container mx-auto px-4 py-16 md:py-24 max-w-6xl">
         
@@ -150,15 +111,9 @@
                     <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200">
                         <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/sacha.jpg?raw=true" alt="希靜瑞沙個人照" class="w-full h-auto rounded-lg mb-4">
                         <div class="grid grid-cols-3 gap-3">
-                            <div>
-                                <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/S__35176458.jpg?raw=true" alt="NGH催眠師證照" class="w-full h-auto rounded-md shadow-sm">
-                            </div>
-                            <div>
-                                <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/IACT.jpg?raw=true" alt="IACT現代催眠證照" class="w-full h-auto rounded-md shadow-sm">
-                            </div>
-                            <div>
-                                <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/NLP.JPG?raw=true" alt="NLP專業執行師證照" class="w-full h-auto rounded-md shadow-sm">
-                            </div>
+                            <div><img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/S__35176458.jpg?raw=true" alt="NGH催眠師證照" class="w-full h-auto rounded-md shadow-sm"></div>
+                            <div><img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/IACT.jpg?raw=true" alt="IACT現代催眠證照" class="w-full h-auto rounded-md shadow-sm"></div>
+                            <div><img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/NLP.JPG?raw=true" alt="NLP專業執行師證照" class="w-full h-auto rounded-md shadow-sm"></div>
                         </div>
                     </div>
                 </div>
@@ -208,10 +163,11 @@
         <section id="services" class="section-reveal mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-zinc-800">我能為你做什麼？</h2>
             <div class="grid md:grid-cols-2 gap-8">
+                
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>找回平靜的旅程</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -219,10 +175,11 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>潛意識的習慣重塑</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -230,10 +187,11 @@
                         </p>
                     </div>
                 </div>
+                
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>點亮內在的自信之光</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -241,10 +199,11 @@
                         </p>
                     </div>
                 </div>
+                
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>與情緒溫柔和解</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -252,10 +211,11 @@
                         </p>
                     </div>
                 </div>
+                
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>回溯過往的記憶之河</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -263,10 +223,11 @@
                         </p>
                     </div>
                 </div>
+                
                 <div class="card-expandable bg-white p-8 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:bg-gray-50">
                     <h3 class="text-2xl font-bold flex items-center mb-4 text-amber-600">
                         <span>潛意識的內在住所探索</span>
-                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300">+</span>
+                        <span class="ml-auto text-3xl transform rotate-0 transition-transform duration-300 plus-icon">+</span>
                     </h3>
                     <div class="card-content">
                         <p class="text-gray-600 leading-relaxed">
@@ -274,6 +235,7 @@
                         </p>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -287,7 +249,9 @@
                         我深知內在探索需要時間沉澱與持續支持，為您設計了三個階段，讓您由淺入深，穩定紮根給予陪伴的力量，達成真正的生命蛻變。
                     </p>
                 </div>
+                
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
+                    
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between border-t-4 border-amber-300">
                         <div>
                             <h3 class="text-2xl font-bold text-zinc-800 mb-2">I. 潛意識探索</h3>
@@ -306,6 +270,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between border-t-4 border-amber-500 relative">
                         <div>
                             <h3 class="text-2xl font-bold text-zinc-800 mb-2">II. 心靈調整計畫</h3>
@@ -324,6 +289,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between border-t-4 border-zinc-500">
                         <div>
                             <h3 class="text-2xl font-bold text-zinc-800 mb-2">III. 生命藍圖重塑</h3>
@@ -363,98 +329,6 @@
         <p>Copyright © 2025 瑞光沙舟 All Rights Reserved</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 區塊滑入動畫效果
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.2
-            });
-            document.querySelectorAll('.section-reveal').forEach(section => {
-                observer.observe(section);
-            });
-
-            // 服務項目卡片展開效果
-            document.querySelectorAll('.card-expandable').forEach(card => {
-                const header = card.querySelector('h3');
-                const plusIcon = header.querySelector('span:last-child');
-                card.addEventListener('click', () => {
-                    const isActive = card.classList.toggle('active');
-                    if (isActive) {
-                        plusIcon.style.transform = 'rotate(45deg)';
-                    } else {
-                        plusIcon.style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-
-            // 導覽列下拉選單功能 - 開始你的旅程 (桌面版)
-            const journeyButtonDesktop = document.getElementById('journey-button-desktop');
-            const journeyMenuDesktop = document.getElementById('journey-menu-desktop');
-            const journeyContainerDesktop = document.getElementById('journey-dropdown-container-desktop');
-
-            if (journeyButtonDesktop && journeyMenuDesktop) {
-                journeyButtonDesktop.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    // 關閉其他選單
-                    const resourcesMenu = document.getElementById('resources-menu-desktop');
-                    if (resourcesMenu && !resourcesMenu.classList.contains('hidden')) {
-                         resourcesMenu.classList.add('hidden');
-                    }
-                    
-                    const isHidden = journeyMenuDesktop.classList.toggle('hidden');
-                    journeyButtonDesktop.setAttribute('aria-expanded', !isHidden);
-                });
-                
-                document.addEventListener('click', (event) => {
-                    if (journeyContainerDesktop && !journeyContainerDesktop.contains(event.target)) {
-                        journeyMenuDesktop.classList.add('hidden');
-                        journeyButtonDesktop.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-
-            // 導覽列下拉選單功能 - 其它資源 (桌面版)
-            const resourcesButtonDesktop = document.getElementById('resources-button-desktop');
-            const resourcesMenuDesktop = document.getElementById('resources-menu-desktop');
-            const resourcesContainerDesktop = document.getElementById('resources-dropdown-container-desktop');
-
-            if (resourcesButtonDesktop && resourcesMenuDesktop) {
-                 resourcesButtonDesktop.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    // 關閉其他選單
-                    const journeyMenu = document.getElementById('journey-menu-desktop');
-                    if (journeyMenu && !journeyMenu.classList.contains('hidden')) {
-                        journeyMenu.classList.add('hidden');
-                    }
-                    
-                    const isHidden = resourcesMenuDesktop.classList.toggle('hidden');
-                    resourcesButtonDesktop.setAttribute('aria-expanded', !isHidden);
-                });
-                
-                document.addEventListener('click', (event) => {
-                    if (resourcesContainerDesktop && !resourcesContainerDesktop.contains(event.target)) {
-                        resourcesMenuDesktop.classList.add('hidden');
-                        resourcesButtonDesktop.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-            
-            // 手機版選單切換功能
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
