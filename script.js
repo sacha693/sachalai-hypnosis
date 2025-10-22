@@ -103,3 +103,95 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// ===============================================
+// 讓方案區塊具備 Tab 切換的互動功能 (新增)
+// ===============================================
+
+// 獲取所有按鈕 (方案選項) 和所有內容區塊
+const pricingButtons = document.querySelectorAll('#pricing-tabs .pricing-button');
+const pricingContents = document.querySelectorAll('#pricing-content-container .pricing-content');
+
+function showPricingTab(targetTab) {
+    // 1. 處理所有按鈕的樣式
+    pricingButtons.forEach(button => {
+        if (button.getAttribute('data-pricing') === targetTab) {
+            // 點擊的按鈕設為「活躍」樣式
+            button.classList.add('active-pricing-tab', 'bg-amber-500', 'text-white', 'hover:bg-amber-600', 'shadow-lg');
+            button.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        } else {
+            // 其他按鈕設為「非活躍」樣式
+            button.classList.remove('active-pricing-tab', 'bg-amber-500', 'text-white', 'hover:bg-amber-600', 'shadow-lg');
+            button.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        }
+    });
+
+    // 2. 處理內容區塊的顯示
+    pricingContents.forEach(content => {
+        if (content.getAttribute('data-content') === targetTab) {
+            // 顯示目標內容
+            content.classList.remove('hidden', 'opacity-0');
+            content.classList.add('opacity-100');
+        } else {
+            // 隱藏其他內容 (使用 opacity-0 配合 transition 實現淡出效果)
+            content.classList.add('hidden', 'opacity-0');
+            content.classList.remove('opacity-100');
+        }
+    });
+}
+
+// 為每個按鈕添加點擊事件
+pricingButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-pricing');
+        showPricingTab(targetTab);
+    });
+});
+
+// 確保頁面載入時預設顯示第一個 Tab 的內容
+document.addEventListener('DOMContentLoaded', () => {
+    const activePricingTab = document.querySelector('.active-pricing-tab');
+    if (activePricingTab) {
+        showPricingTab(activePricingTab.getAttribute('data-pricing'));
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('#pricing-tabs .pricing-button');
+    const tabContents = document.querySelectorAll('#pricing-content-container .pricing-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const target = this.getAttribute('data-pricing');
+
+            // 移除所有按鈕的 active 狀態
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active-pricing-tab', 'bg-amber-600', 'text-white', 'shadow-xl');
+                btn.classList.add('text-gray-700', 'bg-white', 'hover:bg-amber-50', 'shadow-md', 'border', 'border-gray-200');
+            });
+
+            // 設置當前按鈕的 active 狀態
+            this.classList.add('active-pricing-tab', 'bg-amber-600', 'text-white', 'shadow-xl');
+            this.classList.remove('text-gray-700', 'bg-white', 'hover:bg-amber-50', 'shadow-md', 'border', 'border-gray-200');
+
+            // 隱藏所有內容區塊
+            tabContents.forEach(content => {
+                content.classList.remove('active-content');
+                content.classList.add('hidden');
+                // 為了過渡效果，先強制重繪
+                void content.offsetWidth;
+            });
+
+            // 顯示目標內容區塊
+            const activeContent = document.querySelector(`[data-content="${target}"]`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+                activeContent.classList.add('active-content');
+            }
+        });
+    });
+    
+    // 預設選中第一個 (潛意識探索)
+    const defaultButton = document.querySelector('[data-pricing="explore"]');
+    if(defaultButton) {
+        defaultButton.click();
+    }
+});
