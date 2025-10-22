@@ -82,44 +82,46 @@
 </head>
 <body class="text-gray-800 min-h-screen flex flex-col">
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-md">
-        <div class="container mx-auto px-4 max-w-7xl">
+        <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="text-xl font-bold text-zinc-800">
-                    <a href="index.html" class="hover:text-amber-600 transition-colors">瑞光沙舟｜首頁</a>
+                    <a href="#" class="hover:text-amber-600 transition-colors">瑞光沙舟心流所</a>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-8">
-                    
                     <div class="relative inline-block text-left" id="journey-dropdown-container-desktop">
                         <div>
-                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors" aria-expanded="false">
+                            <button type="button" id="journey-button-desktop" class="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors">
                                 開始你的旅程
-                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="journey-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
-                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
+                        <div id="journey-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                             <div class="py-1">
-                                <a href="appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
-                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
-                                <a href="friendly reminder.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/friendly reminder.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="https://cjrs693.wordpress.com/" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
-                    
+
+                    <a href="https://cjrs693.wordpress.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
                     <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
                     
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
                         <div>
-                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors" aria-expanded="false">
+                            <button type="button" id="resources-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
                                 其它資源
-                                <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" id="resources-icon-desktop" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
-                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden dropdown-menu">
+                        <div id="resources-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                             <div class="py-1">
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/keygame.html" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.00098C6.477 2.00098 2 6.47798 2 12.0009C2 17.524 6.477 22.001 12 22.001C17.524 22.001 22 17.524 22 12.0009C22 6.47798 17.524 2.00098 12 2.00098ZM17.152 18.04C16.539 17.304 15.655 16.924 14.773 16.924C13.891 16.924 13.007 17.304 12.394 18.04C11.781 17.304 10.897 16.924 10.015 16.924C9.133 16.924 8.249 17.304 7.636 18.04C7.023 17.304 6.139 16.924 5.257 16.924C4.375 16.924 3.491 17.304 2.878 18.04C2.265 17.304 1.381 16.924 0.499 16.924C-0.383 16.924 -1.267 17.304 -1.88 18.04C-2.493 17.304 -3.377 16.924 -4.259 16.924C-5.141 16.924 -6.025 17.304 -6.638 18.04C-7.251 17.304 -8.135 16.924 -9.017 16.924C-9.899 16.924 -10.783 17.304 -11.396 18.04C-12.009 17.304 -12.893 16.924 -13.775 16.924C-14.657 16.924 -15.541 17.304 -16.154 18.04C-16.767 17.304 -17.651 16.924 -18.533 16.924C-19.415 16.924 -20.299 17.304 -20.912 18.04Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(12 3.5) scale(0.6)"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.864 8.163 6.83 9.49C9.07 21.6 9.35 21.46 9.35 21.24c0-.11-.005-.41-.005-.81c-2.78 0-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1.01.07 1.54 1.03 1.54 1.03.9 1.54 2.37 1.09 2.94.84.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.69-.1-.25-.45-1.28.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.63-.33 2.47-.33.84 0 1.68.11 2.47.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.65.64.71 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.75c0 .22.28.36.69.31A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+                                    轉動思維
+                                </a>
                                 <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.74 2 8.47 2.014 7.42 2.06c-1.03.047-1.75.217-2.37.465a4.9 4.9 0 00-2.14 1.082A4.9 4.9 0 002.525 5.687c-.248.62-.418 1.34-.465 2.37C2.014 8.47 2 8.74 2 12s.014 3.53.06 4.58c.047 1.03.217 1.75.465 2.37a4.9 4.9 0 001.082 2.14 4.9 4.9 0 002.14 1.082c.62.248 1.34.418 2.37.465C8.47 21.986 8.74 22 12 22s3.53-.014 4.58-.06c1.03-.047 1.75-.217 2.37-.465a4.9 4.9 0 002.14-1.082 4.9 4.9 0 001.082-2.14c.248-.62.418-1.34.465-2.37.046-1.05.06-1.32.06-4.58s-.014-3.53-.06-4.58c-.047-1.03-.217-1.75-.465-2.37a4.9 4.9 0 00-1.082-2.14A4.9 4.9 0 0018.94 2.525c-.62-.248-1.34-.418-2.37-.465C15.53 2.014 15.26 2 12 2zm0 1.8a8.2 8.2 0 014.47.054c.97.043 1.5.197 1.88.347a3.1 3.1 0 011.33 1.33c.15.38.304.91.347 1.88A8.2 8.2 0 0120.2 12a8.2 8.2 0 01-.054 4.47c-.043.97-.197 1.5-.347 1.88a3.1 3.1 0 01-1.33 1.33c-.38.15-.91.304-1.88.347A8.2 8.2 0 0112 20.2a8.2 8.2 0 01-4.47-.054c-.97-.043-1.5-.197-1.88-.347a3.1 3.1 0 01-1.33-1.33c-.15-.38-.304.91-.347-1.88A8.2 8.2 0 013.8 12a8.2 8.2 0 01.054-4.47c.043-.97.197-1.5.347-1.88a3.1 3.1 0 011.33-1.33c.38-.15.91-.304 1.88-.347A8.2 8.2 0 0112 3.8zm0 3.35A4.85 4.85 0 1012 16.8a4.85 4.85 0 000-9.65zm0 1.8a3.05 3.05 0 110 6.1 3.05 3.05 0 010-6.1zM16.95 6.3a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"></path></svg>
                                     Instagram
@@ -132,28 +134,31 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
             </div>
-            
+
             <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <div class="border-b border-gray-200 mb-2 pb-2">
-                    <a href="appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 1:</span> 預約前請先閱讀</a>
-                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 2:</span> 填寫預約表單</a>
-                    <a href="friendly reminder.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 font-bold"><span class="text-amber-600">Step 3:</span> 預約後小叮嚀</a>
-                </div>
-                <a href="#articles" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">文章分享</a>
-                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 transition-colors">個案回饋</a>
+                <a href="https://cjrs693.wordpress.com/" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">文章分享</a>
+                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">個案回饋</a>
                 <div class="border-t border-gray-200 mt-2 pt-2">
-                     <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
-                     <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/friendly reminder.html" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                </div>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/keygame.html" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">轉動思維</a>
+                    <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Facebook</a>
                 </div>
             </div>
         </div>
     </nav>
+    
     <main class="flex-grow container mx-auto px-4 py-12 md:py-20 max-w-4xl">
         
         <div class="container bg-white p-6 md:p-12 rounded-2xl shadow-2xl border-4 border-amber-100">
