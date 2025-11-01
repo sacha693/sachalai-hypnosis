@@ -157,3 +157,34 @@ document.addEventListener('DOMContentLoaded', () => {
         showPricingTab(defaultButton.getAttribute('data-pricing'));
     }
 });
+// 取得桌面版個案回饋的按鈕和選單元素
+const testimonialsButtonDesktop = document.getElementById('testimonials-button-desktop');
+const testimonialsMenuDesktop = document.getElementById('testimonials-menu-desktop');
+const testimonialsContainerDesktop = document.getElementById('testimonials-dropdown-container-desktop');
+
+// 桌面版個案回饋選單的顯示/隱藏切換
+if (testimonialsButtonDesktop && testimonialsMenuDesktop) {
+    testimonialsButtonDesktop.addEventListener('click', () => {
+        const isHidden = testimonialsMenuDesktop.classList.contains('hidden');
+        // 隱藏其他所有選單，只顯示當前選單（這是專業導覽列的標準做法）
+        document.querySelectorAll('[id$="-menu-desktop"]').forEach(menu => {
+            if (menu.id !== 'testimonials-menu-desktop') {
+                menu.classList.add('hidden');
+            }
+        });
+        
+        // 切換當前選單的顯示狀態
+        if (isHidden) {
+            testimonialsMenuDesktop.classList.remove('hidden');
+        } else {
+            testimonialsMenuDesktop.classList.add('hidden');
+        }
+    });
+    
+    // 點擊選單外部時隱藏選單
+    document.addEventListener('click', (event) => {
+        if (testimonialsContainerDesktop && !testimonialsContainerDesktop.contains(event.target)) {
+            testimonialsMenuDesktop.classList.add('hidden');
+        }
+    });
+}
