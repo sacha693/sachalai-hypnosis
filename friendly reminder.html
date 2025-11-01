@@ -16,184 +16,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS 變數：延續首頁的色彩風格 */
-        :root {
-            --text-color: #4B5563;
-            --background-start: #f7f1e3; /* 首頁背景色一致 */
-            --container-bg-color: #fff;
-            --main-heading-color: #2c3e50; /* 首頁 H1 顏色 */
-            --section-heading-color: #a0522d; /* H2 顏色：溫暖的棕色 */
-            --list-item-bg-color: #fdf6e3; /* 列表項背景色 */
-            --primary-btn-color: #f59e0b; /* 按鈕色：琥珀黃 */
-            --hover-btn-color: #d97706; /* 按鈕 hover 色 */
-            --border-color: #e0e0e0; /* 分隔線顏色 */
-            --qna-bg-color: #fdf6e3; /* FAQ 卡片背景色 */
-            --qna-answer-bg-color: #fffcf2; /* FAQ 回答背景色 */
-        }
+  <link rel="stylesheet" href="styles.css">
+   
 
-        body {
-            font-family: 'Noto Sans TC', 'Fredoka', sans-serif;
-            background-color: var(--background-start);
-            color: var(--text-color);
-            line-height: 1.8;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 導覽列下拉選單平滑過渡 */
-        .dropdown-menu {
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            transform: translateY(-10px);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .dropdown-menu.visible {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        /* 頁面內容容器樣式 */
-        .page-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: var(--container-bg-color);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            flex-grow: 1;
-        }
-        
-        /* 內容標題樣式 */
-        h1.content-title {
-            color: var(--main-heading-color);
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: 700;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: var(--section-heading-color);
-            font-size: 2.1em;
-            font-weight: bold;
-            border-left: 5px solid var(--section-heading-color);
-            padding-left: 10px;
-            margin-top: 40px;
-            margin-bottom: 15px;
-        }
-        
-        .intro-text {
-            text-align: center;
-            font-size: 1.2em;
-            margin-bottom: 50px;
-            color: var(--section-heading-color);
-            font-weight: bold;
-        }
-
-        /* 提醒事項卡片樣式 */
-        .reminders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-        }
-        .reminder-card {
-            background: var(--list-item-bg-color);
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            display: flex;
-            align-items: flex-start;
-        }
-        .reminder-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .card-icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-            color: var(--section-heading-color);
-        }
-        .card-content strong {
-            display: block; /* 讓標題與內容分行，更清晰 */
-            font-size: 1.1em;
-            color: var(--main-heading-color);
-            margin-bottom: 5px;
-        }
-        
-        /* FAQ 樣式 */
-        .qna-item {
-            background: var(--qna-bg-color);
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            margin-bottom: 10px;
-            transition: all 0.3s ease-in-out;
-        }
-        .qna-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .qna-question {
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .qna-icon {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-            color: var(--section-heading-color);
-            line-height: 1; /* 確保加號居中 */
-        }
-        .qna-answer {
-            margin-top: 10px;
-            padding: 15px;
-            border-left: 4px solid var(--section-heading-color);
-            background: var(--qna-answer-bg-color);
-            border-radius: 0 5px 5px 0;
-            color: var(--text-color);
-        }
-        
-        /* 按鈕樣式 */
-        .back-to-home-btn {
-            display: block;
-            margin: 40px auto;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: white;
-            border-radius: 9999px;
-            background-color: var(--primary-btn-color);
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 250px;
-            text-decoration: none;
-        }
-        .back-to-home-btn:hover {
-            background-color: var(--hover-btn-color);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-            transform: scale(1.05);
-        }
-    </style>
 </head>
 <body class="text-gray-800">
 
-   <<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+    <nav class="sticky top-0 z-50 bg-jp-rice/80 backdrop-blur-sm shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <div class="text-xl font-bold text-zinc-800">
-                    <a href="https://sacha693.github.io/sachalai-hypnosis/index.html" class="hover:text-amber-600 transition-colors">瑞光沙舟|首頁</a>
+                    <a href="#" class="hover:text-amber-600 transition-colors">瑞光沙舟心流所</a>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
@@ -214,7 +47,21 @@
                     </div>
 
                     <a href="https://cjrs693.wordpress.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-amber-600 transition-colors">文章分享</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-amber-600 transition-colors">個案回饋</a>
+                    <div class="relative inline-block text-left" id="testimonials-dropdown-container-desktop">
+    <div>
+        <button type="button" id="testimonials-button-desktop" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors">
+            個案回饋分享
+            <svg class="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </button>
+    </div>
+    <div id="testimonials-menu-desktop" class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+        <div class="py-1">
+            <a href="https://sacha693.github.io/sachalai-hypnosis/luminous_oasis.html" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100">高職業與成就壓力 </a>
+            <a href="#relationship-feedback" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100">關係與情感連結 </a>
+            <a href="#self-growth-feedback" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100">自我探索與成長焦慮</a>
+        </div>
+    </div>
+</div>
                     
                     <div class="relative inline-block text-left" id="resources-dropdown-container-desktop">
                         <div>
@@ -251,7 +98,12 @@
 
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <a href="https://cjrs693.wordpress.com/" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">文章分享</a>
-                <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50">個案回饋</a>
+                <div class="border-t border-gray-200 mt-2 pt-2">
+    <span class="block py-2 px-4 text-sm font-bold text-zinc-800">個案回饋分享</span>
+    <a href="https://sacha693.github.io/sachalai-hypnosis/luminous_oasis.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 ml-4">高職業與成就壓力 </a>
+    <a href="#relationship-feedback" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 ml-4">關係與情感連結 </a>
+    <a href="#self-growth-feedback" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 ml-4">自我探索與成長焦慮 </a>
+</div>
                 <div class="border-t border-gray-200 mt-2 pt-2">
                     <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
                     <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
@@ -265,6 +117,7 @@
             </div>
         </div>
     </nav>
+  
     <main class="flex-grow container mx-auto px-4 max-w-7xl">
         <div class="page-container">
             <h1 class="content-title">潛意識催眠旅程即將展開</h1>
@@ -406,130 +259,6 @@
     <footer class="mt-auto py-6 text-center text-sm text-gray-500 bg-white/50 border-t border-amber-200">
         <p>Copyright © 2025 希靜瑞沙 All Rights Reserved</p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            // 1. 導覽列下拉選單功能 (桌面版)
-            const setupDropdown = (buttonId, menuId, containerId, relatedMenuId) => {
-                const button = document.getElementById(buttonId);
-                const menu = document.getElementById(menuId);
-                const container = document.getElementById(containerId);
-                const icon = document.getElementById(buttonId.replace('-button-', '-icon-'));
-                const relatedMenu = relatedMenuId ? document.getElementById(relatedMenuId) : null;
-                const relatedIcon = relatedMenuId ? document.getElementById(relatedMenuId.replace('-menu-', '-icon-')) : null;
-
-                if (button && menu) {
-                    button.addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        
-                        const isHidden = menu.classList.contains('hidden');
-                        
-                        // 處理當前選單
-                        menu.classList.toggle('hidden');
-                        // 延遲添加 visible 類別以啟動過渡效果
-                        if (!isHidden) {
-                            menu.classList.remove('visible');
-                        } else {
-                            setTimeout(() => menu.classList.add('visible'), 10);
-                        }
-                        if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-                        
-                        // 關閉相關選單
-                        if (relatedMenu) {
-                            relatedMenu.classList.add('hidden');
-                            relatedMenu.classList.remove('visible');
-                        }
-                        if (relatedIcon) {
-                            relatedIcon.style.transform = 'rotate(0deg)';
-                        }
-                        
-                        // 關閉所有 FAQ 選單
-                        document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
-                             q.setAttribute('aria-expanded', 'false');
-                             q.nextElementSibling.classList.add('hidden');
-                             q.querySelector('.qna-icon').textContent = '+';
-                        });
-                    });
-
-                    // 點擊外部關閉選單
-                    document.addEventListener('click', (event) => {
-                        if (container && !container.contains(event.target)) {
-                            menu.classList.add('hidden');
-                            menu.classList.remove('visible');
-                            if(icon) icon.style.transform = 'rotate(0deg)';
-                        }
-                    });
-                }
-            };
-
-            // 設定兩個下拉選單的互動
-            setupDropdown('journey-button-desktop', 'journey-menu-desktop', 'journey-dropdown-container-desktop', 'resources-menu-desktop');
-            setupDropdown('resources-button-desktop', 'resources-menu-desktop', 'resources-dropdown-container-desktop', 'journey-menu-desktop');
-
-            // 2. 行動版選單切換
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    // 確保點擊行動版選單時，桌面下拉選單是關閉的
-                    document.getElementById('journey-menu-desktop')?.classList.add('hidden');
-                    document.getElementById('journey-menu-desktop')?.classList.remove('visible');
-                    document.getElementById('resources-menu-desktop')?.classList.add('hidden');
-                    document.getElementById('resources-menu-desktop')?.classList.remove('visible');
-                });
-            }
-            
-            // 3. FAQ 收合功能
-            const qnaItems = document.querySelectorAll('.qna-item');
-
-            qnaItems.forEach((item, index) => {
-                const question = item.querySelector('.qna-question');
-                const answer = item.querySelector('.qna-answer');
-                const icon = item.querySelector('.qna-icon');
-                
-                // 設定必要的屬性確保無障礙 (A11Y)
-                answer.id = `answer${index + 1}`;
-                question.setAttribute('aria-controls', answer.id);
-                question.setAttribute('aria-expanded', 'false');
-
-                const toggleAnswer = () => {
-                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
-                    
-                    // 關閉其他已展開的項目 (手風琴效果)
-                    document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
-                        if (q !== question) {
-                            q.setAttribute('aria-expanded', 'false');
-                            q.nextElementSibling.classList.add('hidden');
-                            q.querySelector('.qna-icon').textContent = '+';
-                        }
-                    });
-
-                    // 切換當前項目
-                    question.setAttribute('aria-expanded', !isExpanded);
-                    answer.classList.toggle('hidden');
-
-                    if (!isExpanded) {
-                        icon.textContent = '−';
-                    } else {
-                        icon.textContent = '+';
-                    }
-                };
-
-                question.addEventListener('click', toggleAnswer);
-                
-                // 支援鍵盤操作
-                question.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleAnswer();
-                    }
-                });
-            });
-            
-        });
-    </script>
+ <script src="script.js"></script>
 </body>
 </html>
