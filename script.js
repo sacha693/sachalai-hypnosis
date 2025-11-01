@@ -1,11 +1,55 @@
 /**
  * ==========================================
- * 瑞光沙舟 - 整合腳本 (script.js)
- * 負責導覽列、FAQ、區塊動畫與方案 Tab 的所有互動邏輯
+ * 瑞光沙舟 - 修正後的最終整合腳本 (script.js)
+ * 確保所有桌面導覽列下拉選單都能正常運作且互斥
  * ==========================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- A. 全域變數與列表：統一下拉選單管理 ---
+    // 註冊所有桌面下拉選單的 ID，確保所有函數都能正確引用和管理
+    const DESKTOP_DROPDOWNS = [
+        { 
+            buttonId: 'journey-button-desktop', 
+            menuId: 'journey-menu-desktop', 
+            containerId: 'journey-dropdown-container-desktop' 
+        },
+        { 
+            buttonId: 'resources-button-desktop', 
+            menuId: 'resources-menu-desktop', 
+            containerId: 'resources-dropdown-container-desktop' 
+        },
+        // 如果有第三個或更多的選單，請在這裡新增：
+        { 
+            buttonId: 'testimonials-button-desktop', 
+            menuId: 'testimonials-menu-desktop', 
+            containerId: 'testimonials-dropdown-container-desktop' 
+        },
+    ];
+
+    // --- B. 輔助函數：關閉/開啟選單的標準化流程 ---
+
+    // 關閉單個選單的標準函數
+    const closeSingleDropdown = (menu, button) => {
+        const icon = button ? button.querySelector('svg') : null;
+        
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            menu.classList.remove('visible'); // 移除動畫類別
+            if (icon) icon.style.transform = 'rotate(0deg)';
+            if (button) button.setAttribute('aria-expanded', 'false');
+        }
+    };
+
+    // 關閉所有桌面下拉選單 (供 FAQ 和行動版選單調用)
+    const closeDesktopDropdowns = () => {
+        DESKTOP_DROPDOWNS.forEach(detail => {
+            const menu = document.getElementById(detail.menuId);
+            const button = document.getElementById(detail.buttonId);
+            closeSingleDropdown(menu, button);
+        });
+    };
 
     // --- 1. 區塊滑入動畫效果 (Intersection Observer) ---
     const observer = new IntersectionObserver((entries) => {
@@ -21,165 +65,177 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // --- 2. 服務項目卡片展開效果 (Accordion) ---
+    // --- 2. 服務項目卡片展開效果 (簡易 Toggle) ---
     document.querySelectorAll('.card-expandable').forEach(card => {
         card.addEventListener('click', () => {
             card.classList.toggle('active');
         });
     });
+    
+    // --- 3. 導覽列下拉選單功能 (桌面版 - 修正後的互斥邏輯) ---
 
-    // --- 3. 導覽列下拉選單功能 (桌面版) ---
+    DESKTOP_DROPDOWNS.forEach(detail => {
+        const button = document.getElementById(detail.buttonId);
+        const menu = document.getElementById(detail.menuId);
+        const container = document.getElementById(detail.containerId);
+        const icon = button ? button.querySelector('svg') : null; 
 
-    // a. 變數宣告與整合
-    const allMenuDetails = [
-        { 
-            menu: document.getElementById('journey-menu-desktop'), 
-            button: document.getElementById('journey-button-desktop'), 
-            container: document.getElementById('journey-dropdown-container-desktop') 
-        },
-        { 
-            menu: document.getElementById('resources-menu-desktop'), 
-            button: document.getElementById('resources-button-desktop'), 
-            container: document.getElementById('resources-dropdown-container-desktop') 
-        },
-        { 
-            menu: document.getElementById('testimonials-menu-desktop'), 
-            button: document.getElementById('testimonials-button-desktop'), 
-            container: document.getElementById('testimonials-dropdown-container-desktop') 
-        },
-    ].filter(detail => detail.menu); // 過濾掉未在 HTML 中找到的元素
+        if (button && menu) {
 
-    // 輔助函數：關閉指定的選單並重置 aria 屬性
-    const closeMenu = (menu, button) => {
-        if (menu && !menu.classList.contains('hidden')) {
-            menu.classList.add('hidden');
-            // 處理第一個腳本中的過渡效果類別 (雖然建議使用 CSS transition)
-            menu.classList.remove('visible'); 
-            if (button) {
-                button.setAttribute('aria-expanded', 'false');
-                const icon = button.querySelector('[id$="-icon-desktop"]');
-                if (icon) icon.style.transform = 'rotate(0deg)';
-            }
-        }
-    };
-
-    // 輔助函數：關閉除了當前點擊之外的所有選單
-    const closeOtherMenu = (currentMenu) => {
-        allMenuDetails.forEach(detail => {
-            if (detail.menu && detail.menu !== currentMenu) {
-                closeMenu(detail.menu, detail.button);
-            }
-        });
-    };
-
-    // b. 為每個選單按鈕添加點擊事件邏輯
-    allMenuDetails.forEach(detail => {
-        if (detail.button && detail.menu) {
-            detail.button.addEventListener('click', (event) => {
+            // a. 點擊按鈕事件
+            button.addEventListener('click', (event) => {
                 event.stopPropagation();
                 
-                // 1. 關閉所有其他已開啟的選單 (包含 FAQ)
-                closeOtherMenu(detail.menu);
-                closeAllFaqExcept(); // 確保 FAQ 也被關閉
-
-                // 2. 切換當前選單的顯示狀態
-                const isHidden = detail.menu.classList.toggle('hidden');
-                detail.button.setAttribute('aria-expanded', !isHidden);
+                const isHidden = menu.classList.contains('hidden');
                 
-                // 處理過渡效果 (來自第一個腳本的邏輯)
-                if (!isHidden) {
-                    detail.menu.classList.remove('visible');
-                } else {
-                    setTimeout(() => detail.menu.classList.add('visible'), 10);
-                }
+                // 1. 關閉所有 FAQ
+                closeAllFaq();
 
-                // 處理箭頭圖標旋轉 (來自第一個腳本的邏輯)
-                const icon = detail.button.querySelector('[id$="-icon-desktop"]');
-                if(icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+                // 2. 關閉所有 *其他* 桌面下拉選單 (實現互斥)
+                DESKTOP_DROPDOWNS.forEach(otherDetail => {
+                    if (otherDetail.menuId !== detail.menuId) {
+                        const otherMenu = document.getElementById(otherDetail.menuId);
+                        const otherButton = document.getElementById(otherDetail.buttonId);
+                        closeSingleDropdown(otherMenu, otherButton);
+                    }
+                });
+                
+                // 3. 切換當前選單
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    setTimeout(() => menu.classList.add('visible'), 10);
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                    button.setAttribute('aria-expanded', 'true');
+                } else {
+                    closeSingleDropdown(menu, button);
+                }
+            });
+
+            // b. 點擊外部關閉選單
+            document.addEventListener('click', (event) => {
+                if (container && !container.contains(event.target)) {
+                    closeSingleDropdown(menu, button);
+                }
             });
         }
     });
-    
-    // c. 點擊外部時關閉所有桌面下拉選單
-    document.addEventListener('click', (event) => {
-        allMenuDetails.forEach(detail => {
-            if (detail.container && detail.menu) {
-                // 檢查點擊是否在選單容器(包含按鈕和下拉內容)之外
-                if (!detail.container.contains(event.target)) {
-                    closeMenu(detail.menu, detail.button);
-                }
-            }
-        });
-    });
 
 
-    // --- 4. 手機版選單切換功能 (漢堡選單) ---
+    // --- 4. 行動版選單切換 (漢堡選單) ---
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // 確保點擊行動版選單時，桌面下拉選單是關閉的
-            allMenuDetails.forEach(detail => closeMenu(detail.menu, detail.button));
-            closeAllFaqExcept(); // 確保 FAQ 也被關閉
+            // 關閉桌面選單和 FAQ (使用輔助函數)
+            closeDesktopDropdowns();
+            closeAllFaq();
         });
     }
 
-    // --- 5. FAQ 收合功能 (手風琴效果) ---
+    // --- 5. Q&A 手風琴互動邏輯 (帶有 CSS 動畫的收合/展開) ---
+    
+    // 輔助函數：關閉所有 FAQ (供導覽列和行動版選單調用)
+    const closeAllFaq = () => {
+        document.querySelectorAll('.qna-item.active').forEach(item => {
+            const answer = item.querySelector('.qna-answer');
+            const icon = item.querySelector('.qna-icon');
+            const question = item.querySelector('.qna-question');
 
-    // 輔助函數：關閉所有 FAQ (可被其他選單邏輯調用)
-    const closeAllFaqExcept = (currentQuestion = null) => {
-        document.querySelectorAll('.qna-question[aria-expanded="true"]').forEach(q => {
-            if (q !== currentQuestion) {
-                q.setAttribute('aria-expanded', 'false');
-                q.nextElementSibling?.classList.add('hidden');
-                q.querySelector('.qna-icon').textContent = '+';
+            if (answer) {
+                answer.classList.remove('visible-animate');
+                // 確保只觸發一次 hidden 添加
+                const handler = () => {
+                    answer.classList.add('hidden');
+                    answer.removeEventListener('transitionend', handler);
+                };
+                answer.addEventListener('transitionend', handler, {once: true});
             }
+            if (icon) icon.textContent = '+';
+            if (question) question.setAttribute('aria-expanded', 'false');
+            item.classList.remove('active');
         });
     };
 
-    document.querySelectorAll('.qna-item').forEach((item, index) => {
+    const qnaItems = document.querySelectorAll('.qna-item');
+    
+    qnaItems.forEach((item, index) => {
         const question = item.querySelector('.qna-question');
         const answer = item.querySelector('.qna-answer');
         const icon = item.querySelector('.qna-icon');
         
         if (!question || !answer) return;
 
-        // 設定必要的屬性確保無障礙 (A11Y)
-        answer.id = `answer${index + 1}`;
+        // 設定無障礙屬性 (A11Y)
+        answer.id = `qna-answer-${index + 1}`;
         question.setAttribute('aria-controls', answer.id);
         question.setAttribute('aria-expanded', 'false');
-        
-        const toggleAnswer = () => {
-            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+        const toggleQna = () => {
+            const isHidden = answer.classList.contains('hidden');
             
-            // 關閉其他已展開的項目
-            closeAllFaqExcept(question);
-            // 關閉所有桌面下拉選單
-            allMenuDetails.forEach(detail => closeMenu(detail.menu, detail.button));
+            // 點擊 FAQ 時，關閉所有桌面下拉選單
+            closeDesktopDropdowns();
 
-            // 切換當前項目
-            question.setAttribute('aria-expanded', !isExpanded);
-            answer.classList.toggle('hidden');
+            // 關閉所有其他已開啟的答案 (手風琴效果)
+            document.querySelectorAll('.qna-item.active').forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherAnswer = otherItem.querySelector('.qna-answer');
+                    const otherIcon = otherItem.querySelector('.qna-icon');
+                    const otherQuestion = otherItem.querySelector('.qna-question');
+                    
+                    if (otherAnswer) {
+                        otherAnswer.classList.remove('visible-animate');
+                        otherAnswer.addEventListener('transitionend', function handler() {
+                            otherAnswer.classList.add('hidden');
+                            otherAnswer.removeEventListener('transitionend', handler);
+                        }, {once: true});
+                    }
+                    if (otherIcon) otherIcon.textContent = '+';
+                    if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // 切換目前點擊的答案的顯示狀態和動畫
+            if (isHidden) {
+                // 展開
+                answer.classList.remove('hidden');
+                setTimeout(() => {
+                    answer.classList.add('visible-animate');
+                }, 10);
+                
+                icon.textContent = '×'; // 展開時顯示 '×'
+                question.setAttribute('aria-expanded', 'true');
+                item.classList.add('active');
+            } else {
+                // 收合
+                answer.classList.remove('visible-animate');
+                answer.addEventListener('transitionend', function handler() {
+                    answer.classList.add('hidden');
+                    answer.removeEventListener('transitionend', handler);
+                }, {once: true});
 
-            icon.textContent = !isExpanded ? '−' : '+';
+                icon.textContent = '+'; // 收合時顯示 '+'
+                question.setAttribute('aria-expanded', 'false');
+                item.classList.remove('active');
+            }
         };
 
-        question.addEventListener('click', toggleAnswer);
+        question.addEventListener('click', toggleQna);
         
         // 支援鍵盤操作
         question.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                toggleAnswer();
+                toggleQna();
             }
         });
     });
 
     // --- 6. 方案區塊 Tab 切換功能 ---
 
-    // 獲取所有按鈕 (方案選項) 和所有內容區塊
     const pricingButtons = document.querySelectorAll('#pricing-tabs .pricing-button');
     const pricingContents = document.querySelectorAll('#pricing-content-container .pricing-content');
 
@@ -220,13 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 確保頁面載入時預設顯示第一個 Tab 的內容
-    // 預設選中第一個 (潛意識探索)
     const defaultButton = document.querySelector('[data-pricing="explore"]');
     if(defaultButton) {
-        // 使用點擊事件來觸發樣式和內容顯示
         defaultButton.click();
     } else if (pricingButtons.length > 0) {
-        // 如果沒有 'explore'，則預設點擊第一個按鈕
         pricingButtons[0].click();
     }
 });
