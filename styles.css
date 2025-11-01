@@ -304,5 +304,5 @@ h2 {
     /* 取消背景固定，避免手機瀏覽器捲動問題 */
     body {
         background-attachment: scroll;
-}
+    }
 }
