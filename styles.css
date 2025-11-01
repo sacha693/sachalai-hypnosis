@@ -1,26 +1,27 @@
 /*
  * ==========================================
- * 瑞光沙舟 - 客製化 CSS 樣式 (styles.css) - 合併版
+ * 瑞光沙舟 - 客製化 CSS 樣式 (styles.css) - 最終合併優化版
  * 負責所有視覺效果、動畫、和響應式調整
  * ==========================================
  */
 
-/* 1. CSS 變數：延續首頁的色彩風格，作為設計基石 */
+/* 1. CSS 變數：設計基石，確保色彩風格延續性 */
 :root {
     /* 基礎色彩 */
-    --text-color: #4B5563; /* 內文灰 */
-    --main-text-color: #333; /* 基礎文字色 (來自第二份) */
+    --text-color: #4B5563; /* 內文灰 (主要文字色) */
+    --main-text-color: #333; /* 基礎文字色 (備用) */
     --background-start: #f7f1e3; /* 頁面背景色 (淡米色調) */
     --container-bg-color: #fff; /* 內容容器背景色 */
     --border-color: #e0e0e0; /* 分隔線顏色 */
 
     /* 標題色彩 */
     --main-heading-color: #2c3e50; /* H1 顏色：深海軍藍 */
-    --section-heading-color: #a0522d; /* H2 顏色：溫暖的棕色 (Sienna) */
+    --section-heading-color: #a0522d; /* H2 顏色：溫暖的棕色 (來自上次的設定) */
+    --section-heading-color-v2: #d97706; /* 新 H2 顏色：琥珀色 (來自最新設定) */
 
     /* 按鈕/互動色彩 */
     --primary-btn-color: #f59e0b; /* 按鈕色：琥珀黃 (Amber) */
-    --hover-btn-color: #d97706; /* 按鈕 hover 色 */
+    --hover-btn-color: #d97706; /* 按鈕 hover 色 / 新H2 顏色*/
 
     /* 特殊區塊色彩 */
     --list-item-bg-color: #fdf6e3; /* 列表項/提醒事項背景色 */
@@ -31,28 +32,29 @@
 /* 2. 全域與字體設定 (Base Styles) */
 body {
     /* 字體與排版 */
-    font-family: 'Noto Sans TC', 'Fredoka', sans-serif; /* 兼容 Fredoka (如果有引入) */
+    font-family: 'Noto Sans TC', 'Fredoka', sans-serif;
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* 確保內容撐滿整個視窗高度 */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 
-    /* 顏色與背景：優先使用 CSS 變數 */
-    color: var(--text-color); /* 使用變數 */
-    background-color: var(--background-start); /* 使用變數 */
+    /* 顏色與背景：使用變數並修正背景圖路徑 */
+    color: var(--text-color);
+    background-color: var(--background-start); /* 預設的溫暖背景色，在圖片載入失敗時作為備用 */
     
-    /* 背景圖設置 (來自第二份 CSS) */
-    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+    /* 🚀 背景圖設置：使用 Raw 連結確保圖片能正確顯示 */
+    background-image: url('https://raw.githubusercontent.com/sacha693/sachalai-hypnosis/main/indexBk.jpg');
     background-size: cover;
-    background-attachment: fixed; /* 桌面版固定，產生視覺差 */
+    background-attachment: fixed; /* 固定背景，創造視差感 */
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* 3. 頁面佈局與標題樣式 */
 
-/* 頁面內容容器樣式 */
+/* 頁面內容容器樣式 (page-container) */
 .page-container {
     max-width: 900px;
     margin: 40px auto;
@@ -60,12 +62,12 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-grow: 1; /* 讓內容區塊自動佔據剩餘空間 */
+    flex-grow: 1;
 }
 
-/* 內容區塊主容器 */
+/* 內容區塊主容器 (container) */
 .container {
-    max-width: 1100px; /* 增加一個更大的容器尺寸 */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -81,15 +83,41 @@ h1.content-title {
     margin-bottom: 30px;
 }
 
-/* H2 區塊標題樣式 */
+/* H2 區塊標題樣式 - 兩種 H2 樣式共存或選用，建議使用 .section h2 覆蓋 */
 h2 {
-    color: var(--section-heading-color);
+    color: var(--section-heading-color); /* 上一次的溫暖棕色 */
     font-size: 2.1em;
     font-weight: bold;
     border-left: 5px solid var(--section-heading-color);
     padding-left: 10px;
     margin-top: 40px;
     margin-bottom: 15px;
+}
+
+/* 針對內容區塊的 H2 樣式 (來自最新程式碼) */
+.section h2 {
+    font-size: 1.75rem; /* H2 字體放大 */
+    font-weight: 700; /* 加粗 */
+    color: var(--hover-btn-color); /* 琥珀色，與導覽列主色系一致 */
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed #fcd34d; /* 虛線分隔線 */
+    padding-bottom: 0.5rem;
+    border-left: none; /* 移除舊 H2 的左邊條 */
+    padding-left: 0;
+}
+
+/* 區塊容器樣式 (來自最新程式碼，建議替代 page-container 內的小區塊) */
+.section {
+    background-color: var(--container-bg-color); /* 白色背景 */
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--primary-btn-color); /* 琥珀色左側邊條 */
+}
+.section p {
+    color: var(--text-color); /* 深灰色內文 */
+    line-height: 1.8;
 }
 
 /* 介紹文字 */
@@ -101,7 +129,7 @@ h2 {
     font-weight: bold;
 }
 
-/* 4. 提醒事項卡片樣式 */
+/* 4. 提醒事項卡片樣式 (Reminders Grid) - 維持上次的專業樣式 */
 .reminders-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -134,9 +162,10 @@ h2 {
     margin-bottom: 5px;
 }
 
-/* 5. FAQ/可展開卡片樣式 (Accordion Styles) */
-.qna-item, .card-expandable {
-    /* 共同基礎樣式 */
+/* 5. FAQ/可展開卡片樣式 (Accordion Styles) - 整合動畫細節 */
+
+/* 基礎樣式 (適用於 Q&A 項目) */
+.qna-item {
     background: var(--qna-bg-color);
     padding: 15px;
     border-radius: 5px;
@@ -144,10 +173,17 @@ h2 {
     margin-bottom: 10px;
     transition: all 0.3s ease-in-out;
 }
-.qna-item:hover, .card-expandable:hover {
+.qna-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.qna-question, .card-header {
+
+/* 點擊時的活躍狀態 (來自最新程式碼) */
+.qna-item.active {
+    box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -4px rgba(245, 158, 11, 0.3); /* 活躍時增加琥珀色陰影 */
+    border-left: 4px solid var(--primary-btn-color); /* 活躍時左側加粗 */
+}
+
+.qna-question {
     cursor: pointer;
     font-size: 1.1em;
     font-weight: bold;
@@ -156,31 +192,57 @@ h2 {
     align-items: center;
     justify-content: space-between;
 }
-.qna-icon, .plus-icon {
-    font-size: 1.2em;
-    transition: transform 0.3s ease;
-    color: var(--section-heading-color);
+
+/* Q&A 圖示/開關符號 */
+.qna-icon {
+    font-size: 2rem; /* 讓加減號更明顯 */
+    font-weight: 400;
+    transition: transform 0.3s ease-in-out;
+    color: var(--section-heading-color); /* 預設顏色使用溫暖棕色 */
     line-height: 1;
 }
 
-/* FAQ 回答區塊 */
+/* 活躍時的 Q&A 圖示旋轉 (來自最新程式碼) */
+.qna-item.active .qna-icon {
+    transform: rotate(45deg); /* 將 + 旋轉成 X 或 − */
+    color: #ef4444; /* 改變顏色突顯 (紅色) */
+}
+
+/* Q&A 回答區塊 - 整合動畫邏輯 */
 .qna-answer {
+    /* 基礎樣式 */
     margin-top: 10px;
     padding: 15px;
     border-left: 4px solid var(--section-heading-color);
     background: var(--qna-answer-bg-color);
     border-radius: 0 5px 5px 0;
     color: var(--text-color);
+
+    /* 動畫初始狀態 */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0;
+    padding-top: 0; /* 初始 padding 為 0，才能平滑展開 */
+    padding-bottom: 0; /* 確保收合時底部 padding 也歸零 */
 }
 
-/* 可展開卡片內容區塊 (需搭配 JS) */
+/* Q&A 回答區塊 - 展開狀態 (需搭配 JS 添加 class) */
+.qna-answer.visible-animate {
+    max-height: 500px; /* 設置一個足夠大的高度 */
+    opacity: 1;
+    padding-top: 15px; /* 展開後恢復正常的 padding 值 */
+    padding-bottom: 15px; /* 展開後恢復正常的 padding 值 */
+}
+
+/* 可展開卡片內容區塊 (服務項目區 Accordion) - 保持上次邏輯 */
 .card-expandable .card-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 .card-expandable.active .card-content {
-    max-height: 500px; /* 需足夠容納內容 */
+    max-height: 500px;
     padding-top: 1rem;
 }
 .card-expandable.active .plus-icon {
@@ -239,7 +301,7 @@ h2 {
 
 /* 8. 響應式優化 (Responsive Adjustments) */
 @media (max-width: 1024px) {
-    /* 取消背景固定，避免手機瀏覽器捲動問題 (Scroll Attachment Fix) */
+    /* 取消背景固定，避免手機瀏覽器捲動問題 */
     body {
         background-attachment: scroll;
     }
