@@ -5,56 +5,95 @@
  * ==========================================
  */
 
-/* 1. 全域與字體設定 */
+/* 1. 全域與字體設定 (Base Styles) */
 body {
-    /* Noto Sans TC 已在 HTML Head 引入 */
-    font-family: 'Noto Sans TC', sans-serif;
-    background-color: #f7f1e3; /* 整體背景色 */
+    /* 排版與字體 */
+    font-family: 'Noto Sans TC', sans-serif; /* Noto Sans TC 已在 HTML Head 引入 */
+    
+    /* 顏色與背景 */
+    background-color: #f7f1e3; /* 整體背景色 (淡米色調) */
+    /* --- 背景圖設置 --- */
+            background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+            background-size: cover;
+            background-attachment: fixed; /* 桌面版固定，產生視覺差 */
+            background-position: center;
+            color: #333;
+    /* 基本重置 */
+    margin: 0;
+    padding: 0;
 }
 
 /* 2. 區塊滑入動畫 (Intersection Observer 搭配) */
-/* 初始狀態：不可見且稍微往下 */
+/* ------------------------------------------- */
+
+/* 初始狀態：不可見且稍微往下平移 */
 .section-reveal {
+    /* 視覺效果 */
     opacity: 0;
     transform: translateY(20px);
+    
+    /* 動畫過渡 */
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
-/* 可見狀態：完全顯現，位置歸零 */
+
+/* 啟用狀態 (.visible class 由 JavaScript 添加)：完全顯現，位置歸零 */
 .section-reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* 3. 可展開卡片 (服務項目區) */
+/* 3. 可展開卡片 (服務項目區 Accordion) */
+/* ------------------------------------------- */
+
 /* 內容區塊初始隱藏設定 */
 .card-expandable .card-content {
+    /* 佈局與溢出 */
     max-height: 0;
     overflow: hidden;
+    
+    /* 動畫過渡：控制展開和收合的平滑度 */
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
-/* 展開狀態：給予足夠高的 max-height 和頂部間距 */
+
+/* 展開狀態 (.active class 由 JavaScript 添加) */
 .card-expandable.active .card-content {
-    max-height: 500px; /* 需確保能容納所有內容 */
+    /* 佈局調整 */
+    max-height: 500px; /* 需給予足夠高的值以容納所有內容 */
     padding-top: 1rem;
 }
-/* '+' 圖示旋轉效果 (由 JavaScript 控制添加 active class) */
+
+/* '+' 圖示旋轉效果 */
+.card-expandable .plus-icon {
+    /* 確保初始狀態的過渡平滑 */
+    transition: transform 0.3s ease-in-out;
+}
 .card-expandable.active .plus-icon {
+    /* 旋轉 45 度，變成 'X' 或 '-' 符號 */
     transform: rotate(45deg);
 }
 
-/* 4. 主視覺背景與視覺差 (Hero Section) */
+/* 4. 主視覺背景與視覺差 (Hero Section Parallax) */
+/* ------------------------------------------- */
 .header-with-bg {
+    /* 背景設定 */
     background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; /* 桌面版固定 (視覺差效果) */
+    
+    /* 視覺差效果 */
+    background-attachment: fixed; /* 桌面版固定，產生 Parallax 視覺差 */
 }
 
-/* 5. 響應式優化：針對行動裝置 (寬度小於 1024px) */
+/* 5. 響應式優化 (Responsive Adjustments) */
+/* ------------------------------------------- */
 @media (max-width: 1024px) {
+    /* 針對平板/手機 */
     .header-with-bg {
-        /* 取消背景固定，改為隨內容滾動，避免手機瀏覽器捲動問題 */
+        /* 取消背景固定，改為隨內容滾動，避免手機瀏覽器捲動問題 (Scroll Attachment Fix) */
         background-attachment: scroll;
     }
 }
+ .container {
+            max-width: 1100px;
+        }
