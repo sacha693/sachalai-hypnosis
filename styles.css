@@ -45,7 +45,7 @@ body {
     background-color: var(--background-start); /* 預設的溫暖背景色，在圖片載入失敗時作為備用 */
     
     /* 🚀 背景圖設置：使用 Raw 連結確保圖片能正確顯示 */
-    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg?raw=true');
     background-size: cover;
     background-attachment: fixed; /* 固定背景，創造視差感 */
     background-position: center;
