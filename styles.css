@@ -1,99 +1,246 @@
 /*
  * ==========================================
- * 瑞光沙舟 - 客製化 CSS 樣式 (styles.css)
+ * 瑞光沙舟 - 客製化 CSS 樣式 (styles.css) - 合併版
  * 負責所有視覺效果、動畫、和響應式調整
  * ==========================================
  */
 
-/* 1. 全域與字體設定 (Base Styles) */
+/* 1. CSS 變數：延續首頁的色彩風格，作為設計基石 */
+:root {
+    /* 基礎色彩 */
+    --text-color: #4B5563; /* 內文灰 */
+    --main-text-color: #333; /* 基礎文字色 (來自第二份) */
+    --background-start: #f7f1e3; /* 頁面背景色 (淡米色調) */
+    --container-bg-color: #fff; /* 內容容器背景色 */
+    --border-color: #e0e0e0; /* 分隔線顏色 */
+
+    /* 標題色彩 */
+    --main-heading-color: #2c3e50; /* H1 顏色：深海軍藍 */
+    --section-heading-color: #a0522d; /* H2 顏色：溫暖的棕色 (Sienna) */
+
+    /* 按鈕/互動色彩 */
+    --primary-btn-color: #f59e0b; /* 按鈕色：琥珀黃 (Amber) */
+    --hover-btn-color: #d97706; /* 按鈕 hover 色 */
+
+    /* 特殊區塊色彩 */
+    --list-item-bg-color: #fdf6e3; /* 列表項/提醒事項背景色 */
+    --qna-bg-color: #fdf6e3; /* FAQ 卡片背景色 */
+    --qna-answer-bg-color: #fffcf2; /* FAQ 回答背景色 */
+}
+
+/* 2. 全域與字體設定 (Base Styles) */
 body {
-    /* 排版與字體 */
-    font-family: 'Noto Sans TC', sans-serif; /* Noto Sans TC 已在 HTML Head 引入 */
-    
-    /* 顏色與背景 */
-    background-color: #f7f1e3; /* 整體背景色 (淡米色調) */
-    /* --- 背景圖設置 --- */
-            background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
-            background-size: cover;
-            background-attachment: fixed; /* 桌面版固定，產生視覺差 */
-            background-position: center;
-            color: #333;
-    /* 基本重置 */
+    /* 字體與排版 */
+    font-family: 'Noto Sans TC', 'Fredoka', sans-serif; /* 兼容 Fredoka (如果有引入) */
+    line-height: 1.8;
     margin: 0;
     padding: 0;
+    min-height: 100vh; /* 確保內容撐滿整個視窗高度 */
+    display: flex;
+    flex-direction: column;
+
+    /* 顏色與背景：優先使用 CSS 變數 */
+    color: var(--text-color); /* 使用變數 */
+    background-color: var(--background-start); /* 使用變數 */
+    
+    /* 背景圖設置 (來自第二份 CSS) */
+    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+    background-size: cover;
+    background-attachment: fixed; /* 桌面版固定，產生視覺差 */
+    background-position: center;
 }
 
-/* 2. 區塊滑入動畫 (Intersection Observer 搭配) */
-/* ------------------------------------------- */
+/* 3. 頁面佈局與標題樣式 */
 
-/* 初始狀態：不可見且稍微往下平移 */
+/* 頁面內容容器樣式 */
+.page-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--container-bg-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* 讓內容區塊自動佔據剩餘空間 */
+}
+
+/* 內容區塊主容器 */
+.container {
+    max-width: 1100px; /* 增加一個更大的容器尺寸 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* H1 內容標題樣式 */
+h1.content-title {
+    color: var(--main-heading-color);
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+/* H2 區塊標題樣式 */
+h2 {
+    color: var(--section-heading-color);
+    font-size: 2.1em;
+    font-weight: bold;
+    border-left: 5px solid var(--section-heading-color);
+    padding-left: 10px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+/* 介紹文字 */
+.intro-text {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    color: var(--section-heading-color);
+    font-weight: bold;
+}
+
+/* 4. 提醒事項卡片樣式 */
+.reminders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+.reminder-card {
+    background: var(--list-item-bg-color);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: flex-start;
+}
+.reminder-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: var(--section-heading-color);
+}
+.card-content strong {
+    display: block;
+    font-size: 1.1em;
+    color: var(--main-heading-color);
+    margin-bottom: 5px;
+}
+
+/* 5. FAQ/可展開卡片樣式 (Accordion Styles) */
+.qna-item, .card-expandable {
+    /* 共同基礎樣式 */
+    background: var(--qna-bg-color);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+}
+.qna-item:hover, .card-expandable:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.qna-question, .card-header {
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.qna-icon, .plus-icon {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+    color: var(--section-heading-color);
+    line-height: 1;
+}
+
+/* FAQ 回答區塊 */
+.qna-answer {
+    margin-top: 10px;
+    padding: 15px;
+    border-left: 4px solid var(--section-heading-color);
+    background: var(--qna-answer-bg-color);
+    border-radius: 0 5px 5px 0;
+    color: var(--text-color);
+}
+
+/* 可展開卡片內容區塊 (需搭配 JS) */
+.card-expandable .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+.card-expandable.active .card-content {
+    max-height: 500px; /* 需足夠容納內容 */
+    padding-top: 1rem;
+}
+.card-expandable.active .plus-icon {
+    transform: rotate(45deg);
+}
+
+/* 6. 導覽與按鈕樣式 */
+
+/* 導覽列下拉選單平滑過渡 (需搭配 JS) */
+.dropdown-menu {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+}
+.dropdown-menu.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 返回首頁按鈕樣式 */
+.back-to-home-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    border-radius: 9999px;
+    background-color: var(--primary-btn-color);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    text-decoration: none;
+}
+.back-to-home-btn:hover {
+    background-color: var(--hover-btn-color);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* 7. 動畫效果 (Animation & Reveal) */
+
+/* 區塊滑入動畫初始狀態 (需搭配 Intersection Observer/JS) */
 .section-reveal {
-    /* 視覺效果 */
     opacity: 0;
     transform: translateY(20px);
-    
-    /* 動畫過渡 */
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
-/* 啟用狀態 (.visible class 由 JavaScript 添加)：完全顯現，位置歸零 */
+/* 啟用狀態 */
 .section-reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* 3. 可展開卡片 (服務項目區 Accordion) */
-/* ------------------------------------------- */
-
-/* 內容區塊初始隱藏設定 */
-.card-expandable .card-content {
-    /* 佈局與溢出 */
-    max-height: 0;
-    overflow: hidden;
-    
-    /* 動畫過渡：控制展開和收合的平滑度 */
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
-/* 展開狀態 (.active class 由 JavaScript 添加) */
-.card-expandable.active .card-content {
-    /* 佈局調整 */
-    max-height: 500px; /* 需給予足夠高的值以容納所有內容 */
-    padding-top: 1rem;
-}
-
-/* '+' 圖示旋轉效果 */
-.card-expandable .plus-icon {
-    /* 確保初始狀態的過渡平滑 */
-    transition: transform 0.3s ease-in-out;
-}
-.card-expandable.active .plus-icon {
-    /* 旋轉 45 度，變成 'X' 或 '-' 符號 */
-    transform: rotate(45deg);
-}
-
-/* 4. 主視覺背景與視覺差 (Hero Section Parallax) */
-/* ------------------------------------------- */
-.header-with-bg {
-    /* 背景設定 */
-    background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    /* 視覺差效果 */
-    background-attachment: fixed; /* 桌面版固定，產生 Parallax 視覺差 */
-}
-
-/* 5. 響應式優化 (Responsive Adjustments) */
-/* ------------------------------------------- */
+/* 8. 響應式優化 (Responsive Adjustments) */
 @media (max-width: 1024px) {
-    /* 針對平板/手機 */
-    .header-with-bg {
-        /* 取消背景固定，改為隨內容滾動，避免手機瀏覽器捲動問題 (Scroll Attachment Fix) */
+    /* 取消背景固定，避免手機瀏覽器捲動問題 (Scroll Attachment Fix) */
+    body {
         background-attachment: scroll;
     }
 }
- .container {
-            max-width: 1100px;
-        }
