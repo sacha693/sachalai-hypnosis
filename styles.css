@@ -300,19 +300,9 @@ h2 {
 }
 
 /* 8. 響應式優化 (Responsive Adjustments) */
-@media (max-width: 768px) {
-    /* 確保 page-container 在手機上能完全利用螢幕寬度 */
-    .page-container {
-        margin: 0; 
-        padding: 20px;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    /* 解決 reminders-grid 最小寬度問題，強制單欄顯示 */
-    .reminders-grid {
-        grid-template-columns: 1fr; /* 讓每一張卡片佔滿一行 */
-        gap: 15px; 
-    }
-    /* ... 其他字體優化 */
+@media (max-width: 1024px) {
+    /* 取消背景固定，避免手機瀏覽器捲動問題 */
+    body {
+        background-attachment: scroll;
+}
 }
