@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業美編版心流地圖 v9.0 (頂部左右並列設計)</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+        /* 設定字體為 Noto Sans TC 以支援繁體中文，並加入溫暖的背景意象 */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #fcfbf8; /* 柔和的米白色 */
+            /* 背景圖片 - 使用溫暖的色調作為替換 */
+            background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        /* 內容區塊使用更柔和的米白底色，讓整體氛圍更平靜 */
+        .section-bg {
+            background-color: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(2px);
+        }
+        /* 保持 CTA 和重要元素的質感陰影 */
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.15); /* 柔和金色陰影 */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card-shadow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(184, 134, 11, 0.25);
+        }
+        /* 活潑的卡片設計 for 標籤 */
+        .milestone-card {
+            background-color: #ffffff;
+            border-left: 4px solid #f59e0b; /* 琥珀金線條 */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .milestone-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1);
+        }
+        /* Tab 專用 CSS */
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #78350f; /* 深琥珀色 */
+            color: white;
+            border-bottom: 3px solid #f59e0b;
+        }
+        
+        /* === 歐式木質相框效果 (Wooden Frame Aesthetic) - 強化立體感與縮小照片視覺 === */
+        .wooden-frame {
+            /* 深沉的核桃木色基底 */
+            border: 5px solid #704214; 
+            /* 複雜多層次的立體陰影：模擬深雕刻和邊框層次 */
+            box-shadow: 
+                0 0 0 1px #a0522d inset,   /* 內層亮邊 */
+                0 0 0 5px #4f2c0c inset,   /* 內層深木紋 */
+                0 8px 15px rgba(0, 0, 0, 0.4), /* 外層投影 */
+                0 0 0 12px #964b00; /* 第二層金色木質邊緣 */
+            
+            background-color: #d2b48c; /* 淺米色內襯 */
+            border-radius: 4px; 
+            transition: all 0.4s ease-in-out;
+            aspect-ratio: 1 / 1; 
+            overflow: hidden; 
+            /* *** 關鍵：大幅增加 Padding，讓圖片在相框中顯示得更小張 *** */
+            padding: 10px; 
+            position: relative; 
+        }
+        
+        /* 活潑排列：輕微旋轉和位移 */
+        .wooden-frame:nth-child(1) { transform: rotate(-3deg); }
+        .wooden-frame:nth-child(2) { transform: rotate(5deg) translateY(-5px); }
+        .wooden-frame:nth-child(3) { transform: rotate(-2deg); }
+        .wooden-frame:nth-child(4) { transform: rotate(4deg) translateY(3px); }
+
+        .wooden-frame:hover {
+            /* Hover時回正並放大，突出互動感 */
+            transform: scale(1.05) rotate(0deg) !important; 
+            box-shadow: 
+                0 0 0 1px #a0522d inset,   
+                0 0 0 5px #4f2c0c inset,   
+                0 10px 25px rgba(0, 0, 0, 0.6), 
+                0 0 0 12px #964b00;
+        }
+        
+        .wooden-frame img {
+            /* 讓圖片成為內層，縮小視覺尺寸 */
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* 調整 mobile 排列，讓 intro 在 frame 下方，但保持左右間距 */
+        @media (max-width: 767px) {
+             .wooden-frame:nth-child(1),
+             .wooden-frame:nth-child(2),
+             .wooden-frame:nth-child(3),
+             .wooden-frame:nth-child(4) {
+                 transform: none; /* 在手機上取消旋轉，保持整齊 */
+             }
+             .grid-frames-mobile {
+                 padding: 0 1.5rem; /* 增加左右邊距 */
+             }
+        }
+</style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- 頂部導航欄 (Header) - 保持不變 -->
+    <nav class="sticky top-0 z-50 section-bg backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- LOGO/品牌名稱 -->
+                <div class="text-xl font-bold text-amber-700 tracking-wider">
+                    <a href="#" class="hover:text-amber-800 transition-colors">瑞光沙舟心流所</a>
+                </div>
+                
+                <!-- 桌面版導航與下拉選單 (省略為保持簡潔，功能與V7相同) -->
+                <div class="hidden md:flex items-center space-x-8">
+                    
+                    <!-- Dropdown 1: ⚡ 開始你的旅程 (主要的 CTA) -->
+                    <div class="relative inline-block text-left" data-dropdown-container>
+                       <button id="journey-dropdown-button" data-dropdown-toggle="journey-dropdown-menu" type="button" 
+    class="inline-flex items-center justify-center 
+           rounded-md border border-transparent  bg-amber-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-amber-600 transition-colors"> 開始你的旅程
+    <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+</button>
+                        <div id="journey-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu">
+                            <div class="py-1" role="none">
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">Step 1: 預約前請先閱讀</a>
+                                <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">Step 2: 填寫預約表單</a>
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/friendly reminder.html" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">Step 3: 預約後小叮嚀</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://cjrs693.wordpress.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-amber-600 transition-colors font-medium">文章分享</a>
+                    
+                    <div class="relative inline-block text-left" data-dropdown-container>
+                        <button id="feedback-dropdown-button" data-dropdown-toggle="feedback-dropdown-menu" type="button" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors font-medium">
+                            個案回饋分享
+                            <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>       
+                        </button>    
+                        <div id="feedback-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu">
+                            <div class="py-1" role="none">
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/luminous_oasis.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">職業與成就壓力 </a>    
+                                <a href="#transformation-map" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">關係與情感連結 </a>   
+                                <a href="#self-growth-feedback" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">自我探索與成長焦慮 </a>
+                            </div>
+                        </div>
+                    </div>                              
+                    
+                    <div class="relative inline-block text-left" data-dropdown-container>
+                        <button id="resources-dropdown-button" data-dropdown-toggle="resources-dropdown-menu" type="button" class="inline-flex items-center justify-center text-gray-600 hover:text-amber-600 transition-colors font-medium">
+                            其它資源
+                            <svg class="-mr-1 ml-2 h-5 w-5 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <div id="resources-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu">
+                            <div class="py-1" role="none">
+                                <a href="https://sacha693.github.io/sachalai-hypnosis/keygame.html" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">轉動思維</a>
+                                <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">Instagram</a>
+                                <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50" role="menuitem">Facebook</a>       
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 行動版選單按鈕 (Hamburger) -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-zinc-800 hover:text-amber-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 行動版選單內容 (省略為保持簡潔) -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="border-b border-gray-200 mt-2 pb-2 mb-2">
+                    <span class="block py-2 px-4 text-sm font-bold text-amber-700">⚡ 開始你的旅程</span>
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4"><span class="font-bold text-amber-600">Step 1:</span> 預約前請先閱讀</a>
+                    <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4"><span class="font-bold text-amber-600">Step 2:</span> 填寫預約表單</a>
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/friendly reminder.html" target="_blank" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4"><span class="font-bold text-amber-600">Step 3:</span> 預約後小叮嚀</a>
+                </div>
+                <a href="https://cjrs693.wordpress.com/" class="block py-2 px-4 text-sm text-gray-600 hover:bg-amber-50 font-medium">文章分享</a>
+                <div class="border-t border-gray-200 mt-2 pt-2">    
+                    <span class="block py-2 px-4 text-sm font-bold text-zinc-800">個案回饋分享</span>    
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/luminous_oasis.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">職業與成就壓力 </a>    
+                    <a href="#transformation-map" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">關係與情感連結 </a>   
+                    <a href="#self-growth-feedback" class="block py-2 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">自我探索與成長焦慮 </a>
+                </div>  
+                <div class="border-t border-gray-200 mt-2 pt-2 space-y-2">
+                    <span class="block py-2 px-4 text-sm font-bold text-zinc-800">其它資源</span>
+                    <a href="https://sacha693.github.io/sachalai-hypnosis/keygame.html" target="_blank" rel="noopener noreferrer" class="block py-1 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">轉動思維</a>
+                    <a href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer" class="block py-1 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer" class="block py-1 px-4 text-sm text-gray-700 hover:bg-amber-50 ml-4">Facebook</a>       
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- I. 頂部美編排版區塊：相框 (左) + 介紹文案 (右) -->
+    <section id="top-hero-layout" class="py-12 md:py-16 section-bg shadow-lg border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- A. 相框展示區塊 (Live Photo Gallery) - 在 Mobile 上為第二順位 (order-2) -->
+            <div id="photo-gallery-container" class="order-2 md:order-1 text-center md:px-4">
+                
+                <!-- 視覺設計區：四張木質相框圖片 -->
+                <div class="grid grid-cols-4 gap-2 mb-4 max-w-xl mx-auto grid-frames-mobile">
+                    
+                    <!-- Image 1: 連結與支持 - 請替換下方 src="YOUR_IMAGE_URL" 為您的圖片公開連結 -->
+                    <div class="wooden-frame">
+                        <img id="img-1" 
+                            src="https://github.com/sacha693/sachalai-hypnosis/blob/main/pic1.jpg?raw=true" 
+                            alt="兩隻手溫暖地握在一起的抽象意象" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Image 2: 內在平靜與呼吸 - 請替換下方 src="YOUR_IMAGE_URL" 為您的圖片公開連結 -->
+                    <div class="wooden-frame">
+                        <img id="img-2" 
+                            src="https://github.com/sacha693/sachalai-hypnosis/blob/main/pic2.jpg?raw=true" 
+                            alt="日出時分，一個人影在大自然中深呼吸的抽象意象" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Image 3: 關係的成長與滋養 - 請替換下方 src="YOUR_IMAGE_URL" 為您的圖片公開連結 -->
+                    <div class="wooden-frame">
+                        <img id="img-3" 
+                            src="https://github.com/sacha693/sachalai-hypnosis/blob/main/pic3.jpg?raw=true" 
+                            alt="一棵樹的根或一株植物正在生長的抽象意象" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Image 4: 自我反思與療癒 - 請替換下方 src="YOUR_IMAGE_URL" 為您的圖片公開連結 -->
+                    <div class="wooden-frame">
+                        <img id="img-4" 
+                            src="https://github.com/sacha693/sachalai-hypnosis/blob/main/pic4.jpg?raw=true" 
+                            alt="一滴水落在水面激起漣漪的抽象意象" 
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- B. 簡約介紹區塊 (Mission Statement) - 在 Mobile 上為第一順位 (order-1) -->
+            <div id="intro-statement-container" class="order-1 md:order-2 text-center md:text-left md:pt-4">
+                 <!-- 核心文字區塊 -->
+                <h2 class="text-3xl sm:text-4xl font-bold text-amber-800 mb-4 leading-snug">
+                    在瑞光沙舟，與內在的<br class="hidden sm:inline"><span class="text-amber-600">平靜源頭</span>和解。
+                </h2>
+                <p class="text-xl sm:text-2xl font-medium text-gray-700 leading-relaxed pt-2 border-t-2 border-amber-300">
+                    獻給在<strong class="font-bold text-amber-800">關係與情感連結</strong>中，尋求深度療癒與和解的您。
+                </p>
+                <p class="text-lg text-gray-600 mt-4 leading-loose">
+                    無論您面對的是家庭失衡、人際孤立或自我價值感低落，<br>讓催眠帶您回到<strong class="font-bold text-amber-600">內在平靜的源頭</strong>，重拾自我照顧的力量。
+                </p>
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- II. 您的心聲，我們聽見了 (問題情境與痛點描述) - 保持不變 -->
+    <section id="pain_points" class="py-16 md:py-24 section-bg border-b border-amber-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center text-amber-800 mb-12">
+                當關係與情緒失衡時，您的心聲
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 痛點卡片 1: 疲憊/精力 (SV2) -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-t-4 border-amber-500">
+                    <div class="text-3xl mb-3 text-amber-600">⚡</div>
+                    <h4 class="font-semibold text-xl mb-2 text-amber-700">慢性耗竭與能量低落</h4>
+                    <p class="text-gray-600">每天都感到精力被掏空，渴望在短時間內，達到<strong class="font-bold text-amber-700">深度休息</strong>與<strong class="font-bold text-amber-700">體能恢復</strong>的效果。</p>
+                </div>
+                <!-- 痛點卡片 2: 自我懷疑 (SV1/SV4/ER2) -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-t-4 border-amber-500">
+                    <div class="text-3xl mb-3 text-amber-600">☁️</div>
+                    <h4 class="font-semibold text-xl mb-2 text-amber-700">內在批判與自責</h4>
+                    <p class="text-gray-600">對自我表現的不滿、無法接納不完美的自己，<strong class="font-bold text-amber-700">罪惡感</strong>像陰影般揮之不去。</p>
+                </div>
+                <!-- 痛點卡片 3: 情緒爆發 (ER1/ER5) -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-t-4 border-amber-500">
+                    <div class="text-3xl mb-3 text-amber-600">🌋</div>
+                    <h4 class="font-semibold text-xl mb-2 text-amber-700">情緒臨界點與易怒</h4>
+                    <p class="text-gray-600">耐心像被拉到極限的橡皮筋，小事足以點燃怒火，無法有效進行<strong class="font-bold text-amber-700">情緒調節</strong>。</p>
+                </div>
+                <!-- 痛點卡片 4: 關係/界線 (IC1/SV1) -->
+                <div class="p-6 bg-white rounded-xl card-shadow border-t-4 border-amber-500">
+                    <div class="text-3xl mb-3 text-amber-600">🍂</div>
+                    <h4 class="font-semibold text-xl mb-2 text-amber-700">界線模糊與價值失落</h4>
+                    <p class="text-gray-600">感覺<strong class="font-bold text-amber-700">過度付出</strong>、無法拒絕，生活只剩下責任，渴望<strong class="font-bold text-amber-700">重建自我價值感</strong>。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- III. 深度轉化地圖：催眠療癒的三大維度 (使用 Tabbed Interface 重設計) - 保持不變 -->
+    <section id="transformation-map" class="py-16 md:py-24 bg-stone-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl sm:text-4xl font-bold text-amber-800 mb-4">
+                    📘 深度轉化地圖：催眠療癒的三大維度
+                </h3>
+                <p class="text-lg text-gray-700 max-w-4xl mx-auto">
+                    潛意識調整於<strong class="font-bold text-amber-700">關係與情感連結族</strong>，將您的感受路徑拆解為三大指標。點擊下方分頁，了解我們如何<strong class="font-bold text-amber-700">精準評估</strong>您的療癒方向。
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <!-- Tab 按鈕導航區 -->
+                <div id="tab-buttons" class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mb-8 border-b-2 border-amber-200">
+                    <button data-tab="emotional" class="tab-button active flex-1 py-3 px-4 text-lg font-semibold text-amber-900 rounded-t-lg bg-amber-100 hover:bg-amber-200 text-center">
+                        <span class="mr-2">❤️</span> 一、情緒與心理狀態修復類
+                    </button>
+                    <button data-tab="interpersonal" class="tab-button flex-1 py-3 px-4 text-lg font-semibold text-amber-900 rounded-t-lg hover:bg-amber-100 text-center">
+                        <span class="mr-2">🤝</span> 二、界線與連結重建類
+                    </button>
+                    <button data-tab="selfvalue" class="tab-button flex-1 py-3 px-4 text-lg font-semibold text-amber-900 rounded-t-lg hover:bg-amber-100 text-center">
+                        <span class="mr-2">✨</span> 三、自我照顧與價值重塑類
+                    </button>
+                </div>
+
+                <!-- Tab 內容區塊 -->
+                <div id="tab-content" class="bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+                    <!-- 內容面板 1: 情緒與心理狀態修復類 (Emotional Regulation) -->
+                    <div id="content-emotional" class="tab-panel">
+                        <h4 class="text-2xl font-bold text-amber-800 mb-6 border-b pb-2">
+                            重啟內在平靜：情緒穩定度升級
+                        </h4>
+                        <p class="text-gray-700 mb-6">
+                            核心效益：處理焦慮、憤怒與罪惡感，提升<strong class="font-bold text-amber-700">壓力耐受度</strong>。下列為我們針對情緒療癒設定的精準里程碑：
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- 情緒調節穩定度 (ER1) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">情緒調節<span class="text-gray-500 ml-1 font-medium text-lg">穩定度</span></h5>
+                                <p class="text-gray-600 text-sm">處理易怒、焦躁、生活<strong class="font-bold text-amber-600">壓力爆發</strong>等情境，降低情緒反應強度。</p>
+                            </div>
+                            <!-- 罪惡感與自責消解 (ER2) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">罪惡感與<span class="text-gray-500 ml-1 font-medium text-lg">自責消解</span></h5>
+                                <p class="text-gray-600 text-sm">對自我表現的不滿或<strong class="font-bold text-amber-600">內疚感</strong>的長期處理，學會自我原諒。</p>
+                            </div>
+                            <!-- 壓力耐受/韌性提升 (ER3) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">壓力耐受/<span class="text-gray-500 ml-1 font-medium text-lg">韌性提升</span></h5>
+                                <p class="text-gray-600 text-sm">提升面對<strong class="font-bold text-amber-600">家庭衝突</strong>或人際挫折時的抵抗力與恢復力。</p>
+                            </div>
+                            <!-- 內在平靜與安全感 (ER4) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">內在平靜與<span class="text-gray-500 ml-1 font-medium text-lg">安全感</span></h5>
+                                <p class="text-gray-600 text-sm">感覺孤立無援、內心混亂時的<strong class="font-bold text-amber-600">深度錨定</strong>，重建信任。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 內容面板 2: 人際與溝通模式優化類 (Interpersonal & Communication) -->
+                    <div id="content-interpersonal" class="tab-panel hidden">
+                        <h4 class="text-2xl font-bold text-amber-800 mb-6 border-b pb-2">
+                            界線與連結重建：優化人際互動模式
+                        </h4>
+                        <p class="text-gray-700 mb-6">
+                            核心效益：協助<strong class="font-bold text-amber-700">清晰表達</strong>需求，改善<strong class="font-bold text-amber-700">同理心</strong>與<strong class="font-bold text-amber-700">關係界線</strong>。這些轉變將直接影響您的社交健康：
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- 關係界線清晰度 (IC1) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">關係界線<span class="text-gray-500 ml-1 font-medium text-lg">清晰度</span></h5>
+                                <p class="text-gray-600 text-sm">針對：改善<strong class="font-bold text-amber-600">過度付出</strong>、無法拒絕或被犧牲的感受，學會溫和設立界線。</p>
+                            </div>
+                            <!-- 同理心與換位思考 (IC2) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">同理心與<span class="text-gray-500 ml-1 font-medium text-lg">換位思考</span></h5>
+                                <p class="text-gray-600 text-sm">針對：幫助理解伴侶、親友的觀點，<strong class="font-bold text-amber-600">減少衝突點</strong>，促進和諧。</p>
+                            </div>
+                            <!-- 有效溝通表達力 (IC3) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">有效溝通<span class="text-gray-500 ml-1 font-medium text-lg">表達力</span></h5>
+                                <p class="text-gray-600 text-sm">針對：協助以<strong class="font-bold text-amber-600">清晰、溫和</strong>的方式表達需求與感受，避免壓抑。</p>
+                            </div>
+                            <!-- 衝突後快速修復力 (IC4) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">衝突後<span class="text-gray-500 ml-1 font-medium text-lg">快速修復力</span></h5>
+                                <p class="text-gray-600 text-sm">針對：提升在爭吵或失誤後，<strong class="font-bold text-amber-600">重新建立連結</strong>的能力，避免冷戰。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 內容面板 3: 自我照顧與價值重塑類 (Self-Nurturing & Value) -->
+                    <div id="content-selfvalue" class="tab-panel hidden">
+                        <h4 class="text-2xl font-bold text-amber-800 mb-6 border-b pb-2">
+                            找回發光自我：重塑個人價值感
+                        </h4>
+                        <p class="text-gray-700 mb-6">
+                            核心效益：重拾<strong class="font-bold text-amber-700">自我肯定</strong>、提升<strong class="font-bold text-amber-700">自我照顧</strong>意願與執行力。這是您在潛意識旅程中重拾動力的關鍵：
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- 自我肯定與價值感 (SV1) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">自我肯定與<span class="text-gray-500 ml-1 font-medium text-lg">價值感</span></h5>
+                                <p class="text-gray-600 text-sm">針對：擺脫<strong class="font-bold text-amber-600">「為別人而活」</strong>的感受，重建獨立且穩固的自我認同。</p>
+                            </div>
+                            <!-- 快速精力/體能恢復 (SV2) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">快速精力/<span class="text-gray-500 ml-1 font-medium text-lg">體能恢復</span></h5>
+                                <p class="text-gray-600 text-sm">針對：慢性睡眠剝奪或<strong class="font-bold text-amber-600">深度疲憊</strong>的短暫充電，優化休息效率。</p>
+                            </div>
+                            <!-- 自我照顧意願/執行力 (SV3) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">自我照顧<span class="text-gray-500 ml-1 font-medium text-lg">意願/執行力</span></h5>
+                                <p class="text-gray-600 text-sm">針對：主動撥時間給自己、滋養身心的<strong class="font-bold text-amber-600">動機提升</strong>，告別空虛。</p>
+                            </div>
+                            <!-- 接納不完美的自我 (SV4) -->
+                            <div class="milestone-card p-5 rounded-lg">
+                                <h5 class="text-xl font-bold text-amber-800 mb-1">接納<span class="text-gray-500 ml-1 font-medium text-lg">不完美的自我</span></h5>
+                                <p class="text-gray-600 text-sm">針對：緩解<strong class="font-bold text-amber-600">完美主義</strong>的標準，允許自己犯錯與休憩，找回彈性。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IV. 誰適合這座光之綠洲？ (目標族群/狀態分類) - 保持不變 -->
+    <section id="target_audience" class="py-16 md:py-24 section-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center text-amber-800 mb-12">
+                瑞光沙舟引領您探索情感潛意識
+            </h3>
+            <div class="bg-amber-100 p-8 rounded-2xl shadow-inner mb-10">
+                <p class="text-2xl font-bold text-amber-800 mb-4">核心精神</p>
+                <p class="text-lg text-gray-700">
+                    在這裡可以處理<strong class="font-bold text-amber-700">任何人生階段</strong>中，因角色轉換、責任負荷、情感表達所導致的內在衝突與孤立感。提供情緒調節、同理心建立、溝通修復與<strong class="font-bold text-amber-700">深度心理療癒</strong>。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-white rounded-xl card-shadow">
+                    <div class="text-4xl mb-3 text-amber-600">💼</div>
+                    <p class="font-bold text-xl text-amber-700">高壓生活/<span class="text-gray-700">完美追求者</span></p>
+                    <p class="text-gray-600 mt-2">應對家庭<strong class="font-bold text-amber-600">倦怠</strong>、焦慮，以及角色轉換帶來的內耗。</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl card-shadow">
+                    <div class="text-4xl mb-3 text-amber-600">💔</div>
+                    <p class="font-bold text-xl text-amber-700">關係挑戰/<span class="text-gray-700">情感修復者</span></p>
+                    <p class="text-gray-600 mt-2">面對<strong class="font-bold text-amber-600">親密關係</strong>、家庭或友誼衝突，渴望穩定與和解。</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl card-shadow">
+                    <div class="text-4xl mb-3 text-amber-600">🌟</div>
+                    <p class="font-bold text-xl text-amber-700">自我失落/<span class="text-gray-700">尋求成長者</span></p>
+                    <p class="text-gray-600 mt-2">感覺生活被<strong class="font-bold text-amber-600">責任淹沒</strong>，渴望<strong class="font-bold text-amber-600">重拾個人價值</strong>與方向。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- V. 客戶回響與見證 (Social Proof) - 保持不變 -->
+    <section id="testimonials" class="py-16 md:py-24 bg-amber-50">
+        <div class="max-w-6x1 mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl sm:text-4xl font-bold text-center text-amber-800 mb-12">
+                💖 溫暖的肯定：<strong class="font-bold text-amber-700">感受及分享</strong>
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+               <!-- 回響卡片 1: 專注於圖文展示 -->
+                <div class="bg-white p-6 rounded-2xl card-shadow flex flex-col">
+                    <!-- 圖片區塊：寬度佔滿 w-full，高度固定 h-72 -->
+                    <!-- *** 替換重點：請將下方 src 換成您**含有回饋文字**的設計圖公開網址 *** -->
+                    <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/%E9%97%9C%E4%BF%82%EF%BC%91.jpg?raw=true" 
+                         alt="Mandy 客戶回饋圖文" 
+                         class="w-full h-52 object-cover rounded-xl mb-4 shadow-inner border border-gray-100"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x288/704214/fcfbf8?text=載入失敗+請替換網址'">
+                    
+                    <!-- 資訊區塊 -->
+                    <div class="mt-auto pt-3 border-t border-gray-100">
+                        <p class="font-bold text-amber-700 text-lg">職場關係者</p>
+                         <p class="text-lg italic text-gray-700 border-l-4 border-amber-500 pl-4">
+                        「我重新找回了自己面對工作學習的勇敢，不再只是盲目的做會做的事。<strong class="font-bold text-amber-600">覺察內在的動力</strong>。」
+                    </p>
+                    </div>
+                </div>
+                
+                <!-- 回響卡片 2 -->
+                 <div class="bg-white p-6 rounded-2xl card-shadow flex flex-col">
+                    <!-- 圖片區塊：寬度佔滿 w-full，高度固定 h-72 -->
+                    <!-- *** 替換重點：請將下方 src 換成您**含有回饋文字**的設計圖公開網址 *** -->
+                    <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/%E9%97%9C%E4%BF%822.png?raw=true" 
+                         alt="Mandy 客戶回饋圖文" 
+                         class="w-full h-52 object-cover rounded-xl mb-4 shadow-inner border border-gray-100"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x288/704214/fcfbf8?text=載入失敗+請替換網址'">
+                    
+                    <!-- 資訊區塊 -->
+                    <div class="mt-auto pt-3 border-t border-gray-100">
+                        <p class="font-bold text-amber-700 text-lg">改善與母親關係</p>
+                         <p class="text-lg italic text-gray-700 border-l-4 border-amber-500 pl-4">
+                        「我沒有再對和母親之間的過往糾結感到憤怒，可以<strong class="font-bold text-amber-600">心平氣和</strong>的說出自己感受。」
+                    </p>
+                    </div>
+                </div>
+
+                <!-- 回響卡片 3 -->
+  <div class="bg-white p-6 rounded-2xl card-shadow flex flex-col">
+                    <!-- 圖片區塊：寬度佔滿 w-full，高度固定 h-72 -->
+                    <!-- *** 替換重點：請將下方 src 換成您**含有回饋文字**的設計圖公開網址 *** -->
+                    <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/%E9%97%9C%E4%BF%823.png?raw=true" 
+                         alt="H13 客戶回饋圖文" 
+                         class="w-full h-52 object-cover rounded-xl mb-4 shadow-inner border border-gray-100"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x288/704214/fcfbf8?text=載入失敗+請替換網址'">
+                    
+                    <!-- 資訊區塊 -->
+                    <div class="mt-auto pt-3 border-t border-gray-100">
+                        <p class="font-bold text-amber-700 text-lg">撫慰上班疲累</p>
+                         <p class="text-lg italic text-gray-700 border-l-4 border-amber-500 pl-4">
+                        「回到家後我可以藉由在催眠過程中，找到屬於自己那個<strong class="font-bold text-amber-600">平靜空間</strong>慰藉我上班一天的疲憊。」
+                    </p>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- VI. 啟程您的心靈充電之旅 (Final CTA) -->
+    <section id="cta_final" class="py-16 md:py-24 bg-amber-100 section-bg rounded-t-3xl shadow-xl">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl sm:text-4xl font-bold text-amber-800 mb-6">
+                您值得被好好照顧！
+            </h3>
+            <p class="text-xl text-amber-700 mb-10">
+                內在的疲憊與關係的挑戰，需要專業且溫暖的引導。現在，就是您為自己投資一場<strong class="font-extrabold text-amber-900">深度療癒</strong>的時刻。
+            </p>
+            <!-- 催眠網址連結位置 -->
+            <a href="https://sacha693.github.io/sachalai-hypnosis/appointment.html" class="inline-block px-12 py-5 bg-white text-amber-700 text-2xl font-bold rounded-full card-shadow hover:bg-amber-200 transition duration-300 transform hover:scale-105 shadow-2xl">
+                點擊上方開始預約您的旅程
+            </a>
+            
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-amber-900 text-white p-4 text-center text-sm">
+        &copy; 2025 瑞光沙舟 Hypnosis. All Rights Reserved. 
+    </footer>
+  <!-- JavaScript for Navigation Dropdowns and Mobile Menu & Tabbed Interface -->   
+<script>
+  <!-- JavaScript for Navigation Dropdowns and Mobile Menu & Tabbed Interface -->
+  
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 導航欄下拉選單邏輯 ---
+            const mobileButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileButton && mobileMenu) {
+                mobileButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+            
+            function closeAllDropdowns(excludeMenuId = null) {
+                dropdownToggles.forEach(toggle => {
+                    const targetId = toggle.getAttribute('data-dropdown-toggle');
+                    const menu = document.getElementById(targetId);
+                    if (menu && targetId !== excludeMenuId) {
+                        menu.classList.add('hidden');
+                        const svg = toggle.querySelector('svg');
+                        if (svg) {
+                            svg.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const targetId = toggle.getAttribute('data-dropdown-toggle');
+                    const menu = document.getElementById(targetId);
+                    
+                    if (menu) {
+                        const isHidden = menu.classList.contains('hidden');
+                        
+                        closeAllDropdowns(targetId);
+
+                        if (isHidden) {
+                            menu.classList.remove('hidden');
+                            const svg = toggle.querySelector('svg');
+                            if (svg) {
+                                svg.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', () => {
+                closeAllDropdowns();
+            });
+
+            // --- Tabbed Interface 邏輯 ---
+            const tabButtons = document.querySelectorAll('#tab-buttons .tab-button');
+            const tabPanels = document.querySelectorAll('#tab-content .tab-panel');
+
+            const switchTab = (tabId) => {
+                tabPanels.forEach(panel => {
+                    panel.classList.add('hidden');
+                });
+
+                tabButtons.forEach(button => {
+                    button.classList.remove('active', 'bg-amber-700', 'text-white');
+                    button.classList.add('bg-amber-100', 'text-amber-900');
+                    button.style.borderBottom = 'none'; 
+                });
+
+                const targetPanel = document.getElementById(`content-${tabId}`);
+                if (targetPanel) {
+                    targetPanel.classList.remove('hidden');
+                }
+
+                const clickedButton = document.querySelector(`[data-tab="${tabId}"]`);
+                if (clickedButton) {
+                    clickedButton.classList.add('active', 'bg-amber-700', 'text-white');
+                    clickedButton.classList.remove('bg-amber-100', 'text-amber-900');
+                    clickedButton.style.borderBottom = '3px solid #f59e0b'; 
+                }
+            };
+            
+            // 確保初始化時第一個 Tab 是啟動狀態
+            const initialButton = document.querySelector('[data-tab="emotional"]');
+            if (initialButton) {
+                initialButton.classList.add('active', 'bg-amber-700', 'text-white');
+                initialButton.classList.remove('bg-amber-100', 'text-amber-900');
+                initialButton.style.borderBottom = '3px solid #f59e0b'; 
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+        });
+ </script>
+</body>
+</html>
