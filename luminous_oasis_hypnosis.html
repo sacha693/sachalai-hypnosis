@@ -709,6 +709,29 @@
                 });
             });
         });
+    document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('resources-button-desktop');
+    const menu = document.getElementById('resources-menu-desktop');
+    const container = document.getElementById('resources-dropdown-container-desktop');
+
+    // 點擊按鈕時切換選單的顯示/隱藏狀態
+    if (button && menu) {
+        button.addEventListener('click', function () {
+            // 切換 'hidden' 類別：如果有 'hidden' 就移除，沒有就加上
+            menu.classList.toggle('hidden'); 
+        });
+    }
+
+    // 點擊選單外部時關閉選單 (提升使用者體驗)
+    if (container && menu) {
+        document.addEventListener('click', function(event) {
+            // 檢查點擊是否發生在選單容器外部
+            if (!container.contains(event.target) && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
+    }
+});
  </script>
 </body>
 </html>
