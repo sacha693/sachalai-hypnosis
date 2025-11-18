@@ -90,230 +90,227 @@
             box-shadow: 0 10px 20px rgba(168, 127, 94, 0.2);
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'jp-rice': '#f7f1e3',      /* 和紙米白 (已更新為淡米色調) */
-                        'jp-ink': '#333333',       /* 墨黑色 */
-                        'jp-accent': '#a87f5e',    /* 溫潤木棕色 (沙舟/安定) */
-                        'jp-stone': '#8d8d8d',     /* 淺石灰色 */
-                        'jp-glow': '#fbbf24',      /* 瑞光/暖金色 (活力) */
-                    }
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'jp-rice': '#f7f1e3',      /* 和紙米白 (已更新為淡米色調) */
+                    'jp-ink': '#333333',       /* 墨黑色 */
+                    'jp-accent': '#a87f5e',    /* 溫潤木棕色 (沙舟/安定) */
+                    'jp-stone': '#8d8d8d',     /* 淺石灰色 */
+                    'jp-glow': '#fbbf24',      /* 瑞光/暖金色 (活力) */
                 }
             }
         }
+    }
 
-        // --- 預約連結：請將您的實際預約網址替換到下方引號中 ---
-        const HYPNOSIS_LINK = "https://sacha693.github.io/sachalai-hypnosis/appointment.html"; 
+    // --- 預約連結：請將您的實際預約網址替換到下方引號中 ---
+    const HYPNOSIS_LINK = "https://sacha693.github.io/sachalai-hypnosis/appointment.html";  
 
-        /**
-         * 啟動預約流程：使用 window.open(URL, '_blank') 另開新視窗
-         */
-        function openBookingLink() {
-            window.open(HYPNOSIS_LINK, '_blank'); 
+    /**
+     * 啟動預約流程：使用 window.open(URL, '_blank') 另開新視窗
+     */
+    function openBookingLink() {
+        window.open(HYPNOSIS_LINK, '_blank'); 
+    }
+
+    // --- 專為「深入了解」彈窗設計的內容資料庫 (已修正敏感詞彙) ---
+    const cardDetails = {
+        'topic1': {
+            title: '緊繃下的「戰鬥或逃跑」：深度釋放',
+            detail: `
+                <p class="mb-4">
+                    高壓環境下，身體會啟動原始的「戰鬥或逃跑」反應。這導致肌肉緊繃、心率加快，尤其在肩頸、背部和腹部的太陽神經叢積聚能量。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>副交感神經重啟：</strong> 運用深層放鬆引導（Progressive Relaxation），透過呼吸指令，直接關閉警報系統。</li>
+                    <li><strong>身心連結轉化：</strong> 探索潛意識中壓力積聚的根源，並在深層平靜的狀態下，重新編程身體對壓力的<span class="text-jp-glow font-bold">反應模式</span>。</li> <li><strong>立即舒緩技巧：</strong> 學習在日常生活中，快速且溫和地釋放<span class="text-jp-glow font-bold">太陽神經叢</span>的緊張感，找回身心合一的寧靜。</li>
+                </ul>
+            `
+        },
+        'topic2': {
+            title: '流動不止的內在焦慮：安定自我',
+            detail: `
+                <p class="mb-4">
+                    內在焦慮常表現為腦中雜念過多，思緒像河流一樣奔騰不止，讓人難以集中或獲得真正的休息。這是一種缺乏「心錨」的表現。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>心靈避風港構築：</strong> 引導您創造一個專屬的、絕對安全的「<span class="text-jp-glow font-bold">內在空間</span>」，作為對抗外界喧囂的避風港，隨時可進入。</li>
+                    <li><strong>活在當下訓練：</strong> 透過深度放鬆狀態下的專注，訓練大腦將注意力從未來或過去的擔憂中拉回，培養<span class="text-jp-glow font-bold">正念（Mindfulness）</span>的習慣。</li>
+                    <li><strong>情緒容器強化：</strong> 增強您心靈的韌性，使您能更有效地承載和處理情緒，而非被情緒淹沒。</li>
+                </ul>
+            `
+        },
+        'topic3': {
+            title: '職場耗竭，熱情消退：重尋意義',
+            detail: `
+                <p class="mb-4">
+                    職業倦怠（Burnout）不僅是疲憊，更是對工作意義感和個人成就感的長期缺失。高壓工作者尤其容易陷入這種情感耗竭。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>重啟初心心錨：</strong> 重新連結您對工作最初的熱情和願景，將其作為<span class="text-jp-glow font-bold">潛意識的動力來源</span>。</li>
+                    <li><strong>設定健康界線：</strong> 強化潛意識對於個人時間和精力的<span class="text-jp-glow font-bold">保護意識</span>，幫助您在不犧牲自我健康的前提下，保持專業效率。</li>
+                    <li><strong>價值觀對齊：</strong> 確保您的日常行為與深層價值觀保持一致，從而減少內耗，重獲動能。</li>
+                </ul>
+            `
+        },
+        'topic4': {
+            title: '輾轉難眠，身心俱疲：優化睡眠模式', detail: `
+                <p class="mb-4">
+                    失眠或睡眠品質低落常與睡前的「反芻思考」（Ruminating）有關。大腦無法從清醒工作模式順利轉換到休息模式。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>快速放鬆入眠：</strong> 運用潛意識引導找到您內心深處那個只屬於你的安全放鬆，在數分鐘內將身心帶入<span class="text-jp-glow font-bold">深層的休息狀態</span>。</li>
+                    <li><strong>創造睡眠儀式：</strong> 於潛意識中建立一套專屬的、強效的睡眠「儀式」心像，讓身體能快速準備入睡。</li>
+                    <li><strong>處理夜間焦慮：</strong> 辨識並處理造成夜間驚醒或多夢的潛意識擔憂，實現<span class="text-jp-glow font-bold">整夜穩定</span>、修復性的睡眠。</li>
+                </ul>
+            `
+        },
+        'topic5': {
+            title: '時間追逐與完美執念：接納自在',
+            detail: `
+                <p class="mb-4">
+                    完美主義者和有時間壓力者常常陷入「做更多才能更好」的思維陷阱，這反而造成效率低下和持續的自我批判。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>調整壓力認知：</strong> 將潛意識中對「壓力」的定義從威脅轉化為「挑戰」或「能量」，改變對時間的<span class="text-jp-glow font-bold">緊迫感</span>。</li>
+                    <li><strong>高效休憩編程：</strong> 學習在極短時間內進入<span class="text-jp-glow font-bold">高效的深度休息狀態</span>（如 Napping），恢復精力，提升醒著時的專注度。</li>
+                    <li><strong>自我慈悲培養：</strong> 釋放內在對「不完美」的恐懼，學會接納自己的限制，從而以更輕鬆、更具韌性的姿態面對挑戰。</li>
+                </ul>
+            `
+        },
+        'topic6': {
+            title: '內在價值與自我懷疑：啟動自信',
+            detail: `
+                <p class="mb-4">
+                    許多高成就人士都有「冒牌者症候群」（Imposter Syndrome），總覺得自己的成功只是運氣，深怕被揭穿。這源於內在價值的動搖。
+                </p>
+                <h4 class="font-bold text-jp-accent mb-2">【潛意識引導如何協助】</h4> <ul class="list-disc list-inside space-y-2 text-sm">
+                    <li><strong>轉化內在批評：</strong> 幫助您識別並與內在的「批評家」對話，將其轉化為建設性的「<span class="text-jp-glow font-bold">支持者</span>」或「導師」。</li>
+                    <li><strong>鞏固成就心像：：</strong> 透過潛意識強化過去成功的經驗，將這些經驗固化為堅實的<span class="text-jp-glow font-bold">內在自信基石</span>。</li>
+                    <li><strong>植入自我肯定：</strong> 建立並重複積極的肯定語句（Affirmations），讓這些語句直接被潛意識接受並執行，肯定自身價值。</li>
+                </ul>
+            `
         }
+    };
 
- // --- 專為「深入了解」彈窗設計的內容資料庫 (已移除星號，改用 <strong> 和顏色) ---
-        const cardDetails = {
-            'topic1': {
-                title: '緊繃下的「戰鬥或逃跑」：深度釋放',
-                detail: `
-                    <p class="mb-4">
-                        高壓環境下，身體會啟動原始的「戰鬥或逃跑」反應。這導致肌肉緊繃、心率加快，尤其在肩頸、背部和腹部的太陽神經叢積聚能量。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>副交感神經重啟：</strong> 運用深層放鬆引導（Progressive Relaxation），透過呼吸指令，直接關閉警報系統。</li>
-                        <li><strong>身心連結修復：</strong> 探索潛意識中壓力積聚的根源，並在深層平靜的狀態下，重新編程身體對壓力的<span class="text-jp-glow font-bold">反應模式</span>。</li>
-                        <li><strong>立即舒緩技巧：</strong> 學習在日常生活中，快速且溫和地釋放<span class="text-jp-glow font-bold">太陽神經叢</span>的緊張感，找回身心合一的寧靜。</li>
-                    </ul>
-                `
-            },
-            'topic2': {
-                title: '流動不止的內在焦慮：安定自我',
-                detail: `
-                    <p class="mb-4">
-                        內在焦慮常表現為腦中雜念過多，思緒像河流一樣奔騰不止，讓人難以集中或獲得真正的休息。這是一種缺乏「心錨」的表現。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>心靈避風港構築：</strong> 引導您創造一個專屬的、絕對安全的「<span class="text-jp-glow font-bold">內在空間</span>」，作為對抗外界喧囂的避風港，隨時可進入。</li>
-                        <li><strong>活在當下訓練：</strong> 透過催眠狀態下的專注，訓練大腦將注意力從未來或過去的擔憂中拉回，培養<span class="text-jp-glow font-bold">正念（Mindfulness）</span>的習慣。</li>
-                        <li><strong>情緒容器強化：</strong> 增強您心靈的韌性，使您能更有效地承載和處理情緒，而非被情緒淹沒。</li>
-                    </ul>
-                `
-            },
-            'topic3': {
-                title: '職場耗竭，熱情消退：重尋意義',
-                detail: `
-                    <p class="mb-4">
-                        職業倦怠（Burnout）不僅是疲憊，更是對工作意義感和個人成就感的長期缺失。高壓工作者尤其容易陷入這種情感耗竭。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>重啟初心心錨：</strong> 重新連結您對工作最初的熱情和願景，將其作為<span class="text-jp-glow font-bold">潛意識的動力來源</span>。</li>
-                        <li><strong>設定健康界線：</strong> 強化潛意識對於個人時間和精力的<span class="text-jp-glow font-bold">保護意識</span>，幫助您在不犧牲自我健康的前提下，保持專業效率。</li>
-                        <li><strong>價值觀對齊：</strong> 確保您的日常行為與深層價值觀保持一致，從而減少內耗，重獲動能。</li>
-                    </ul>
-                `
-            },
-            'topic4': {
-                title: '輾轉難眠，身心俱疲：修復睡眠',
-                detail: `
-                    <p class="mb-4">
-                        失眠或睡眠品質低落常與睡前的「反芻思考」（Ruminating）有關。大腦無法從清醒工作模式順利轉換到休息模式。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>快速放鬆入眠：</strong> 運用催眠找到您內心深處那個只屬於你的安全放鬆，在數分鐘內將身心帶入<span class="text-jp-glow font-bold">深層的休息狀態</span>。</li>
-                        <li><strong>創造睡眠儀式：</strong> 於潛意識中建立一套專屬的、強效的睡眠「儀式」心像，讓身體能快速準備入睡。</li>
-                        <li><strong>處理夜間焦慮：</strong> 辨識並處理造成夜間驚醒或多夢的潛意識擔憂，實現<span class="text-jp-glow font-bold">整夜穩定</span>、修復性的睡眠。</li>
-                    </ul>
-                `
-            },
-            'topic5': {
-                title: '時間追逐與完美執念：接納自在',
-                detail: `
-                    <p class="mb-4">
-                        完美主義者和有時間壓力者常常陷入「做更多才能更好」的思維陷阱，這反而造成效率低下和持續的自我批判。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>調整壓力認知：</strong> 將潛意識中對「壓力」的定義從威脅轉化為「挑戰」或「能量」，改變對時間的<span class="text-jp-glow font-bold">緊迫感</span>。</li>
-                        <li><strong>高效休憩編程：：</strong> 學習在極短時間內進入<span class="text-jp-glow font-bold">高效的深度休息狀態</span>（如 Napping），恢復精力，提升醒著時的專注度。</li>
-                        <li><strong>自我慈悲培養：：</strong> 釋放內在對「不完美」的恐懼，學會接納自己的限制，從而以更輕鬆、更具韌性的姿態面對挑戰。</li>
-                    </ul>
-                `
-            },
-            'topic6': {
-                title: '內在價值與自我懷疑：啟動自信',
-                detail: `
-                    <p class="mb-4">
-                        許多高成就人士都有「冒牌者症候群」（Imposter Syndrome），總覺得自己的成功只是運氣，深怕被揭穿。這源於內在價值的動搖。
-                    </p>
-                    <h4 class="font-bold text-jp-accent mb-2">【催眠如何協助】</h4>
-                    <ul class="list-disc list-inside space-y-2 text-sm">
-                        <li><strong>轉化內在批評：</strong> 幫助您識別並與內在的「批評家」對話，將其轉化為建設性的「<span class="text-jp-glow font-bold">支持者</span>」或「導師」。</li>
-                        <li><strong>鞏固成就心像：：</strong> 透過潛意識強化過去成功的經驗，將這些經驗固化為堅實的<span class="text-jp-glow font-bold">內在自信基石</span>。</li>
-                        <li><strong>植入自我肯定：</strong> 建立並重複積極的肯定語句（Affirmations），讓這些語句直接被潛意識接受並執行，肯定自身價值。</li>
-                    </ul>
-                `
-            }
-        };
-
-        /**
-         * 顯示「深入了解」模態框並載入指定內容
-         * @param {string} topicKey - 對應 cardDetails 中的鍵值 (topic1, topic2, etc.)
-         */
-        function openModal(topicKey) {
-            const detail = cardDetails[topicKey];
-            const modal = document.getElementById('info-modal');
-            
-            if (detail && modal) {
-                document.getElementById('modal-title').textContent = detail.title;
-                document.getElementById('modal-content').innerHTML = detail.detail;
-                modal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden'); // 防止背景滾動
-            } else {
-                console.error("找不到對應的主題內容:", topicKey);
-            }
+    /**
+     * 顯示「深入了解」模態框並載入指定內容
+     * @param {string} topicKey - 對應 cardDetails 中的鍵值 (topic1, topic2, etc.)
+     */
+    function openModal(topicKey) {
+        const detail = cardDetails[topicKey];
+        const modal = document.getElementById('info-modal');
+        
+        if (detail && modal) {
+            document.getElementById('modal-title').textContent = detail.title;
+            document.getElementById('modal-content').innerHTML = detail.detail;
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // 防止背景滾動
+        } else {
+            console.error("找不到對應的主題內容:", topicKey);
         }
+    }
 
-        /**
-         * 隱藏「深入了解」模態框
-         */
-        function closeModal() {
-            const modal = document.getElementById('info-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden'); // 恢復背景滾動
-            }
+    /**
+     * 隱藏「深入了解」模態框
+     */
+    function closeModal() {
+        const modal = document.getElementById('info-modal');
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden'); // 恢復背景滾動
         }
+    }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // --- 導航列功能 (Dropdown & Mobile Menu) -----------------
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const modalOverlay = document.getElementById('modal-overlay');
-            const modalCloseBtn = document.getElementById('modal-close-btn');
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // --- 導航列功能 (Dropdown & Mobile Menu) -----------------
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
 
-            // 1. 行動版菜單切換
+        // 1. 行動版菜單切換
+        if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+        }
 
-            // 2. 桌面版下拉選單切換
-            const dropdowns = [
-                { buttonId: 'journey-button-desktop', menuId: 'journey-menu-desktop' },
-                { buttonId: 'testimonials-button-desktop', menuId: 'testimonials-menu-desktop' },
-                { buttonId: 'resources-button-desktop', menuId: 'resources-menu-desktop' }
-            ];
+        // 2. 桌面版下拉選單通用邏輯
+        const dropdowns = [
+            { buttonId: 'journey-button-desktop', menuId: 'journey-menu-desktop' },
+            { buttonId: 'testimonials-button-desktop', menuId: 'testimonials-menu-desktop' },
+            { buttonId: 'resources-button-desktop', menuId: 'resources-menu-desktop' }
+        ];
 
-            dropdowns.forEach(({ buttonId, menuId }) => {
-                const button = document.getElementById(buttonId);
-                const menu = document.getElementById(menuId);
+        dropdowns.forEach(({ buttonId, menuId }) => {
+            const button = document.getElementById(buttonId);
+            const menu = document.getElementById(menuId);
 
-                if (button && menu) {
-                    button.addEventListener('click', (event) => {
-                        event.stopPropagation(); // 防止點擊按鈕時觸發 window 關閉事件
-                        
-                        // 關閉所有其他已開啟的菜單
-                        dropdowns.forEach(other => {
-                            const otherMenu = document.getElementById(other.menuId);
-                            if (other.menuId !== menuId && otherMenu && !otherMenu.classList.contains('hidden')) {
-                                otherMenu.classList.add('hidden');
-                            }
-                        });
-
-                        // 切換當前菜單的顯示狀態
-                        menu.classList.toggle('hidden');
+            if (button && menu) {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // 防止點擊按鈕時觸發 window 關閉事件
+                    
+                    // 關閉所有其他已開啟的菜單
+                    dropdowns.forEach(other => {
+                        const otherMenu = document.getElementById(other.menuId);
+                        if (other.menuId !== menuId && otherMenu && !otherMenu.classList.contains('hidden')) {
+                            otherMenu.classList.add('hidden');
+                        }
                     });
+
+                    // 切換當前菜單的顯示狀態
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+
+        // 3. 點擊外部時關閉所有下拉選單
+        window.addEventListener('click', (event) => {
+            dropdowns.forEach(({ buttonId, menuId }) => { // 增加 buttonId 以確保不點擊按鈕本身
+                const menu = document.getElementById(menuId);
+                const button = document.getElementById(buttonId);
+                
+                // 檢查點擊是否發生在菜單或按鈕外部
+                if (menu && !menu.contains(event.target) && button && !button.contains(event.target)) {
+                     menu.classList.add('hidden');
                 }
             });
-
-            // 3. 點擊外部時關閉所有下拉選單
-            window.addEventListener('click', (event) => {
-                dropdowns.forEach(({ menuId }) => {
-                    const menu = document.getElementById(menuId);
-                    if (menu && !menu.contains(event.target)) {
-                         menu.classList.add('hidden');
-                    }
-                });
-            });
-            // --------------------------------------------------------
-
-            // 4. 模態框關閉事件監聽
-            if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
-            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-
-            // -------------------------------------------
-            // 實作 Intersection Observer 進行區塊滑入動畫 (Section Reveal)
-            // -------------------------------------------
-            const sections = document.querySelectorAll('.section-reveal');
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        // 一旦可見就停止觀察，以確保動畫只播放一次
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, {
-                root: null, // 觀察整個視口
-                rootMargin: '0px',
-                threshold: 0.1 // 區塊 10% 進入視口時觸發
-            });
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-            // -------------------------------------------
         });
-    </script>
+        // --------------------------------------------------------
+
+        // 4. 模態框關閉事件監聽
+        if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+
+        // -------------------------------------------
+        // 實作 Intersection Observer 進行區塊滑入動畫 (Section Reveal)
+        // -------------------------------------------
+        const sections = document.querySelectorAll('.section-reveal');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // 一旦可見就停止觀察，以確保動畫只播放一次
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            root: null, // 觀察整個視口
+            rootMargin: '0px',
+            threshold: 0.1 // 區塊 10% 進入視口時觸發
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        // -------------------------------------------
+    });
+</script>
 </head>
 <body class="text-jp-ink antialiased">
     
@@ -423,142 +420,131 @@
     </nav>
     
     <!-- 主視覺與核心標語 --><main class="container mx-auto px-4 pt-8 pb-20">
-        <!-- Section 1: 主視覺 (已加入 section-reveal class) --><section class="text-center mb-16 section-reveal">
-            <!-- 確保文字清晰度，加上與其他區塊一致的柔和背景 --><div class="bg-jp-rice/80 p-10 rounded-xl shadow-lg backdrop-blur-sm"> 
-                <div class="flex items-center justify-center space-x-4 mb-8">
-                    <!-- LOGO 圖片已更新為新的圖片連結 --><img 
-                        src="https://github.com/sacha693/sachalai-hypnosis/blob/main/LINE_ALBUM_2025828_250927_1.jpg?raw=true" 
-                        alt="瑞光沙舟 Logo" 
-                        class="w-16 h-16 rounded-full shadow-lg object-cover"
-                        onerror="this.onerror=null; this.src='https://placehold.co/64x64/a87f5e/ffffff?text=LOGO';"
-                    >
-                    <span class="text-2xl font-bold text-jp-accent">瑞光沙舟</span>
+       <section class="text-center mb-16 section-reveal">  
+           <div class="bg-jp-rice/80 p-10 rounded-xl shadow-lg backdrop-blur-sm">      
+               <div class="flex items-center justify-center space-x-4 mb-8">     
+                   <img 
+                       src="https://github.com/sacha693/sachalai-hypnosis/blob/main/LINE_ALBUM_2025828_250927_1.jpg?raw=true" 
+                       alt="瑞光沙舟 Logo" 
+                       class="w-16 h-16 rounded-full shadow-lg object-cover" 
+                       onerror="this.onerror=null; this.src='https://placehold.co/64x64/a87f5e/ffffff?text=LOGO';"
+                       >
+                   <span class="text-2xl font-bold text-jp-accent">瑞光沙舟</span>
+               </div>    
+               <h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold text-jp-ink leading-relaxed mb-4">
+                   「在壓力沸騰的時代，為您的心靈<span class="text-jp-glow">按下重啟鍵</span>。」
+               </h1>
+               <h2 class="text-xl sm:text-2xl font-light text-jp-stone max-w-4xl mx-auto mb-8">
+                   高壓是您前行的印記；而<span class="font-bold text-jp-accent">平衡與自在</span>，是您深層的渴望。 </h2>
+               <p class="text-lg text-jp-ink max-w-5xl mx-auto leading-relaxed"> 
+                   親愛的職場旅人，您是否感覺心神被無形的壓力層層束縛？「瑞光沙舟」理解您在喧囂中對寧靜的追求。我們將傳統的智慧與潛意識引導融合，提供專為高壓上班族設計的潛意識引導，助您找回內在的和諧與力量。 </p>   
+           </div> 
+       </section>
+
+        <section class="mb-20 section-reveal">
+    <div class="bg-white/80 p-10 rounded-xl shadow-lg backdrop-blur-sm">
+        <h3 class="text-3xl font-bold text-center mb-12 text-jp-ink border-b-2 border-jp-accent pb-2 inline-block mx-auto">
+            ︱ 心之所向：潛意識引導主題 </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic1')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-red-100/70">🔥</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">緊繃下的「戰鬥或逃跑」</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：身心歸於寧靜</p>
+                    </div>
                 </div>
-                
-                <!-- H1 字體大小和字重已調整，使其更「秀氣」 --><h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold text-jp-ink leading-relaxed mb-4">
-                    「在壓力沸騰的時代，為您的心靈<span class="text-jp-glow">按下重啟鍵</span>。」
-                </h1>
-                <h2 class="text-xl sm:text-2xl font-light text-jp-stone max-w-4xl mx-auto mb-8">
-                    高壓是您前行的印記；而<span class="font-bold text-jp-accent">修復與平靜</span>，是您深層的渴望。
-                </h2>
-                <p class="text-lg text-jp-ink max-w-5xl mx-auto leading-relaxed">
-                    親愛的職場旅人，您是否感覺心神被無形的壓力層層束縛？「瑞光沙舟」理解您在喧囂中對寧靜的追求。我們將傳統的智慧與催眠融合，提供專為高壓上班族設計的催眠療癒，助您找回內在的和諧與力量。
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《解除心靈的武裝》：</span> 溫和釋放肩頸與<span class="font-bold text-jp-accent">太陽神經叢</span>積壓的壓力；引導您透過呼吸，重啟<span class="font-bold text-jp-accent">副交感神經</span>的舒緩平衡。
                 </p>
-            </div> <!-- 結束 主視覺背景容器 --></section>
-
-        <!-- Section 2: 專業分析與主題區塊 (已加入 section-reveal class) --><section class="mb-20 section-reveal">
-            <!-- 區塊背景設定為白色，確保文字可讀性 --><div class="bg-white/80 p-10 rounded-xl shadow-lg backdrop-blur-sm">
-                <h3 class="text-3xl font-bold text-center mb-12 text-jp-ink border-b-2 border-jp-accent pb-2 inline-block mx-auto">
-                    ︱ 心之所向：催眠主題
-                </h3>
-
-                 <!-- 網格佈局：響應式 2/3 欄位，現在卡片內部更加活潑 --><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-                    <!-- 1. 戰鬥或逃跑反應 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic1')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-red-100/70">🔥</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">緊繃下的「戰鬥或逃跑」</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：身心歸於寧靜</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《解除心靈的武裝》：</span> 溫和釋放肩頸與<span class="font-bold text-jp-accent">太陽神經叢</span>積壓的壓力；引導您透過呼吸，重啟<span class="font-bold text-jp-accent">副交感神經</span>的舒緩平衡。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-
-                    <!-- 2. 流動不止的內在焦慮 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic2')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-blue-100/70">💧</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">流動不止的內在焦慮</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：尋求內在安定</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《構築心靈的庭園》：</span> 透過靜心想像，為自己建立一座「心靈避風港」；清除雜念，學會<span class="font-bold text-jp-accent">活在當下</span>的藝術。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-
-                    <!-- 3. 職業倦怠/耗竭 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic3')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-orange-100/70">🍂</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">職場耗竭，熱情消退</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：重拾意義與熱情</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《重尋初心之路》：</span> 找回工作最初的「心錨」；在催眠中學習設定<span class="font-bold text-jp-accent">健康界線</span>，讓生活與工作互為滋養。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-                    
-                    <!-- 4. 睡眠品質低落 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic4')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-purple-100/70">🌙</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">輾轉難眠，身心俱疲</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：獲得深層修復性睡眠</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《寧靜入夢儀式》：</span> 專為入睡困難或多夢設計的快速放鬆技巧；創造專屬「睡眠儀式」心像，一夜好眠，恢復元氣。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-
-                    <!-- 5. 時間壓力與完美主義 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic5')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-green-100/70">🍃</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">時間追逐與完美執念</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">深層需求：接納與自我慈悲</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《放下，方得自在》：</span> 調整對壓力的<span class="font-bold text-jp-accent">認知</span>；學習平衡專注與<span class="font-bold text-jp-accent">高效休憩</span>，讓身心像竹林般，柔韌而堅毅。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-
-                    <!-- 6. 內在價值與自我懷疑 (互動卡片) - 添加 onclick --><div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic6')">
-                        <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
-                            <!-- 圖示徽章 --><div class="text-4xl p-2 rounded-full bg-yellow-100/70">💎</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-jp-ink">內在價值與自我懷疑</h4>
-                                <p class="text-sm font-semibold text-jp-stone mt-1">深層需求：鞏固自信與價值</p>
-                            </div>
-                        </div>
-                        <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
-                            <span class="font-bold text-jp-accent">《啟動內在導師》：</span> 專門處理<span class="font-bold text-jp-accent">冒名頂替症候群</span>；透過催眠，將內在批評轉化為支持的力量，肯定自身成就。
-                        </p>
-                        <!-- 互動邀請: opacity-0 讓它預設隱藏，hover 時才出現 -->
-                        <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
-                            深入了解 →
-                        </div>
-                    </div>
-
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
                 </div>
             </div>
-        </section>
+
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic2')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-blue-100/70">💧</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">流動不止的內在焦慮</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：尋求內在安定</p>
+                    </div>
+                </div>
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《構築心靈的庭園》：</span> 透過靜心想像，為自己建立一座「心靈避風港」；清除雜念，學會<span class="font-bold text-jp-accent">活在當下</span>的藝術。
+                </p>
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic3')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-orange-100/70">🍂</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">職場耗竭，熱情消退</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：重拾意義與熱情</p>
+                    </div>
+                </div>
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《重尋初心之路》：</span> 找回工作最初的「心錨」；在**引導中**學習設定<span class="font-bold text-jp-accent">健康界線</span>，讓生活與工作互為滋養。 </p>
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic4')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-purple-100/70">🌙</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">輾轉難眠，身心俱疲</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">核心需求：獲得深層修復性睡眠</p>
+                    </div>
+                </div>
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《寧靜入夢儀式》：</span> 專為入睡困難或多夢設計的快速放鬆技巧；創造專屬「睡眠儀式」心像，一夜好眠，恢復元氣。
+                </p>
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic5')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-green-100/70">🍃</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">時間追逐與完美執念</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">深層需求：接納與自我慈悲</p>
+                    </div>
+                </div>
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《放下，方得自在》：</span> 調整對壓力的<span class="font-bold text-jp-accent">認知</span>；學習平衡專注與<span class="font-bold text-jp-accent">高效休憩</span>，讓身心像竹林般，柔韌而堅毅。
+                </p>
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card-luminous group cursor-pointer" onclick="openModal('topic6')">
+                <div class="flex items-center space-x-4 mb-4 border-b pb-3 border-jp-accent/20">
+                    <div class="text-4xl p-2 rounded-full bg-yellow-100/70">💎</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-jp-ink">內在價值與自我懷疑</h4>
+                        <p class="text-sm font-semibold text-jp-stone mt-1">深層需求：鞏固自信與價值</p>
+                    </div>
+                </div>
+                <p class="text-jp-ink leading-relaxed text-opacity-85 text-sm">
+                    <span class="font-bold text-jp-accent">《啟動內在導師》：</span> 專門處理<span class="font-bold text-jp-accent">冒名頂替症候群</span>；透過**引導**，將內在批評轉化為支持的力量，肯定自身成就。 </p>
+                <div class="text-right mt-3 text-jp-accent opacity-0 group-hover:opacity-100 transition duration-300 text-sm font-medium">
+                    深入了解 →
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
         <!-- Section 3: 客戶回響區塊 (已加入 section-reveal class 與 id="testimonials-section" 錨點) --><section id="testimonials-section" class="bg-jp-rice/80 p-10 rounded-xl shadow-inner border border-gray-100 mb-20 backdrop-blur-sm section-reveal">
             <h3 class="text-3xl font-bold text-center mb-10 text-jp-ink">
                 🍵 他們的靜心絮語 | <span class="text-jp-accent">真實回饋，見證改變</span>
@@ -641,7 +627,7 @@
                         點此私訊留言
                     </a>
                 </p>
-                <p>📍 <B>服務地區</B>：台中實體 / 全球線上催眠療癒</p>
+                <p>📍 <B>服務地區</B>：台中實體 / 全球心靈成長支持服務</p>
             </div>
 
             <div class="quick-links">
@@ -655,7 +641,7 @@
 
             <div class="seo-summary">
                 <h4><B>專業服務</B></h4>
-                 <p class="mt-3"><B>瑞光沙舟</B>提供專業 <B> 催眠</B>，專注於<B>身心靈調整</B>與<B>潛意識轉化</B>。主要服務項目：<B>習慣重塑</B>、<B>情緒和解</B>、<B>元辰宮探索</B>。</p>
+                <p class="mt-3"><B>瑞光沙舟</B>提供專業 <B>潛意識引導</B>，專注於<B>身心靈平衡</B>與<B>潛意識轉化</B>。主要服務項目：<B>習慣重塑</B>、<B>情緒整合</B>、<B>元辰宮探索</B>。</p>
             </div>
             
         </div>
