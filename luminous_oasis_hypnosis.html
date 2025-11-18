@@ -605,195 +605,126 @@
 </footer>
   <!-- JavaScript for Navigation Dropdowns and Mobile Menu & Tabbed Interface -->   
 <script>
-  <!-- JavaScript for Navigation Dropdowns and Mobile Menu & Tabbed Interface -->
-  
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- 導航欄下拉選單邏輯 ---
-            const mobileButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+    // 溫暖提醒：將所有邏輯整合到單一的 DOMContentLoaded 區塊中，避免邏輯衝突。
+    document.addEventListener('DOMContentLoaded', () => {
+        // ================================================================
+        // I. 導航欄邏輯 (Dropdowns and Mobile Menu)
+        // ================================================================
+        
+        // 1. 行動版選單 (漢堡選單) 邏輯
+        const mobileButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            if (mobileButton && mobileMenu) {
-                mobileButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+        if (mobileButton && mobileMenu) {
+            mobileButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // 點擊漢堡選單時，確保所有桌面下拉選單都關閉 (提升體驗)
+                closeAllDropdowns();
+            });
+        }
+        
+        // 2. 桌面版下拉選單通用邏輯 (適用於所有 data-dropdown-toggle)
+        const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+        
+        // 輔助函數：關閉所有桌面下拉選單
+        function closeAllDropdowns(excludeMenuId = null) {
+            dropdownToggles.forEach(toggle => {
+                const targetId = toggle.getAttribute('data-dropdown-toggle');
+                const menu = document.getElementById(targetId);
+                const svg = toggle.querySelector('svg');
+                
+                if (menu && targetId !== excludeMenuId) {
+                    menu.classList.add('hidden');
+                    if (svg) {
+                        svg.style.transform = 'rotate(0deg)'; // 箭頭復位
+                    }
+                }
+            });
+        }
 
-            const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
-            
-            function closeAllDropdowns(excludeMenuId = null) {
-                dropdownToggles.forEach(toggle => {
-                    const targetId = toggle.getAttribute('data-dropdown-toggle');
-                    const menu = document.getElementById(targetId);
-                    if (menu && targetId !== excludeMenuId) {
+        // 監聽所有下拉選單按鈕
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation(); // 阻止事件冒泡至 document 的監聽器
+
+                const targetId = toggle.getAttribute('data-dropdown-toggle');
+                const menu = document.getElementById(targetId);
+                const svg = toggle.querySelector('svg');
+                
+                if (menu) {
+                    const isHidden = menu.classList.contains('hidden');
+                    
+                    // 關閉其他選單，但排除當前選單
+                    closeAllDropdowns(targetId);
+
+                    if (isHidden) {
+                        // 如果當前是隱藏狀態，則顯示它並旋轉圖標
+                        menu.classList.remove('hidden');
+                        if (svg) {
+                            svg.style.transform = 'rotate(180deg)';
+                        }
+                    } else {
+                        // 如果當前是顯示狀態，則隱藏它並復位圖標 (這一步已經在 closeAllDropdowns 處理)
                         menu.classList.add('hidden');
-                        const svg = toggle.querySelector('svg');
                         if (svg) {
                             svg.style.transform = 'rotate(0deg)';
                         }
                     }
-                });
-            }
-
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    const targetId = toggle.getAttribute('data-dropdown-toggle');
-                    const menu = document.getElementById(targetId);
-                    
-                    if (menu) {
-                        const isHidden = menu.classList.contains('hidden');
-                        
-                        closeAllDropdowns(targetId);
-
-                        if (isHidden) {
-                            menu.classList.remove('hidden');
-                            const svg = toggle.querySelector('svg');
-                            if (svg) {
-                                svg.style.transform = 'rotate(180deg)';
-                            }
-                        }
-                    }
-                });
-            });
-
-            document.addEventListener('click', () => {
-                closeAllDropdowns();
-            });
-
-            // --- Tabbed Interface 邏輯 ---
-            const tabButtons = document.querySelectorAll('#tab-buttons .tab-button');
-            const tabPanels = document.querySelectorAll('#tab-content .tab-panel');
-
-            const switchTab = (tabId) => {
-                tabPanels.forEach(panel => {
-                    panel.classList.add('hidden');
-                });
-
-                tabButtons.forEach(button => {
-                    button.classList.remove('active', 'bg-amber-700', 'text-white');
-                    button.classList.add('bg-amber-100', 'text-amber-900');
-                    button.style.borderBottom = 'none'; 
-                });
-
-                const targetPanel = document.getElementById(`content-${tabId}`);
-                if (targetPanel) {
-                    targetPanel.classList.remove('hidden');
                 }
+            });
+        });
 
-                const clickedButton = document.querySelector(`[data-tab="${tabId}"]`);
-                if (clickedButton) {
-                    clickedButton.classList.add('active', 'bg-amber-700', 'text-white');
-                    clickedButton.classList.remove('bg-amber-100', 'text-amber-900');
-                    clickedButton.style.borderBottom = '3px solid #f59e0b'; 
-                }
-            };
-            
-            // 確保初始化時第一個 Tab 是啟動狀態
-            const initialButton = document.querySelector('[data-tab="emotional"]');
-            if (initialButton) {
-                initialButton.classList.add('active', 'bg-amber-700', 'text-white');
-                initialButton.classList.remove('bg-amber-100', 'text-amber-900');
-                initialButton.style.borderBottom = '3px solid #f59e0b'; 
-            }
+        // 點擊網頁其他地方時關閉所有桌面下拉選單
+        document.addEventListener('click', () => {
+            closeAllDropdowns();
+        });
+
+        // ================================================================
+        // II. Tabbed Interface 邏輯 (此處未修改，保持您原始的良好結構)
+        // ================================================================
+        const tabButtons = document.querySelectorAll('#tab-buttons .tab-button');
+        const tabPanels = document.querySelectorAll('#tab-content .tab-panel');
+
+        const switchTab = (tabId) => {
+            tabPanels.forEach(panel => {
+                panel.classList.add('hidden');
+            });
 
             tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.getAttribute('data-tab');
-                    switchTab(tabId);
-                });
+                button.classList.remove('active', 'bg-amber-700', 'text-white');
+                button.classList.add('bg-amber-100', 'text-amber-900');
+                button.style.borderBottom = 'none'; 
             });
-        });
-    document.addEventListener('DOMContentLoaded', function () {
-    const button = document.getElementById('resources-button-desktop');
-    const menu = document.getElementById('resources-menu-desktop');
-    const container = document.getElementById('resources-dropdown-container-desktop');
 
-    // 點擊按鈕時切換選單的顯示/隱藏狀態
-    if (button && menu) {
-        button.addEventListener('click', function () {
-            // 切換 'hidden' 類別：如果有 'hidden' 就移除，沒有就加上
-            menu.classList.toggle('hidden'); 
-        });
-    }
-
-    // 點擊選單外部時關閉選單 (提升使用者體驗)
-    if (container && menu) {
-        document.addEventListener('click', function(event) {
-            // 檢查點擊是否發生在選單容器外部
-            if (!container.contains(event.target) && !menu.classList.contains('hidden')) {
-                menu.classList.add('hidden');
+            const targetPanel = document.getElementById(`content-${tabId}`);
+            if (targetPanel) {
+                targetPanel.classList.remove('hidden');
             }
-        });
-    }
-});
-  document.addEventListener('DOMContentLoaded', function () {
-    // ----------------------------------------------------
-    // 1. 行動版選單 (漢堡選單) 邏輯
-    // ----------------------------------------------------
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
 
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function () {
-            // 切換 mobile-menu 的 hidden 類別
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // ----------------------------------------------------
-    // 2. 桌面版下拉選單 (共用邏輯，適用於所有 data-dropdown-container)
-    // ----------------------------------------------------
-    document.querySelectorAll('[data-dropdown-container]').forEach(container => {
-        const button = container.querySelector('[data-dropdown-toggle]');
-        const menu = container.querySelector('#' + button.dataset.dropdownToggle);
-        const icon = button.querySelector('svg'); // 假設 SVG 是旋轉的箭頭圖標
-
-        if (button && menu) {
-            button.addEventListener('click', function (event) {
-                event.stopPropagation(); // 阻止事件冒泡到 document
-                
-                // 關閉其他所有開啟的選單
-                document.querySelectorAll('[data-dropdown-container]').forEach(otherContainer => {
-                    const otherButton = otherContainer.querySelector('[data-dropdown-toggle]');
-                    const otherMenu = otherContainer.querySelector('#' + otherButton.dataset.dropdownToggle);
-                    const otherIcon = otherButton.querySelector('svg');
-                    
-                    if (otherMenu !== menu && !otherMenu.classList.contains('hidden')) {
-                         otherMenu.classList.add('hidden');
-                         if (otherIcon) {
-                             otherIcon.style.transform = 'rotate(0deg)'; // 旋轉箭頭圖標
-                         }
-                    }
-                });
-
-                // 切換當前選單的顯示狀態
-                menu.classList.toggle('hidden');
-                
-                // 旋轉箭頭圖標
-                if (icon) {
-                    icon.style.transform = menu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-                }
-            });
+            const clickedButton = document.querySelector(`[data-tab="${tabId}"]`);
+            if (clickedButton) {
+                clickedButton.classList.add('active', 'bg-amber-700', 'text-white');
+                clickedButton.classList.remove('bg-amber-100', 'text-amber-900');
+                clickedButton.style.borderBottom = '3px solid #f59e0b'; 
+            }
+        };
+        
+        // 確保初始化時第一個 Tab 是啟動狀態
+        const initialButton = document.querySelector('[data-tab="emotional"]');
+        if (initialButton) {
+            initialButton.classList.add('active', 'bg-amber-700', 'text-white');
+            initialButton.classList.remove('bg-amber-100', 'text-amber-900');
+            initialButton.style.borderBottom = '3px solid #f59e0b'; 
         }
-    });
-    
-    // 點擊選單外部時關閉所有下拉選單
-    document.addEventListener('click', function (event) {
-        document.querySelectorAll('[data-dropdown-container]').forEach(container => {
-            const menu = container.querySelector('.rounded-md.shadow-lg');
-            if (menu && !container.contains(event.target)) {
-                menu.classList.add('hidden');
-                const button = container.querySelector('[data-dropdown-toggle]');
-                const icon = button.querySelector('svg');
-                if (icon) {
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            }
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                switchTab(tabId);
+            });
         });
     });
-});
- </script>
+</script>
 </body>
 </html>
