@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在愛情中的角色類型─行為解悉</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 設置字體為 Noto Sans TC，增加溫暖現代感 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
+            background-color: #fcf8f3; /* 溫暖的米白色 */
+            background-image: url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .card-container {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.85); /* 半透明白卡片 */
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .button-primary {
+            background-color: #f97316; /* 溫暖的橘色 */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .button-primary:hover {
+            background-color: #ea580c;
+        }
+        .radio-label {
+            transition: all 0.2s;
+            cursor: pointer;
+            border-left: 5px solid transparent;
+        }
+        .radio-label:hover {
+            background-color: #fffbeb;
+            border-left-color: #f97316;
+        }
+        input[type="radio"]:checked + .radio-label {
+            background-color: #ffedd5; /* 淺橘色背景 */
+            border-left-color: #f97316;
+            font-weight: 500;
+        }
+        /* 定義重點凸顯顏色 */
+        .highlight-text {
+            color: #6d28d9; /* 深紫色，優雅地凸顯重點 */
+            font-weight: 700;
+        }
+        .highlight-red {
+            color: #ef4444; /* 紅色用於法律警示 */
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div class="flex-grow flex justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-4xl card-container">
+            <!-- 標題區 -->
+            <header class="p-8 text-center border-b border-gray-200">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-[#f97316] mb-2">
+                    在愛情中所扮演的類型
+                </h1>
+                <p class="text-lg text-gray-600">
+                    發掘您的專屬親密面向，讓關係更和諧美好。
+                </p>
+            </header>
+
+            <!-- 測驗區域 -->
+            <div id="quiz-container" class="p-8">
+                <div id="quiz-intro">
+                    <h2 class="text-2xl font-bold text-gray-700 mb-4">✨ 測驗說明與溫暖引導</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        親愛的受測者，這份測驗旨在成為一面鏡子，溫和地映照您在穩定親密關係中最真實的內在反應。請根據十個情境，誠實選出最符合您<span class="highlight-text">當下或最常有</span>的感受與行為，無需猜測或追求「標準答案」。
+                        讓我們一起，用愛與覺察，開啟這段自我探索的旅程吧！
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-[#f97316] mb-3">📋 計分與評估方式：</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600 ml-4 mb-8">
+                        <li>分數沒有高低之分，只有屬性之分</li>
+                        <li>結果將落在四個核心面向的其中一個，每個面向代表了依戀理論中的不同傾向。</li>                 
+                    </ul>
+
+                    <button onclick="startQuiz()" class="w-full button-primary flex items-center justify-center space-x-2">
+                        <span>開始深度測驗</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 題目顯示區域 -->
+                <div id="questions-area" class="hidden">
+                    <!-- 題目將由 JS 動態生成 -->
+                </div>
+
+                <!-- 結果顯示區域 -->
+                <div id="results-area" class="hidden">
+                    <!-- 結果將由 JS 動態生成 -->
+                </div>
+            </div>
+            
+            <!-- 催眠師資訊 (在結果區塊上方，作為建議的引導) -->
+            <div id="hypnosis-intro" class="p-8 pt-0 hidden">
+                <div class="bg-indigo-50/50 rounded-xl p-6 border border-indigo-100/70 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <!-- 圖片已新增 transform scale-x-[-1] 屬性實現鏡像 -->
+                    <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/sacha1.png?raw=true" alt="催眠師專業形象" class="w-24 h-24 object-cover rounded-full shadow-lg border-4 border-white transform scale-x-[-1]">
+                    <div>
+                        <h3 class="text-xl font-bold text-indigo-700 mb-2">來自心靈導師的溫暖引導</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            覺察是改變的起點。如果您在測驗結果中感受到內在的挑戰或困惑，請記得：內在探索是一種<span class="highlight-text">溫柔且有效</span>的自我探索工具。它能幫助我們繞過意識的限制，直接與潛意識的智慧連結，<span class="highlight-text">輕柔地調整那些造成情緒困擾的舊有信念與行為模式</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 頁尾聲明與連結 -->
+    <footer class="mt-8 py-4 px-4 sm:px-6 lg:px-8 bg-gray-800/90 text-white text-center">
+        <!-- 新增連結區塊 -->
+        <div class="mt-4 border-t border-gray-700 pt-4">
+            <p class="text-sm font-semibold mb-2 text-gray-300">尋找更多心靈支持與資源：</p>
+            <div class="flex flex-wrap justify-center space-x-4 text-sm">
+                <a href="https://sacha693.github.io/sachalai-hypnosis/index.html" target="_blank" class="text-yellow-300 hover:text-yellow-400 transition">官方網站</a>
+                <a href="https://www.facebook.com/cgrs693/" target="_blank" class="text-blue-400 hover:text-blue-500 transition">Facebook</a>
+                <a href="https://www.instagram.com/cgrs693/" target="_blank" class="text-pink-400 hover:text-pink-500 transition">Instagram</a>
+            </div>
+        </div>
+
+        <p class="mt-4 text-sm">
+            <span class="font-bold">聲明與法律規範提醒：</span>本測驗僅作為心理傾向的<span class="highlight-red">自我覺察與生活輔助建議</span>，不具備心理疾病診斷或醫療功能，亦不涉及心理治療。若您有嚴重心理困擾，請尋求專業精神科醫師或臨床心理師協助。
+        </p>
+        <p class="mt-2 text-xs text-gray-400">
+            © 2025 瑞光沙舟版權所有。
+        </p>
+    </footer>
+
+    <script>
+        // --- 核心工具函數：將重點文字包裝為自定義顏色 ---
+        function h(text) {
+            return `<span class="highlight-text">${text}</span>`;
+        }
+
+        // 測驗數據結構
+        const questions = [
+            {
+                q: "當伴侶因為壓力而變得沉默或疏遠時，您的直覺反應傾向於？",
+                options: [
+                    { text: "(A) 尊重且靜靜地給予空間，相信對方有能力處理，並隨時準備好支持。", score: 4 },
+                    { text: "(B) 擔心是否自己表現不好或做錯了什麼，會主動詢問原因或嘗試再更討好伴侶。", score: 3 },
+                    { text: "(C) 感到有些不耐煩，認為不該把負面情緒帶入互動關之中，傾向不想討論這個問題。", score: 2 },
+                    { text: "(D) 試圖以溫和的方式引導對方說出心事，希望能夠互動並一起找到平衡點。", score: 1 }
+                ]
+            },
+            {
+                q: "關係中遇到重大意見分歧時，您通常會？",
+                options: [
+                    { text: "(A) 保持冷靜，專注於先解決問題本身，而不是情緒，並尋求公正的共識。", score: 4 },
+                    { text: "(B) 為了關係的和諧與穩定，即使心中感到委屈或想說的話，可能會妥協或退讓。", score: 3 },
+                    { text: "(C) 堅守自己的立場，認為對方應該先尊重您的邏輯和判斷，因您認為你的想法較正確。", score: 2 },
+                    { text: "(D) 傾向先相安無事，擔任「平衡者」，努力讓雙方彼此都感到被理解，避免衝突擴大。", score: 1 }
+                ]
+            },
+            {
+                q: "在戀愛中，您對「個人空間」的需求程度是？",
+                options: [
+                    { text: "(A) 需求明確且健康，既享受獨處，也樂於分享親密時光。", score: 4 },
+                    { text: "(B) 不太需要個人空間，更喜歡與伴侶緊密相連，獨處久了會感到不安及胡思亂想。", score: 3 },
+                    {
+                        text: "(C) 喜歡有自己的空間，認為過多的相處會讓人感到黏膩，需要大量時間做自己的事。", score: 2
+                    },
+                    { text: "(D) 視關係當下的氛圍而定，以對方感受為主，會適時調整自己的空間需求。", score: 1 }
+                ]
+            },
+            {
+                q: "當伴侶稱讚您的成就時，您的內心感受是？",
+                options: [
+                    { text: "(A) 感到開心並覺得感謝，將其視為雙方互相支持的證明。", score: 4 },
+                    { text: "(B) 雖然開心，但會擔心自己是否能持續達到這樣的標準。", score: 3 },
+                    {
+                        text: "(C) 雖然肯定伴侶的鼓勵支持，但內心會覺得這是理所當然的事，可能不會給予太多情緒回應。", score: 2
+                    },
+                    { text: "(D) 會迅速將話題轉向伴侶的優點，並表示更加的認同伴侶，認為彼此的成就一樣重要。", score: 1 }
+                ]
+            },
+            {
+                q: "您認為「依賴」在親密關係中扮演的角色是？",
+                options: [
+                    { text: "(A) 是一種健康的相互需求，是信任的展現，但不應是束縛。", score: 4 },
+                    { text: "(B) 喜歡互相依賴，認為這代表關係親密，希望伴侶能互相成為彼此的全部。", score: 3 },
+                    { text: "(C) 應極力避免並成為習慣，要有獨立自主空間才能讓關係長久不失衡。", score: 2 },
+                    { text: "(D) 只要不造成任何一方的壓力，適度的依賴是增進感情的潤滑劑。", score: 1 }
+                ]
+            },
+            {
+                q: "當伴侶約會遲到或臨時更改計畫時，您的內心波動是？",
+                options: [
+                    { text: "(A) 理解並接受偶發的變動，會詢問原因並確認後續安排。", score: 4 },
+                    { text: "(B) 感到焦慮和沮喪，會胡思亂想是否自己在伴侶心目中或許不夠重要。", score: 3 },
+                    { text: "(C) 感到被冒犯或不被尊重，會直接表達不滿或臭臉保持沉默。", score: 2 },
+                    { text: "(D) 嘗試體諒伴侶，並在心中找到一個合理的理由，努力讓自己表現的不要太計較。", score: 1 }
+                ]
+            },
+            {
+                q: "您在關係中對待承諾和規劃未來時的態度是？",
+                options: [
+                    { text: "(A) 樂於討論，並實際規劃，相信穩健的步伐能帶來長遠的幸福。", score: 4 },
+                    { text: "(B) 渴望且急切，希望盡快確定關係的下一步，以獲得安全感。", score: 3 },
+                    { text: "(C) 傾向於活在當下，對長遠的承諾保持觀望，避免過早的限制。", score: 2 },
+                    { text: "(D) 只要伴侶感到舒適和滿意，您願意配合大部分的未來藍圖。", score: 1 }
+                ]
+            },
+            {
+                q: "當關係中出現不確定感或危機時，您會傾向於？",
+                options: [
+                    { text: "(A) 主動且開放地與伴侶溝通，將不確定性視為成長的機會。", score: 4 },
+                    { text: "(B) 加倍努力去取悅伴侶，或透過反覆確認來尋求保證。", score: 3 },
+                    { text: "(C) 選擇退縮或抽離，藉由保持距離來保護自己不受傷害。", score: 2 },
+                    { text: "(D) 專注於修補雙方的連結，成為關係中積極的調解者。", score: 1 }
+                ]
+            },
+            {
+                q: "您如何看待伴侶與其他異性/同性朋友的親密互動？",
+                options: [
+                    { text: "(A) 保持適度的信任和尊重，相信健康的社交是必需的。", score: 4 },
+                    { text: "(B) 容易感到嫉妒或不安，會暗自觀察甚至可能旁敲側擊地詢問。", score: 3 },
+                    { text: "(C) 表現出不在乎的樣子，甚至也認同伴侶多與人交流，表現自己的獨立。", score: 2 },
+                    { text: "(D) 只要朋友關係的界線清晰，您會替伴侶感到高興，並努力維繫共同的社交圈。", score: 1 }
+                ]
+            },
+            {
+                q: "您在關係中展現自我情緒的頻率和深度是？",
+                options: [
+                    { text: "(A) 能夠清晰、真誠地表達自己的需求和感受，不壓抑也不誇大。", score: 4 },
+                    { text: "(B) 傾向於放大情緒的表達，希望引起伴侶的注意和安撫。", score: 3 },
+                    { text: "(C) 習慣性地隱藏或淡化自己的真實情緒，尤其是負面情緒會隱藏的不被發現。", score: 2 },
+                    {
+                        text: "(D) 只有在確認不會造成伴侶心理負擔或看起來輕鬆時，才會小心翼翼地透露。", score: 1
+                    }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        const userAnswers = [];
+        let totalScore = 0;
+
+        const quizIntro = document.getElementById('quiz-intro');
+        const questionsArea = document.getElementById('questions-area');
+        const resultsArea = document.getElementById('results-area');
+        const hypnosisIntro = document.getElementById('hypnosis-intro');
+
+        function startQuiz() {
+            quizIntro.classList.add('hidden');
+            questionsArea.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            if (currentQuestion >= questions.length) {
+                calculateResults();
+                return;
+            }
+
+            const qData = questions[currentQuestion];
+            let html = `
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                    <span class="text-[#f97316]">${currentQuestion + 1}/${questions.length}</span> ${qData.q}
+                </h2>
+                <div class="space-y-4">
+            `;
+
+            qData.options.forEach((option, index) => {
+                const radioId = `q${currentQuestion}-opt${index}`;
+                // 使用 value 儲存分數，方便計算
+                html += `
+                    <div>
+                        <input type="radio" id="${radioId}" name="q${currentQuestion}" value="${option.score}" class="hidden" required>
+                        <label for="${radioId}" class="radio-label block p-4 bg-white border border-gray-200 rounded-lg text-gray-700">
+                            ${option.text}
+                        </label>
+                    </div>
+                `;
+            });
+
+            const buttonText = currentQuestion === questions.length - 1 ? '查看我的親密面向' : '下一題';
+
+            html += `
+                </div>
+                <div class="mt-8 flex justify-end">
+                    <button onclick="nextQuestion()" class="button-primary w-full sm:w-auto">
+                        ${buttonText}
+                    </button>
+                </div>
+            `;
+            questionsArea.innerHTML = html;
+        }
+
+        function nextQuestion() {
+            const selectedOption = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+            if (!selectedOption) {
+                // 不使用 alert()，改用 UI 提示
+                const messageBox = document.createElement('div');
+                messageBox.className = 'fixed top-4 right-4 bg-red-500 text-white p-3 rounded-lg shadow-xl animate-pulse';
+                messageBox.textContent = '請選擇一個選項後才能進入下一題。';
+                document.body.appendChild(messageBox);
+                setTimeout(() => messageBox.remove(), 2000);
+                return;
+            }
+
+            // 儲存答案與分數
+            userAnswers[currentQuestion] = parseInt(selectedOption.value);
+            currentQuestion++;
+            renderQuestion();
+        }
+
+        function calculateResults() {
+            totalScore = userAnswers.reduce((sum, score) => sum + score, 0);
+            displayResults(totalScore);
+        }
+
+        // 定義四種面向的詳細內容 (已更新為公主/女王角色原型)
+        function getResultAnalysis(score) {
+            let result = {};
+            
+            // 專業分析 (總分區間為七級分量化後的主要象限)
+            if (score >= 34) {
+                result = {
+                    name: "平衡之光芒公主 (The Balanced Princess Lumina)",
+                    image: "https://placehold.co/150x150/fde047/6d28d9?text=光芒公主",
+                    range: "34 - 40 分",
+                    color: "bg-green-500",
+                    core: "安全型依戀：穩定、信任、自主、健康依賴",
+                    mindset: "您的內心平靜且充滿彈性。您相信伴侶是可靠的，也相信自己是值得被愛的。當關係波動時，您的心態是「我們是一體的，我們可以一起解決」，很少會被不安全感或恐懼所驅動。",
+                    advice: `您的穩定是關係中最寶貴的資產。${h('舉一反三')}，您可能會不經意地期望伴侶也能具備同樣的心理韌性。請溫和地記得，每個人的情感需求都不同，適時展現您的柔軟與耐心，允許伴侶以他們自己的速度來表達脆弱，這會讓關係更加圓滿。\n\n${h('✨ 心靈成長建議：')} 雖然您擁有高穩定度，但內在探索可以幫助您深化對自我的覺察，探索${h('潛意識中對伴侶「不完美」的接納度')}。透過溫和的引導，您可以學習在更高的層次上與伴侶的情緒共振，更有效地協助伴侶處理內在壓力，讓您的愛更具穿透力與包容力。`
+                };
+            } else if (score >= 27) {
+                result = {
+                    name: "善良的灰姑娘 (The Kind Cinderella)",
+                    image: "https://placehold.co/150x150/93c5fd/1e3a8a?text=善良灰姑娘",
+                    range: "27 - 33 分",
+                    color: "bg-yellow-500",
+                    core: "和諧締造者：體諒、敏感、善於傾聽，傾向取悅",
+                    mindset: "您的心態是「只要對方好，我就會感到安心」。您渴望雙方都能在關係中感到舒適，因此會細膩地觀察伴侶的情緒，並主動做出配合和調整。這是一種源於愛的奉獻，但有時也隱藏著對衝突的畏懼。",
+                    advice: `您的溫暖是關係的陽光。${h('舉一反三')}，過度的「配合」有時會讓您忽略了自己的真實需求，長久下來可能導致內在能量耗竭。請勇敢地將您的需求也視為「和諧」的一部分，學習以溫和但堅定的方式表達界線。請相信，健康的關係並非毫無波瀾，而是能容納所有真實的聲音。\n\n${h('✨ 心靈成長建議：')} 內在探索能幫助您在深層放鬆狀態下，${h('重新連結並尊重自己的內在聲音與感受')}。它可以溫和地釋放您為維持關係和諧而壓抑的委屈與疲憊，並在潛意識中建立一種信念：${h('表達真實需求，並不會威脅關係，而是深化關係的信任。')}`
+                };
+            } else if (score >= 20) {
+                result = {
+                    name: "期盼的睡美人 (The Expectant Sleeping Beauty)",
+                    image: "https://placehold.co/150x150/fecaca/991b1b?text=期盼睡美人",
+                    range: "20 - 26 分",
+                    color: "bg-red-400",
+                    core: "焦慮型依戀：焦慮、尋求保證、高情感需求",
+                    mindset: "您的心裡常響起「我夠好嗎？他/她真的愛我嗎？」的聲音。您將關係視為衡量自我價值的重要標準，渴望親密，但對分離的恐懼也同樣強烈。因此，您的行為可能會在「渴望靠近」與「擔憂失去」之間擺盪。",
+                    advice: `您的熱情和對關係的投入令人感動。${h('舉一反三')}，請將您尋求安全感的能量，部分轉向自我肯定。試著在伴侶不在時，練習與自己的情緒共處，並透過獨處的時光來證明自己的價值並不依賴於他人的回應。\n\n${h('✨ 心靈成長建議：')} 內在成長是處理焦慮型依戀的有力工具。它可以溫柔地引導您${h('溯源內在不安的根源信念')}，並在內在深處建立一個${h('堅固的「內在安全基地」')}。透過潛意識的學習，您可以學會自我安撫 (Self-Soothing)，將對伴侶的過度依賴轉化為健康的自我依靠，讓愛變得輕盈而自由。`
+                };
+            } else {
+                result = {
+                    name: "孤傲的冰雪女王 (The Aloof Snow Queen)",
+                    image: "https://placehold.co/150x150/1e40af/bfdbfe?text=冰雪女王",
+                    range: "10 - 19 分",
+                    color: "bg-blue-600",
+                    core: "逃避型依戀：疏離、自我保護、重視個人空間",
+                    mindset: "您的潛意識信念可能是「我只能依靠自己」。您相信獨立是力量的來源，親密關係雖然美好，但同時也潛藏著被傷害或失去自由的風險。因此，當關係的熱度上升時，您的心態會傾向於「需要冷靜一下」或「把焦點轉向工作/興趣」。",
+                    advice: `您的獨立和冷靜是您獨特的魅力。${h('舉一反三')}，請意識到，適度展現脆弱並不會削弱您的力量，反而會加深伴侶對您的理解和連結。試著每天多分享一件與「理性」無關的「感受」。允許自己偶爾放下防備，體驗被完全接納的親密感。\n\n${h('✨ 心靈成長建議：')} 對於習慣情感迴避的您，內在探索提供了一個${h('安全且無評判的空間')}來處理被深埋的情緒。它可以幫助您${h('逐步且溫和地瓦解內心的防禦牆')}，重新塑造「親密感等於安全感」的新信念。透過潛意識的學習，您可以不用再透過抽離來保護自己，而能以更開放和真實的姿態去享受關係的深度與美好。`
+                };
+            }
+
+            return result;
+        }
+
+
+        function displayResults(score) {
+            questionsArea.classList.add('hidden');
+            hypnosisIntro.classList.remove('hidden'); // 顯示催眠師引導
+            resultsArea.classList.remove('hidden');
+
+            const result = getResultAnalysis(score);
+
+            const html = `
+                <div class="text-center pt-4">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-[#f97316] mb-2">🎉 測驗結果揭曉</h2>
+                    <p class="text-xl text-gray-700 mb-8">您的總分為：<span class="font-bold text-4xl text-indigo-600">${score}</span> 分</p>
+                </div>
+
+                <div class="p-6 sm:p-8 rounded-xl ${result.color} bg-opacity-10 border-2 border-dashed border-gray-300">
+                    <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <img src="${result.image}" alt="" class="w-24 h-24 rounded-full shadow-lg border-4 border-white object-cover">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500">您的主導親密面向是：</p>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-800">${result.name}</h3>
+                            <p class="text-lg font-medium text-gray-600">(${result.range} 區間，核心特質：${result.core})</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 space-y-8">
+                    <!-- 面向分析 -->
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-700 border-l-4 border-[#f97316] pl-3 mb-3">🐾 在此面向，您的心態會是什麼？</h4>
+                        <p class="bg-gray-50 p-4 rounded-lg text-gray-600 leading-relaxed">${result.mindset}</p>
+                    </div>
+
+                    <!-- 溫暖建議與心靈成長引導 -->
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-700 border-l-4 border-[#f97316] pl-3 mb-3">💖 給個溫暖建議與成長方向</h4>
+                        <div class="bg-yellow-50 p-4 rounded-lg text-gray-700 leading-relaxed space-y-4">
+                            ${result.advice.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex justify-center">
+                    <button onclick="window.location.reload()" class="button-primary px-8 py-3 bg-indigo-600 hover:bg-indigo-700">
+                        重新開始測驗
+                    </button>
+                </div>
+            `;
+
+            resultsArea.innerHTML = html;
+            // 捲動到結果區
+            document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 初始化：確保在頁面加載完成後，測驗從介紹頁開始
+        document.addEventListener('DOMContentLoaded', () => {
+             // 確保初次載入時只顯示介紹
+            questionsArea.classList.add('hidden');
+            resultsArea.classList.add('hidden');
+            hypnosisIntro.classList.add('hidden');
+        });
+
+    </script>
+
+</body>
+</html>
