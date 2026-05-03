@@ -1,0 +1,132 @@
+/*
+ * 瑞光沙舟網站用字安全輔助檔
+ * 目的：在不大幅破壞原 HTML 結構的前提下，於前端載入後替換較容易被誤解為醫療、治療或療效保證的文字。
+ * 注意：此檔為文案風險控管輔助，不等同法律意見。
+ */
+(function () {
+  const replacements = [
+    [/催眠療癒/g, '催眠引導'],
+    [/療癒旅程/g, '探索旅程'],
+    [/療癒效果/g, '探索體驗'],
+    [/療癒方向/g, '探索方向'],
+    [/療癒場地/g, '引導空間'],
+    [/療癒場所/g, '引導空間'],
+    [/被療癒者/g, '參與者'],
+    [/療癒者/g, '引導者'],
+    [/心理疾病的診斷或治療/g, '心理診斷、醫療或心理治療用途'],
+    [/醫療診斷與治療/g, '醫療診斷、治療與專業建議'],
+    [/診斷或醫療功能/g, '診斷、醫療或心理治療用途'],
+    [/心理治療/g, '心理專業服務'],
+    [/患者/g, '有相關狀況者'],
+    [/排毒/g, '讓身體感到舒適'],
+    [/代謝/g, '回到穩定節奏'],
+    [/深層修復性睡眠/g, '睡前放鬆與休息品質支持'],
+    [/修復性睡眠/g, '睡前放鬆與休息品質'],
+    [/優化睡眠模式/g, '支持睡前放鬆與休息品質'],
+    [/一夜好眠，恢復元氣/g, '為睡前放鬆創造較安定的內在節奏'],
+    [/恢復元氣/g, '回到較穩定的內在節奏'],
+    [/體能恢復/g, '身心休息感'],
+    [/重啟副交感神經/g, '支持身心進入較放鬆的狀態'],
+    [/消解/g, '覺察與整理'],
+    [/解除心靈的武裝/g, '鬆動緊繃的內在防衛'],
+    [/精準評估/g, '初步理解'],
+    [/有效性/g, '適切性'],
+    [/催眠瘱癒/g, '催眠引導'],
+    [/解悉/g, '解析']
+  ];
+
+  function replaceTextNode(node) {
+    let text = node.nodeValue;
+    let next = text;
+    replacements.forEach(([pattern, replacement]) => {
+      next = next.replace(pattern, replacement);
+    });
+    if (next !== text) node.nodeValue = next;
+  }
+
+  function walk(node) {
+    if (!node) return;
+    if (node.nodeType === Node.TEXT_NODE) {
+      replaceTextNode(node);
+      return;
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+    const tag = node.tagName ? node.tagName.toLowerCase() : '';
+    if (['script', 'style', 'textarea', 'input'].includes(tag)) return;
+    Array.from(node.childNodes).forEach(walk);
+  }
+
+  function addLegalNotice() {
+    if (document.getElementById('legal-safe-notice')) return;
+    const notice = document.createElement('section');
+    notice.id = 'legal-safe-notice';
+    notice.setAttribute('aria-label', '服務聲明');
+    notice.style.cssText = 'max-width:960px;margin:32px auto;padding:18px 22px;border-left:4px solid #d6a64f;background:rgba(255,248,230,.92);border-radius:12px;color:#5f4b2a;line-height:1.8;font-size:14px;box-shadow:0 4px 16px rgba(0,0,0,.06);';
+    notice.innerHTML = '<strong>服務聲明：</strong>本服務為自我覺察、放鬆支持與潛意識探索之引導，不涉及醫療行為、心理診斷、治療或療效保證。若您目前有明顯身心症狀、正在接受醫療或心理專業協助，請先諮詢合格醫師、心理師或相關專業人員。';
+    const footer = document.querySelector('footer');
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(notice, footer);
+    } else {
+      document.body.appendChild(notice);
+    }
+  }
+
+  function fixLinks() {
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+      if (href.includes('friendly reminder.html')) {
+        a.setAttribute('href', href.replace('friendly reminder.html', 'friendly-reminder.html'));
+      }
+      if (href === '#relationship-feedback') {
+        a.setAttribute('href', 'https://sacha693.github.io/sachalai-hypnosis/luminous_oasis_hypnosis.html');
+      }
+      if (href === '#self-growth-feedback') {
+        a.setAttribute('href', 'https://sacha693.github.io/sachalai-hypnosis/index.html#for_who');
+      }
+      if (href === '#testimonials' || href === '#testimonials-section') {
+        a.setAttribute('href', 'https://sacha693.github.io/sachalai-hypnosis/luminous_oasis.html');
+      }
+      if (a.hostname && a.hostname !== window.location.hostname) {
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  }
+
+  function updateMeta() {
+    const page = location.pathname.split('/').pop() || 'index.html';
+    const descriptions = {
+      'index.html': '瑞光沙舟心流所提供台中與線上潛意識催眠引導，陪伴你在關係、壓力、自我探索與內在卡關中，進行安全溫柔的自我覺察與內在整理。',
+      'appointment.html': '預約瑞光沙舟潛意識催眠引導前，請先了解服務性質、適合對象、預約費用、注意事項與非醫療聲明，讓旅程更安心穩定。',
+      'friendly-reminder.html': '瑞光沙舟催眠引導前後提醒，包含心情準備、穿著、休息、水分補充、覺察紀錄與安全注意事項，協助你以穩定狀態完成內在探索。',
+      'luminous_oasis.html': '瑞光沙舟陪伴高壓工作者透過潛意識催眠引導，覺察壓力反應、內在界線、自我價值與休息需求，建立更溫柔穩定的身心節奏。',
+      'luminous_oasis_hypnosis.html': '瑞光沙舟陪伴你在關係、情感連結、界線模糊、自我價值與情緒壓力中，透過溫柔安全的潛意識催眠引導，進行自我覺察與內在整理。',
+      'relationship_test.html': '透過瑞光沙舟親密關係角色測驗，觀察自己在關係中的常見反應、需求與界線模式。本測驗僅供自我覺察，不作為心理診斷或治療依據。',
+      'keygame.html': '瑞光沙舟轉動思維工具，陪伴你透過鎖與鑰匙的隱喻，觀察慣性思維、關係互動與自我覺察。'
+    };
+    const titles = {
+      'index.html': '瑞光沙舟心流所｜潛意識催眠引導與自我覺察',
+      'appointment.html': '瑞光沙舟｜潛意識催眠引導預約須知',
+      'friendly-reminder.html': '瑞光沙舟｜催眠引導前後溫馨提醒',
+      'luminous_oasis.html': '瑞光沙舟｜職場壓力與自我覺察催眠引導',
+      'luminous_oasis_hypnosis.html': '瑞光沙舟｜關係與情感議題催眠引導',
+      'relationship_test.html': '瑞光沙舟｜親密關係角色測驗與自我覺察',
+      'keygame.html': '瑞光沙舟｜轉動思維自我覺察工具'
+    };
+    if (titles[page]) document.title = titles[page];
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    if (descriptions[page]) meta.setAttribute('content', descriptions[page]);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    updateMeta();
+    walk(document.body);
+    fixLinks();
+    addLegalNotice();
+  });
+})();
