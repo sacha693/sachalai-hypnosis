@@ -123,10 +123,16 @@
     if (descriptions[page]) meta.setAttribute('content', descriptions[page]);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function runSafeLayer() {
     updateMeta();
     walk(document.body);
     fixLinks();
     addLegalNotice();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runSafeLayer);
+  } else {
+    runSafeLayer();
+  }
 })();
