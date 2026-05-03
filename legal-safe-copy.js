@@ -93,10 +93,34 @@
     });
   }
 
+  function addServiceThemeNav() {
+    if (document.getElementById('service-theme-nav')) return;
+    const bar = document.createElement('div');
+    bar.id = 'service-theme-nav';
+    bar.setAttribute('aria-label', '服務主題與重要連結');
+    bar.style.cssText = 'position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(214,166,79,.25);box-shadow:0 4px 16px rgba(0,0,0,.05);padding:10px 14px;';
+    bar.innerHTML = '<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14px;line-height:1.6;">'
+      + '<strong style="color:#8a5b18;margin-right:4px;">服務主題：</strong>'
+      + '<a style="color:#7a552d;font-weight:700;text-decoration:none;" href="luminous_oasis_hypnosis.html">關係與情感連結</a>'
+      + '<a style="color:#7a552d;font-weight:700;text-decoration:none;" href="luminous_oasis.html">高職業與成就壓力</a>'
+      + '<a style="color:#7a552d;font-weight:700;text-decoration:none;" href="relationship_test.html">愛情角色測驗</a>'
+      + '<a style="color:#7a552d;font-weight:700;text-decoration:none;" href="keygame.html">轉動思維</a>'
+      + '<span style="color:#d6a64f;">｜</span>'
+      + '<a style="color:#7a552d;text-decoration:none;" href="appointment.html">預約須知</a>'
+      + '<a style="color:#7a552d;text-decoration:none;" href="friendly-reminder.html">溫馨提醒</a>'
+      + '<a style="color:#7a552d;text-decoration:none;" href="https://cjrs693.wordpress.com/" target="_blank" rel="noopener noreferrer">文章</a>'
+      + '<a style="color:#7a552d;text-decoration:none;" href="https://www.instagram.com/cgrs693/?hl=zh-tw" target="_blank" rel="noopener noreferrer">Instagram</a>'
+      + '<a style="color:#7a552d;text-decoration:none;" href="https://www.facebook.com/profile.php?id=61566762881113" target="_blank" rel="noopener noreferrer">Facebook</a>'
+      + '<a style="margin-left:auto;background:#f59e0b;color:white;font-weight:700;text-decoration:none;padding:6px 12px;border-radius:999px;" href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer">填寫預約表單</a>'
+      + '</div>';
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+
   function updateMeta() {
     const page = location.pathname.split('/').pop() || 'index.html';
     const descriptions = {
       'index.html': '瑞光沙舟心流所提供台中與線上潛意識催眠引導，陪伴你在關係、壓力、自我探索與內在卡關中，進行安全溫柔的自我覺察與內在整理。',
+      'index-final.html': '瑞光沙舟心流所提供台中與線上潛意識催眠引導，陪伴你在關係、壓力、自我探索與內在卡關中，進行安全溫柔的自我覺察與內在整理。',
       'appointment.html': '預約瑞光沙舟潛意識催眠引導前，請先了解服務性質、適合對象、預約費用、注意事項與非醫療聲明，讓旅程更安心穩定。',
       'friendly-reminder.html': '瑞光沙舟催眠引導前後提醒，包含心情準備、穿著、休息、水分補充、覺察紀錄與安全注意事項，協助你以穩定狀態完成內在探索。',
       'luminous_oasis.html': '瑞光沙舟陪伴高壓工作者透過潛意識催眠引導，覺察壓力反應、內在界線、自我價值與休息需求，建立更溫柔穩定的身心節奏。',
@@ -106,6 +130,7 @@
     };
     const titles = {
       'index.html': '瑞光沙舟心流所｜潛意識催眠引導與自我覺察',
+      'index-final.html': '瑞光沙舟心流所｜潛意識催眠引導與自我覺察',
       'appointment.html': '瑞光沙舟｜潛意識催眠引導預約須知',
       'friendly-reminder.html': '瑞光沙舟｜催眠引導前後溫馨提醒',
       'luminous_oasis.html': '瑞光沙舟｜職場壓力與自我覺察催眠引導',
@@ -127,6 +152,7 @@
     updateMeta();
     walk(document.body);
     fixLinks();
+    addServiceThemeNav();
     addLegalNotice();
   }
 
