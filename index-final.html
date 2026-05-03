@@ -15,21 +15,22 @@
   <style>
     :root{--rice:#f7f1e3;--ink:#333;--brown:#9b744f;--gold:#d6a64f;--rose:#d8b4a0;}
     body{font-family:'Noto Sans TC',sans-serif;background:linear-gradient(rgba(247,241,227,.82),rgba(247,241,227,.92)),url('https://github.com/sacha693/sachalai-hypnosis/blob/main/indexBk.jpg.jpg?raw=true');background-size:cover;background-attachment:fixed;background-position:center;color:var(--ink);}
-    .glass{background:rgba(255,255,255,.84);backdrop-filter:blur(8px);box-shadow:0 18px 45px rgba(92,68,42,.12);}
-    .card{background:rgba(255,255,255,.9);border:1px solid rgba(214,166,79,.2);box-shadow:0 12px 30px rgba(92,68,42,.08);}
+    .glass{background:rgba(255,255,255,.86);backdrop-filter:blur(8px);box-shadow:0 18px 45px rgba(92,68,42,.12);}
+    .card{background:rgba(255,255,255,.92);border:1px solid rgba(214,166,79,.2);box-shadow:0 12px 30px rgba(92,68,42,.08);}
     .pill{background:#fff7df;color:#7a552d;border:1px solid rgba(214,166,79,.35);}
+    .sticky-cta{position:fixed;right:18px;bottom:18px;z-index:60;box-shadow:0 12px 30px rgba(146,96,34,.28);}
   </style>
 </head>
 <body>
+  <a class="sticky-cta bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-5 rounded-full" href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer">預約諮詢</a>
   <nav class="sticky top-0 z-50 bg-white/85 backdrop-blur-md shadow-sm">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="index-final.html" class="font-bold text-xl text-amber-800">瑞光沙舟心流所</a>
       <div class="hidden md:flex gap-5 text-sm font-medium">
-        <a href="#about" class="hover:text-amber-700">關於</a>
-        <a href="#themes" class="hover:text-amber-700">服務主題</a>
+        <a href="#fit" class="hover:text-amber-700">適合你嗎</a>
         <a href="#pricing" class="hover:text-amber-700">收費方案</a>
-        <a href="#journey" class="hover:text-amber-700">預約流程</a>
-        <a href="#resources" class="hover:text-amber-700">覺察資源</a>
+        <a href="#first" class="hover:text-amber-700">第一次流程</a>
+        <a href="#faq" class="hover:text-amber-700">常見問題</a>
         <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="text-amber-700 font-bold">填寫預約表單</a>
       </div>
     </div>
@@ -37,104 +38,81 @@
 
   <header class="max-w-6xl mx-auto px-4 py-16 md:py-24">
     <div class="glass rounded-[32px] p-8 md:p-14 text-center">
-      <p class="inline-block pill px-4 py-2 rounded-full text-sm mb-6">台中・線上｜潛意識催眠引導與自我覺察</p>
-      <h1 class="text-3xl md:text-5xl font-black text-amber-900 leading-tight mb-6">在關係、壓力與人生卡關裡<br>溫柔靠近真正的自己</h1>
-      <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-loose mb-8">瑞光沙舟陪伴你透過安全、穩定、尊重自主的催眠引導，整理內在感受、覺察生命模式，重新連結內在力量。</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="appointment.html" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full">預約前請先閱讀</a>
-        <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-amber-50 text-amber-800 font-bold py-3 px-8 rounded-full border border-amber-300">填寫預約表單</a>
+      <p class="inline-block pill px-4 py-2 rounded-full text-sm mb-6">台中・線上｜一對一潛意識催眠引導</p>
+      <h1 class="text-3xl md:text-5xl font-black text-amber-900 leading-tight mb-6">不是你不夠努力，<br>也許是內在有個聲音還沒被聽見</h1>
+      <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-loose mb-8">如果你在關係、壓力、自我價值或人生方向裡反覆卡住，瑞光沙舟陪你用安全、溫柔、尊重自主的方式，靠近內在真正需要被理解的地方。</p>
+      <div class="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-8 text-sm text-gray-700">
+        <div class="pill rounded-2xl p-3">適合第一次探索</div>
+        <div class="pill rounded-2xl p-3">約 100 分鐘 / NT$2,000</div>
+        <div class="pill rounded-2xl p-3">台中現場・線上皆可</div>
       </div>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-10 rounded-full text-lg">我想預約一次探索</a>
+        <a href="#first" class="bg-white hover:bg-amber-50 text-amber-800 font-bold py-4 px-10 rounded-full border border-amber-300 text-lg">先看第一次會怎麼進行</a>
+      </div>
+      <p class="text-sm text-gray-500 mt-5">填寫表單後，會先以簡短溝通了解你的期待，再確認是否適合安排。</p>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 pb-20">
-    <section id="about" class="grid md:grid-cols-2 gap-8 items-center mb-16">
-      <div class="card rounded-3xl p-6">
-        <img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/sacha.jpg?raw=true" alt="希靜瑞沙個人照" class="rounded-2xl w-full object-cover shadow-md">
+  <main class="max-w-6xl mx-auto px-4 pb-24">
+    <section id="fit" class="mb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-amber-900">你可能會適合這趟探索，如果你正在……</h2>
       </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card rounded-3xl p-7"><h3 class="text-xl font-bold text-amber-800 mb-3">在關係裡反覆委屈或過度付出</h3><p class="text-gray-700 leading-loose">明明知道該設界線，卻總是害怕讓對方失望；想好好愛人，也想終於能好好照顧自己。</p></div>
+        <div class="card rounded-3xl p-7"><h3 class="text-xl font-bold text-amber-800 mb-3">壓力很大，但不知道怎麼停下來</h3><p class="text-gray-700 leading-loose">外在看起來還能撐，內在卻常覺得緊繃、疲憊、沒有空間呼吸。</p></div>
+        <div class="card rounded-3xl p-7"><h3 class="text-xl font-bold text-amber-800 mb-3">腦袋懂了，身體和情緒卻跟不上</h3><p class="text-gray-700 leading-loose">你知道道理，也看過很多文章，但某些反應就是會自動出現，像是卡在舊模式裡。</p></div>
+        <div class="card rounded-3xl p-7"><h3 class="text-xl font-bold text-amber-800 mb-3">想更認識自己，而不是只把問題壓下去</h3><p class="text-gray-700 leading-loose">你想聽懂內在訊息，理解自己的需求、害怕與渴望，慢慢長出更穩定的選擇。</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="grid md:grid-cols-2 gap-8 items-center mb-16">
+      <div class="card rounded-3xl p-6"><img src="https://github.com/sacha693/sachalai-hypnosis/blob/main/sacha.jpg?raw=true" alt="希靜瑞沙個人照" class="rounded-2xl w-full object-cover shadow-md"></div>
       <div class="glass rounded-3xl p-8">
-        <h2 class="text-3xl font-bold text-amber-900 mb-4">我是希靜瑞沙，你的潛意識領航員</h2>
-        <p class="text-gray-700 leading-loose mb-4">因生命教育與自我探索而走上催眠引導之路，持續進修 NGH、IACT、NLP 等相關訓練。我相信每個人都擁有重新理解自己、調整內在觀點、走向更穩定生命節奏的能力。</p>
-        <p class="text-gray-700 leading-loose">在瑞光沙舟，我重視的是安全、尊重、陪伴與自主。你不需要把自己變成別人，而是慢慢看見：原來內在一直有可以被理解與安放的聲音。</p>
+        <p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">你的潛意識領航員</p>
+        <h2 class="text-3xl font-bold text-amber-900 mb-4">我是希靜瑞沙</h2>
+        <p class="text-gray-700 leading-loose mb-4">我因生命教育與自我探索而走上催眠引導之路，持續進修 NGH、IACT、NLP 等相關訓練。我的工作不是替你決定答案，而是陪你安全地看見：真正影響你的內在聲音是什麼。</p>
+        <p class="text-gray-700 leading-loose">在瑞光沙舟，我重視安全、尊重、保密與自主。你可以慢慢說，也可以慢慢感覺；這裡不需要急著變好，只需要誠實地靠近自己。</p>
       </div>
     </section>
 
     <section id="themes" class="mb-16">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-amber-900">適合探索的主題</h2>
-        <p class="text-gray-600 mt-3">以下為自我覺察與潛意識探索方向，不作為醫療或心理治療用途。</p>
-      </div>
+      <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-bold text-amber-900">你可以從這些主題開始</h2><p class="text-gray-600 mt-3">以下為自我覺察與潛意識探索方向，不作為醫療或心理治療用途。</p></div>
       <div class="grid md:grid-cols-3 gap-6">
-        <a href="luminous_oasis_hypnosis.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block">
-          <div class="text-4xl mb-4">💗</div>
-          <h3 class="text-xl font-bold text-amber-800 mb-3">關係與情感連結</h3>
-          <p class="text-gray-700 leading-loose">覺察關係中的界線、付出、自我價值與情緒反應，陪伴你回到更穩定的內在位置。</p>
-        </a>
-        <a href="luminous_oasis.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block">
-          <div class="text-4xl mb-4">🌿</div>
-          <h3 class="text-xl font-bold text-amber-800 mb-3">職場壓力與耗竭感</h3>
-          <p class="text-gray-700 leading-loose">支持你覺察壓力反應、內在防衛與休息需求，慢慢建立較溫柔的工作與生活節奏。</p>
-        </a>
-        <a href="relationship_test.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block">
-          <div class="text-4xl mb-4">🪞</div>
-          <h3 class="text-xl font-bold text-amber-800 mb-3">親密關係自我覺察</h3>
-          <p class="text-gray-700 leading-loose">透過測驗觀察自己在關係中的常見反應與需求，作為內在整理與後續探索的起點。</p>
-        </a>
+        <a href="luminous_oasis_hypnosis.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block"><div class="text-4xl mb-4">💗</div><h3 class="text-xl font-bold text-amber-800 mb-3">關係與情感連結</h3><p class="text-gray-700 leading-loose">覺察界線、付出、自我價值與情緒反應。</p></a>
+        <a href="luminous_oasis.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block"><div class="text-4xl mb-4">🌿</div><h3 class="text-xl font-bold text-amber-800 mb-3">職場壓力與耗竭感</h3><p class="text-gray-700 leading-loose">看見壓力反應、內在防衛與休息需求。</p></a>
+        <a href="relationship_test.html" class="card rounded-3xl p-7 hover:-translate-y-1 transition block"><div class="text-4xl mb-4">🪞</div><h3 class="text-xl font-bold text-amber-800 mb-3">親密關係自我覺察</h3><p class="text-gray-700 leading-loose">透過測驗觀察關係中的常見反應與需求。</p></a>
       </div>
     </section>
 
     <section id="pricing" class="mb-16">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-amber-900">收費方案</h2>
-        <p class="text-gray-600 mt-3">以下為目前網站保留的服務方案資訊，可依實際營運彈性調整。</p>
-      </div>
+      <div class="text-center mb-10"><h2 class="text-3xl md:text-4xl font-bold text-amber-900">收費方案</h2><p class="text-gray-600 mt-3">清楚、安心、沒有隱藏費用。</p></div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="card rounded-3xl p-7">
-          <p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">單次體驗</p>
-          <h3 class="text-2xl font-bold text-amber-800 mb-2">深度探索方案</h3>
-          <p class="text-4xl font-black text-amber-900 mb-3">NT$ 2,000</p>
-          <p class="text-gray-700 mb-4">約 100 分鐘，適合第一次體驗催眠引導、想釐清關係、壓力、自我價值或當下卡關主題者。</p>
-          <ul class="text-gray-700 space-y-2 list-disc pl-5">
-            <li>前段簡短訪談與目標整理</li>
-            <li>潛意識催眠引導</li>
-            <li>結束後整合與居家覺察提醒</li>
-          </ul>
-        </div>
-        <div class="card rounded-3xl p-7 border-2 border-amber-400">
-          <p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">推薦</p>
-          <h3 class="text-2xl font-bold text-amber-800 mb-2">關係與內在整理</h3>
-          <p class="text-4xl font-black text-amber-900 mb-3">依個案討論</p>
-          <p class="text-gray-700 mb-4">適合想持續探索關係模式、界線、自我價值、原生家庭影響與情緒反應的人。</p>
-          <ul class="text-gray-700 space-y-2 list-disc pl-5">
-            <li>依主題規劃探索節奏</li>
-            <li>可搭配塔羅／OH卡作為覺察入口</li>
-            <li>每次皆保留自主選擇與安全界線</li>
-          </ul>
-        </div>
-        <div class="card rounded-3xl p-7">
-          <p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">團體／合作</p>
-          <h3 class="text-2xl font-bold text-amber-800 mb-2">工作坊與講座</h3>
-          <p class="text-4xl font-black text-amber-900 mb-3">另行報價</p>
-          <p class="text-gray-700 mb-4">適合機構、社群、身心靈活動、壓力放鬆與自我覺察主題合作。</p>
-          <ul class="text-gray-700 space-y-2 list-disc pl-5">
-            <li>45–120 分鐘主題講座</li>
-            <li>小型團體催眠引導</li>
-            <li>可客製講義與覺察練習</li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center mt-8 flex flex-col sm:flex-row justify-center gap-4">
-        <a href="appointment.html" class="bg-white hover:bg-amber-50 text-amber-800 font-bold py-3 px-8 rounded-full border border-amber-300">查看預約與費用規則</a>
-        <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full">填寫預約表單</a>
+        <div class="card rounded-3xl p-7 border-2 border-amber-400"><p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">最適合第一次</p><h3 class="text-2xl font-bold text-amber-800 mb-2">深度探索方案</h3><p class="text-4xl font-black text-amber-900 mb-3">NT$ 2,000</p><p class="text-gray-700 mb-4">約 100 分鐘，適合第一次體驗催眠引導、想釐清關係、壓力、自我價值或當下卡關主題者。</p><ul class="text-gray-700 space-y-2 list-disc pl-5"><li>前段訪談與目標整理</li><li>潛意識催眠引導</li><li>結束後整合與居家覺察提醒</li></ul><a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="block text-center mt-6 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full">預約這個方案</a></div>
+        <div class="card rounded-3xl p-7"><p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">持續探索</p><h3 class="text-2xl font-bold text-amber-800 mb-2">關係與內在整理</h3><p class="text-4xl font-black text-amber-900 mb-3">依個案討論</p><p class="text-gray-700 mb-4">適合想持續探索關係模式、界線、自我價值、原生家庭影響與情緒反應的人。</p><ul class="text-gray-700 space-y-2 list-disc pl-5"><li>依主題規劃探索節奏</li><li>可搭配塔羅／OH卡作為覺察入口</li><li>保留自主選擇與安全界線</li></ul><a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="block text-center mt-6 bg-white hover:bg-amber-50 text-amber-800 font-bold py-3 px-6 rounded-full border border-amber-300">先討論適合方案</a></div>
+        <div class="card rounded-3xl p-7"><p class="pill inline-block px-3 py-1 rounded-full text-sm mb-4">團體／合作</p><h3 class="text-2xl font-bold text-amber-800 mb-2">工作坊與講座</h3><p class="text-4xl font-black text-amber-900 mb-3">另行報價</p><p class="text-gray-700 mb-4">適合機構、社群、身心靈活動、壓力放鬆與自我覺察主題合作。</p><ul class="text-gray-700 space-y-2 list-disc pl-5"><li>45–120 分鐘主題講座</li><li>小型團體催眠引導</li><li>可客製講義與覺察練習</li></ul><a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="block text-center mt-6 bg-white hover:bg-amber-50 text-amber-800 font-bold py-3 px-6 rounded-full border border-amber-300">洽談合作</a></div>
       </div>
     </section>
 
-    <section id="journey" class="glass rounded-3xl p-8 md:p-10 mb-16">
-      <h2 class="text-3xl font-bold text-amber-900 text-center mb-8">預約流程</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card rounded-2xl p-6"><p class="text-amber-700 font-bold mb-2">Step 1</p><h3 class="font-bold text-xl mb-2">預約前請先閱讀</h3><p class="text-gray-700">了解服務性質、注意事項、不適合情況與費用規則。</p><a href="appointment.html" class="inline-block mt-4 text-amber-700 font-bold">前往閱讀 →</a></div>
-        <div class="card rounded-2xl p-6"><p class="text-amber-700 font-bold mb-2">Step 2</p><h3 class="font-bold text-xl mb-2">填寫預約表單</h3><p class="text-gray-700">填寫基本需求與期待，方便先了解你的探索方向。</p><a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-amber-700 font-bold">填寫表單 →</a></div>
-        <div class="card rounded-2xl p-6"><p class="text-amber-700 font-bold mb-2">Step 3</p><h3 class="font-bold text-xl mb-2">前後溫馨提醒</h3><p class="text-gray-700">準備舒適衣著、放鬆心情，催眠後也給自己沉澱時間。</p><a href="friendly-reminder.html" class="inline-block mt-4 text-amber-700 font-bold">查看提醒 →</a></div>
+    <section id="first" class="glass rounded-3xl p-8 md:p-10 mb-16">
+      <h2 class="text-3xl font-bold text-amber-900 text-center mb-8">第一次來，會怎麼進行？</h2>
+      <div class="grid md:grid-cols-4 gap-5">
+        <div class="card rounded-2xl p-5"><p class="text-amber-700 font-bold mb-2">01</p><h3 class="font-bold text-lg mb-2">填寫表單</h3><p class="text-gray-700">簡單說明你想探索的主題與期待。</p></div>
+        <div class="card rounded-2xl p-5"><p class="text-amber-700 font-bold mb-2">02</p><h3 class="font-bold text-lg mb-2">初步確認</h3><p class="text-gray-700">先確認服務是否適合你的狀態與需求。</p></div>
+        <div class="card rounded-2xl p-5"><p class="text-amber-700 font-bold mb-2">03</p><h3 class="font-bold text-lg mb-2">催眠引導</h3><p class="text-gray-700">在清醒、放鬆、可自主回應的狀態中探索。</p></div>
+        <div class="card rounded-2xl p-5"><p class="text-amber-700 font-bold mb-2">04</p><h3 class="font-bold text-lg mb-2">整合提醒</h3><p class="text-gray-700">結束後整理感受，帶回日常觀察與練習。</p></div>
+      </div>
+      <div class="text-center mt-8"><a href="friendly-reminder.html" class="text-amber-700 font-bold">查看催眠前後溫馨提醒 →</a></div>
+    </section>
+
+    <section id="faq" class="mb-16">
+      <h2 class="text-3xl font-bold text-amber-900 text-center mb-8">預約前常見問題</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card rounded-2xl p-6"><h3 class="font-bold text-xl text-amber-800 mb-2">我會失去意識或被控制嗎？</h3><p class="text-gray-700 leading-loose">不會。催眠引導中你仍保有自主權，可以說話、回應、暫停或拒絕任何不舒服的引導。</p></div>
+        <div class="card rounded-2xl p-6"><h3 class="font-bold text-xl text-amber-800 mb-2">我沒有畫面感也可以嗎？</h3><p class="text-gray-700 leading-loose">可以。潛意識探索不只靠畫面，也可以透過感覺、聲音、念頭、身體感或直覺回應。</p></div>
+        <div class="card rounded-2xl p-6"><h3 class="font-bold text-xl text-amber-800 mb-2">一次就會有答案嗎？</h3><p class="text-gray-700 leading-loose">每個人的節奏不同。一次探索可以帶來覺察與整理，但不保證固定結果，也不作為醫療或心理治療用途。</p></div>
+        <div class="card rounded-2xl p-6"><h3 class="font-bold text-xl text-amber-800 mb-2">什麼狀況不建議預約？</h3><p class="text-gray-700 leading-loose">若目前有明顯身心症狀、近期自傷風險、意識狀態不穩，或正在接受醫療／心理專業協助，請先諮詢合格專業人員。</p></div>
       </div>
     </section>
 
@@ -150,15 +128,19 @@
       </div>
     </section>
 
-    <section class="glass rounded-3xl p-8 md:p-10 border-l-4 border-amber-500">
+    <section class="glass rounded-3xl p-8 md:p-10 border-l-4 border-amber-500 mb-16">
       <h2 class="text-2xl font-bold text-amber-900 mb-3">服務聲明</h2>
       <p class="text-gray-700 leading-loose">本服務為自我覺察、放鬆支持與潛意識探索之引導，不涉及醫療行為、心理診斷、治療或療效保證。若您目前有明顯身心症狀、正在接受醫療或心理專業協助，請先諮詢合格醫師、心理師或相關專業人員。</p>
     </section>
+
+    <section class="text-center glass rounded-3xl p-8 md:p-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-amber-900 mb-4">準備好，溫柔靠近自己了嗎？</h2>
+      <p class="text-gray-700 leading-loose mb-8">你不需要一次把所有問題說清楚。只要帶著一個想被理解的自己來，就可以開始。</p>
+      <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" rel="noopener noreferrer" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-10 rounded-full text-lg">填寫預約表單</a>
+    </section>
   </main>
 
-  <footer class="text-center text-sm text-gray-600 py-8 bg-white/70">
-    <p>© 2026 瑞光沙舟心流所｜潛意識催眠引導與自我覺察</p>
-  </footer>
+  <footer class="text-center text-sm text-gray-600 py-8 bg-white/70"><p>© 2026 瑞光沙舟心流所｜潛意識催眠引導與自我覺察</p></footer>
   <script src="legal-safe-copy.js"></script>
 </body>
 </html>
