@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <div class="site-nav">
           <div class="site-nav-top">
             <a href="index.html" class="brand">瑞光沙舟心流所</a>
-            <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="btn-primary">填寫預約表單</a>
+            <a href="https://forms.gle/7VM9YDXMJqLBtons5" target="_blank" class="btn-primary">預約</a>
           </div>
           <div class="nav-links">
             <a href="index.html">首頁</a>
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             <a href="friendly-reminder.html">溫馨提醒</a>
             <a href="luminous_oasis_hypnosis.html">關係</a>
             <a href="luminous_oasis.html">壓力</a>
-            <a href="relationship_test.html">測驗</a>
           </div>
         </div>
       </div>
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>
       </div>
       <div class="site-container legal">
-        本服務為自我覺察與潛意識探索引導，不涉及醫療或心理治療。
+        © 2026 瑞光沙舟心流所 All Rights Reserved ｜ 本服務為自我覺察與潛意識探索引導，不涉及醫療或心理治療
       </div>
     </div>`;
   }
