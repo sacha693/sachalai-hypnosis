@@ -20,7 +20,7 @@
 
 const LINKS = {
   home: 'index-integrated.html',
-  about: 'index-integrated.html#about',
+  about: 'about.html',
   services: 'index-integrated.html#services',
 
   appointment: 'appointment.html',
@@ -74,7 +74,7 @@ function renderHeader(){
         </div>
 
         <!-- CTA：最重要按鈕 -->
-        <a href="${LINKS.form}" target="_blank" class="btn-primary nav-cta">預約探索</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer" class="btn-primary nav-cta">預約探索</a>
 
       </div>
     </div>
@@ -105,7 +105,7 @@ function renderFooter(){
         <h4>預約</h4>
         <a href="${LINKS.appointment}">預約須知</a>
         <a href="${LINKS.reminder}">溫馨提醒</a>
-        <a href="${LINKS.form}" target="_blank">填寫預約表單</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
       </div>
 
       <!-- 主題 -->
@@ -119,9 +119,9 @@ function renderFooter(){
       <!-- 社群 -->
       <div>
         <h4>社群</h4>
-        <a href="${LINKS.facebook}" target="_blank">Facebook</a>
-        <a href="${LINKS.instagram}" target="_blank">Instagram</a>
-        <a href="${LINKS.form}" target="_blank">LINE@／預約表單</a>
+        <a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a>
       </div>
 
     </div>
