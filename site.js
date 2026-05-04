@@ -15,11 +15,15 @@ document.addEventListener('DOMContentLoaded',()=>{
             <a href="index.html">首頁</a>
             <a href="index.html#about">關於</a>
             <a href="index.html#services">服務主題</a>
-            <a href="index.html#pricing">收費</a>
+            <div class="dropdown">
+              <button class="dropdown-toggle">個案回饋分享</button>
+              <div class="dropdown-menu">
+                <a href="luminous_oasis_hypnosis.html">關係回饋</a>
+                <a href="luminous_oasis.html">壓力回饋</a>
+              </div>
+            </div>
             <a href="appointment.html">預約須知</a>
             <a href="friendly-reminder.html">溫馨提醒</a>
-            <a href="luminous_oasis_hypnosis.html">關係</a>
-            <a href="luminous_oasis.html">壓力</a>
           </div>
         </div>
       </div>
