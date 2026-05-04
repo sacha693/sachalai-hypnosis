@@ -23,5 +23,13 @@ a{text-decoration:none}
 .hero h1{font-family:'Noto Serif TC',serif;font-weight:500;font-size:clamp(27px,3.3vw,38px);line-height:1.9;margin-bottom:20px;color:#344756;text-shadow:0 2px 10px rgba(255,255,255,.75)}
 .hero h1 span{color:#8f6a31;font-weight:600}
 .hero-note{font-size:16px;line-height:2.1;color:#596976;margin-bottom:30px;text-shadow:0 1px 8px rgba(255,255,255,.8)}
-.hero-actions{margin-top:10px}.section{padding:76px 0}.footer{background:#f8efe1;color:#5d6570;padding:48px 0;border-top:1px solid rgba(199,161,90,.18)}.footer h3,.footer h4{color:#8f6a31}.footer a{color:#5d6570}.legal{border-top:1px solid rgba(199,161,90,.2);margin-top:28px;padding-top:22px;font-size:12px;color:#7a8086;line-height:1.8}
-@media(max-width:860px){body{padding-top:128px}.hero{padding:80px 0;background-attachment:scroll}.hero-copy-soft{padding:24px 18px}.nav-links{gap:10px}.site-nav{padding:12px 0}}
+.hero-actions{margin-top:10px}.section{padding:76px 0}
+.footer{background:linear-gradient(180deg,#fffaf2 0%,#f8efe1 100%);color:#5d6570;padding:56px 0 34px;border-top:1px solid rgba(199,161,90,.18);box-shadow:0 -12px 36px rgba(93,116,136,.06) inset}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:24px;align-items:start}
+.footer-grid>div{background:rgba(255,255,255,.38);border:1px solid rgba(199,161,90,.14);border-radius:22px;padding:22px 20px;min-height:150px}
+.footer h3{font-family:'Noto Serif TC',serif;color:#7a5a2a;font-size:20px;letter-spacing:.08em;margin:0 0 12px}
+.footer h4{color:#8f6a31;font-size:15px;letter-spacing:.12em;margin:0 0 12px;font-weight:700}
+.footer p{line-height:1.9;margin:0;color:#687681}
+.footer a{display:block;color:#5d6570;line-height:2.05;font-size:14px;transition:.2s ease}.footer a:hover{color:#9a6f2c;transform:translateX(3px)}
+.legal{border-top:1px solid rgba(199,161,90,.2);margin-top:28px;padding-top:22px;font-size:12px;color:#7a8086;line-height:1.8;text-align:center}
+@media(max-width:860px){body{padding-top:128px}.hero{padding:80px 0;background-attachment:scroll}.hero-copy-soft{padding:24px 18px}.nav-links{gap:10px}.site-nav{padding:12px 0}.footer-grid{grid-template-columns:1fr}.footer-grid>div{min-height:auto}.footer{padding:42px 0 28px}}
