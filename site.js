@@ -26,9 +26,10 @@ function renderHeader(){
       <div class="site-nav">
         <div class="site-nav-top">
           <a href="${LINKS.home}" class="brand">瑞光沙舟心流所</a>
+          <button class="mobile-menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
         </div>
 
-        <div class="nav-links">
+        <div class="nav-links" id="main-nav-links">
           <a href="${LINKS.home}">首頁</a>
           <a href="${LINKS.about}">關於</a>
           <a href="${LINKS.services}">服務主題</a>
@@ -64,41 +65,36 @@ function renderFooter(){
   return `
   <div class="footer">
     <div class="site-container footer-grid">
-      <div>
-        <h3>瑞光沙舟心流所</h3>
-        <p>潛意識引導・自我覺察<br>台中・線上｜一對一陪伴</p>
-      </div>
-
-      <div>
-        <h4>預約</h4>
-        <a href="${LINKS.appointment}">預約前須知</a>
-        <a href="${LINKS.reminder}">預約後叮嚀</a>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
-      </div>
-
-      <div>
-        <h4>主題</h4>
-        <a href="${LINKS.relationship}">情感關係</a>
-        <a href="${LINKS.selfExplore}">自我探索</a>
-        <a href="${LINKS.pressure}">高成就壓力</a>
-        <a href="${LINKS.resources}">轉動思維</a>
-      </div>
-
-      <div>
-        <h4>社群</h4>
-        <a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a>
-      </div>
+      <div><h3>瑞光沙舟心流所</h3><p>潛意識引導・自我覺察<br>台中・線上｜一對一陪伴</p></div>
+      <div><h4>預約</h4><a href="${LINKS.appointment}">預約前須知</a><a href="${LINKS.reminder}">預約後叮嚀</a><a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a></div>
+      <div><h4>主題</h4><a href="${LINKS.relationship}">情感關係</a><a href="${LINKS.selfExplore}">自我探索</a><a href="${LINKS.pressure}">高成就壓力</a><a href="${LINKS.resources}">轉動思維</a></div>
+      <div><h4>社群</h4><a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a><a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a></div>
     </div>
-
-    <div class="site-container legal">
-      © 2026 瑞光沙舟心流所 All Rights Reserved
-    </div>
+    <div class="site-container legal">© 2026 瑞光沙舟心流所 All Rights Reserved</div>
   </div>`;
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-  document.getElementById('site-header').innerHTML = renderHeader();
-  document.getElementById('site-footer').innerHTML = renderFooter();
+  const header = document.getElementById('site-header');
+  const footer = document.getElementById('site-footer');
+  if(header){header.innerHTML = renderHeader();}
+  if(footer){footer.innerHTML = renderFooter();}
+
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.getElementById('main-nav-links');
+  if(toggle && nav){
+    toggle.addEventListener('click', ()=>{
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    nav.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+        toggle.textContent = '☰';
+      });
+    });
+  }
 });
