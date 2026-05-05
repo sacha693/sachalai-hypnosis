@@ -10,9 +10,9 @@ const LINKS = {
   appointment: 'appointment-final.html',
   reminder: 'friendly-reminder-new.html',
   form: 'https://forms.gle/7VM9YDXMJqLBtons5',
-  relationship: 'luminous_oasis_hypnosis.html',
+  relationship: 'relationship-hypnosis-new.html',
   selfExplore: 'relationship_test.html',
-  pressure: 'luminous_oasis.html',
+  pressure: 'luminous-oasis-new.html',
   resources: 'keygame.html',
   articles: 'https://cjrs693.wordpress.com/',
   facebook: 'https://www.facebook.com/profile.php?id=61566762881113',
@@ -54,7 +54,7 @@ function renderHeader(){
           <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
         </div>
 
-        <a href="${LINKS.appointment}" class="btn-primary nav-cta">開始探索</a>
+        <a href="${LINKS.appointment}" class="btn-primary nav-cta">先了解方式</a>
       </div>
     </div>
   </div>`;
@@ -72,8 +72,8 @@ function renderFooter(){
       <div>
         <h4>預約</h4>
         <a href="${LINKS.appointment}">預約前須知</a>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
         <a href="${LINKS.reminder}">預約後叮嚀</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
       </div>
 
       <div>
