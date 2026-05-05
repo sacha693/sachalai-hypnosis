@@ -86,8 +86,6 @@ a{text-decoration:none}
 .card strong{display:inline-block;margin-top:10px}
 .chip{display:inline-block;background:#fff5df;border:1px solid rgba(199,161,90,.22);border-radius:999px;padding:6px 12px;color:#8f6a31;font-size:11.5px;margin-bottom:10px}
 .serif{font-family:'Noto Serif TC',serif}
-
-/* 美式高級療癒圖示與相關連結 */
 .icon-mark{width:38px;height:38px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(255,250,242,.92),rgba(234,214,165,.42));border:1px solid rgba(199,161,90,.26);color:#9a6f2c;font-family:'Noto Serif TC',serif;font-size:17px;box-shadow:0 12px 28px rgba(93,116,136,.10)}
 .icon-mark.small{width:30px;height:30px;font-size:13px;margin-bottom:8px}
 .related-links{margin-top:30px;padding-top:22px;border-top:1px solid rgba(199,161,90,.18)}
@@ -98,10 +96,25 @@ a{text-decoration:none}
 .link-card strong{display:block;color:#6a5532;font-family:'Noto Serif TC',serif;font-size:15px;margin:0 0 3px}
 .link-card small{display:block;color:#7b8790;line-height:1.5;font-size:12px}
 
+/* ===== 漸進式探索 2.0：三頁不同層次 ===== */
+.sub-hero{padding:70px 0 56px;background:linear-gradient(135deg,rgba(255,250,242,.96),rgba(248,239,225,.82));border-bottom:1px solid rgba(199,161,90,.16)}
+.sub-hero .section-title{text-align:left;max-width:760px;margin-left:0}
+.sub-hero .section-sub{text-align:left;margin-left:0;max-width:680px}
+.story-layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:28px;align-items:start}
+.portrait-card img{width:100%;border-radius:24px;box-shadow:0 18px 42px rgba(93,116,136,.12);margin-bottom:14px}
+.story-panel{background:rgba(255,250,242,.58);border-left:1px solid rgba(199,161,90,.35);padding:10px 0 10px 28px}
+.story-panel p{font-size:15px;line-height:2.05;color:#5f717d}
+.timeline{position:relative;max-width:860px;margin:0 auto}.timeline:before{content:'';position:absolute;left:18px;top:6px;bottom:6px;width:1px;background:rgba(199,161,90,.28)}
+.timeline-item{position:relative;padding-left:54px;margin-bottom:20px}.timeline-dot{position:absolute;left:0;top:2px;width:36px;height:36px;border-radius:50%;background:#fff5df;border:1px solid rgba(199,161,90,.35);display:flex;align-items:center;justify-content:center;color:#9a6f2c;font-family:'Noto Serif TC',serif}
+.decision-hero{padding:62px 0;background:linear-gradient(180deg,#fffaf2,#f8efe1);border-bottom:1px solid rgba(199,161,90,.16)}
+.decision-hero .section-title,.decision-hero .section-sub{text-align:center}
+.guide-strip{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px 0 6px}.guide-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(199,161,90,.22);background:rgba(255,250,242,.7);padding:10px 14px;border-radius:999px;color:#6a5532;font-size:13px}
+.step-grid{counter-reset:step}.step-card{counter-increment:step;min-height:210px}.step-card:after{content:counter(step,decimal-leading-zero);position:absolute;right:18px;bottom:14px;font-family:'Noto Serif TC',serif;font-size:42px;color:rgba(199,161,90,.18)}
+.manual-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.manual-card{background:rgba(255,250,242,.75);border:1px solid rgba(199,161,90,.16);border-radius:24px;padding:22px;box-shadow:0 14px 30px rgba(93,116,136,.07)}.manual-card h3{font-family:'Noto Serif TC',serif;color:#6a5532;font-size:18px;margin:0 0 10px}.manual-card p{font-size:14px;line-height:1.9;color:#667985}
+
 #search-topics .section-sub:after,#resources .section-sub:after{content:'台中催眠  ／  線上引導  ／  潛意識探索  ／  自我覺察';display:block;width:max-content;max-width:100%;margin:22px auto 0;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(199,161,90,.18);color:#8f6a31;font-size:11.5px;letter-spacing:.08em;box-shadow:0 10px 24px rgba(93,116,136,.07)}
 #faq .card{cursor:default}
 #faq .card h3:before{content:'Q';display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-right:8px;border-radius:999px;background:#ead6a5;color:#6a5532;font-size:12px;font-family:'Noto Sans TC',sans-serif}
-
 .footer{background:#f8efe1;color:#5d6570;padding:26px 0 16px;border-top:1px solid rgba(199,161,90,.18)}
 .footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:12px}
 .footer-grid>div{background:rgba(255,255,255,.22);border:1px solid rgba(199,161,90,.10);border-radius:14px;padding:12px 14px}
@@ -110,28 +123,4 @@ a{text-decoration:none}
 .footer p{line-height:1.5;margin:0;font-size:12px}
 .footer a{display:block;color:#5d6570;line-height:1.6;font-size:12px}
 .legal{border-top:1px solid rgba(199,161,90,.16);margin-top:10px;padding-top:10px;font-size:11px;text-align:center;color:#7a8086}
-
-@media(max-width:860px){
-  body{padding-top:128px;font-size:14px}
-  .site-nav{display:block}
-  .site-nav-top{justify-content:space-between}
-  .nav-links{justify-content:flex-start;margin-top:8px;gap:10px}
-  .dropdown-menu{left:0;right:auto}
-  .hero{padding:72px 0;background-position:center top;background-attachment:scroll;min-height:auto}
-  .hero:before{animation:none}
-  .hero-grid{display:block}
-  .hero-copy-soft{margin:0 auto;text-align:center;transform:none;max-width:92%;padding:18px 15px}
-  .hero-copy-soft:before,.hero-note-premium:before{margin-left:auto;margin-right:auto;left:50%;transform:translateX(-50%)}
-  .nowrap-title,.nowrap-note{white-space:normal}
-  .hero h1{font-size:clamp(21px,5.7vw,28px);line-height:1.62}
-  .hero-note{font-size:13.5px;line-height:1.85}
-  .grid-3{grid-template-columns:1fr}
-  .section{padding:52px 0}
-  .section-title{font-size:clamp(22px,6.2vw,30px)}
-  .section-sub{font-size:13.8px;line-height:1.85}
-  .card{padding:20px 18px}
-  .card h3{font-size:18px}
-  .card p{font-size:13.5px}
-  .footer-grid{grid-template-columns:1fr}
-  .footer{padding:22px 0}
-}
+@media(max-width:860px){body{padding-top:128px;font-size:14px}.site-nav{display:block}.site-nav-top{justify-content:space-between}.nav-links{justify-content:flex-start;margin-top:8px;gap:10px}.dropdown-menu{left:0;right:auto}.hero{padding:72px 0;background-position:center top;background-attachment:scroll;min-height:auto}.hero:before{animation:none}.hero-grid{display:block}.hero-copy-soft{margin:0 auto;text-align:center;transform:none;max-width:92%;padding:18px 15px}.hero-copy-soft:before,.hero-note-premium:before{margin-left:auto;margin-right:auto;left:50%;transform:translateX(-50%)}.nowrap-title,.nowrap-note{white-space:normal}.hero h1{font-size:clamp(21px,5.7vw,28px);line-height:1.62}.hero-note{font-size:13.5px;line-height:1.85}.grid-3{grid-template-columns:1fr}.section{padding:52px 0}.section-title{font-size:clamp(22px,6.2vw,30px)}.section-sub{font-size:13.8px;line-height:1.85}.card{padding:20px 18px}.card h3{font-size:18px}.card p{font-size:13.5px}.story-layout,.manual-grid{grid-template-columns:1fr}.sub-hero .section-title,.sub-hero .section-sub{text-align:center;margin-left:auto}.story-panel{border-left:0;border-top:1px solid rgba(199,161,90,.25);padding:22px 0 0}.footer-grid{grid-template-columns:1fr}.footer{padding:22px 0}}
