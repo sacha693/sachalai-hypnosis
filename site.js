@@ -4,9 +4,9 @@
 ============================================================ */
 
 const LINKS = {
-  home: 'index-integrated.html',
+  home: 'index.html',
   about: 'about.html',
-  services: 'index-integrated.html#services',
+  services: 'index.html#services',
   appointment: 'appointment-final.html',
   reminder: 'friendly-reminder-new.html',
   form: 'https://forms.gle/7VM9YDXMJqLBtons5',
