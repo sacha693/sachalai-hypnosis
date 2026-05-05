@@ -1,54 +1,40 @@
 /*
 ============================================================
- site.js（整理版）
+ site.js（漸進式探索 2.0）
 ------------------------------------------------------------
 用途：
-  - 統一管理全站 Header（頁首）與 Footer（頁尾）
-  - 讓所有新版頁面共用同一套導覽與連結
-
-維護方式：
-  - 想改全站連結：優先修改 LINKS
-  - 想改頁首：修改 renderHeader()
-  - 想改頁尾：修改 renderFooter()
+  - 統一管理全站 Header / Footer
+  - 集中維護所有重要連結
+  - 讓首頁、關於、預約、溫馨提醒形成漸進式探索動線
 ============================================================
 */
 
-/* ============================================================
-   1️⃣ 共用連結設定
-============================================================ */
 const LINKS = {
   home: 'index-integrated.html',
   about: 'about.html',
   services: 'index-integrated.html#services',
-
-  // 新版可用頁面：避開舊 appointment.html 與有空格的 friendly reminder.html
   appointment: 'appointment-final.html',
   reminder: 'friendly-reminder-new.html',
   form: 'https://forms.gle/7VM9YDXMJqLBtons5',
-
   relationship: 'luminous_oasis_hypnosis.html',
   selfExplore: 'relationship_test.html',
   pressure: 'luminous_oasis.html',
   resources: 'keygame.html',
   articles: 'https://cjrs693.wordpress.com/',
-
   facebook: 'https://www.facebook.com/profile.php?id=61566762881113',
   instagram: 'https://www.instagram.com/cgrs693/?hl=zh-tw'
 };
 
-/* ============================================================
-   2️⃣ Header（頁首）
-============================================================ */
 function renderHeader(){
   return `
   <div class="site-header">
     <div class="site-container">
       <div class="site-nav">
         <div class="site-nav-top">
-          <a href="${LINKS.home}" class="brand">瑞光沙舟心流所</a>
+          <a href="${LINKS.home}" class="brand" aria-label="回到瑞光沙舟心流所首頁">瑞光沙舟心流所</a>
         </div>
 
-        <div class="nav-links">
+        <nav class="nav-links" aria-label="主要導覽">
           <a href="${LINKS.home}">首頁</a>
           <a href="${LINKS.about}">關於</a>
           <a href="${LINKS.services}">服務主題</a>
@@ -65,7 +51,7 @@ function renderHeader(){
           <a href="${LINKS.appointment}">預約須知</a>
           <a href="${LINKS.reminder}">溫馨提醒</a>
           <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
-        </div>
+        </nav>
 
         <a href="${LINKS.appointment}" class="btn-primary nav-cta">預約探索</a>
       </div>
@@ -73,9 +59,6 @@ function renderHeader(){
   </div>`;
 }
 
-/* ============================================================
-   3️⃣ Footer（頁尾）
-============================================================ */
 function renderFooter(){
   return `
   <div class="footer">
@@ -86,14 +69,15 @@ function renderFooter(){
       </div>
 
       <div>
-        <h4>預約</h4>
-        <a href="${LINKS.appointment}">預約須知</a>
-        <a href="${LINKS.reminder}">溫馨提醒</a>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
+        <h4>探索動線</h4>
+        <a href="${LINKS.home}">首頁｜先停下來</a>
+        <a href="${LINKS.about}">關於｜認識領航員</a>
+        <a href="${LINKS.appointment}">預約須知｜確認方式</a>
+        <a href="${LINKS.reminder}">溫馨提醒｜出發前小手冊</a>
       </div>
 
       <div>
-        <h4>主題</h4>
+        <h4>服務主題</h4>
         <a href="${LINKS.relationship}">情感關係</a>
         <a href="${LINKS.selfExplore}">自我探索</a>
         <a href="${LINKS.pressure}">高成就壓力</a>
@@ -101,7 +85,8 @@ function renderFooter(){
       </div>
 
       <div>
-        <h4>社群</h4>
+        <h4>預約與社群</h4>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
         <a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
         <a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a>
@@ -114,13 +99,9 @@ function renderFooter(){
   </div>`;
 }
 
-/* ============================================================
-   4️⃣ 初始化
-============================================================ */
 document.addEventListener('DOMContentLoaded', ()=>{
   const header = document.getElementById('site-header');
   const footer = document.getElementById('site-footer');
-
   if(header){header.innerHTML = renderHeader();}
   if(footer){footer.innerHTML = renderFooter();}
 });
