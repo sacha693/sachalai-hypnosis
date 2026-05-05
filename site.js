@@ -54,7 +54,7 @@ function renderHeader(){
           <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
         </div>
 
-        <a href="${LINKS.appointment}" class="btn-primary nav-cta">預約探索</a>
+        <a href="${LINKS.appointment}" class="btn-primary nav-cta">開始探索</a>
       </div>
     </div>
   </div>`;
