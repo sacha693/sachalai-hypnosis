@@ -1,13 +1,7 @@
 /*
 ============================================================
- site.js（漸進式探索 2.0）
-------------------------------------------------------------
-用途：
-  - 統一管理全站 Header / Footer
-  - 集中維護所有重要連結
-  - 讓首頁、關於、預約、溫馨提醒形成漸進式探索動線
-============================================================
-*/
+ site.js（整理版）
+============================================================ */
 
 const LINKS = {
   home: 'index-integrated.html',
@@ -31,10 +25,10 @@ function renderHeader(){
     <div class="site-container">
       <div class="site-nav">
         <div class="site-nav-top">
-          <a href="${LINKS.home}" class="brand" aria-label="回到瑞光沙舟心流所首頁">瑞光沙舟心流所</a>
+          <a href="${LINKS.home}" class="brand">瑞光沙舟心流所</a>
         </div>
 
-        <nav class="nav-links" aria-label="主要導覽">
+        <div class="nav-links">
           <a href="${LINKS.home}">首頁</a>
           <a href="${LINKS.about}">關於</a>
           <a href="${LINKS.services}">服務主題</a>
@@ -50,10 +44,10 @@ function renderHeader(){
 
           <a href="${LINKS.appointment}">預約須知</a>
           <a href="${LINKS.reminder}">溫馨提醒</a>
-          <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
-        </nav>
+          <a href="${LINKS.articles}" target="_blank">文章分享</a>
+        </div>
 
-        <a href="${LINKS.appointment}" class="btn-primary nav-cta">預約探索</a>
+        <a href="${LINKS.appointment}" class="btn-primary">預約探索</a>
       </div>
     </div>
   </div>`;
@@ -69,15 +63,14 @@ function renderFooter(){
       </div>
 
       <div>
-        <h4>探索動線</h4>
-        <a href="${LINKS.home}">首頁｜先停下來</a>
-        <a href="${LINKS.about}">關於｜認識領航員</a>
-        <a href="${LINKS.appointment}">預約須知｜確認方式</a>
-        <a href="${LINKS.reminder}">溫馨提醒｜出發前小手冊</a>
+        <h4>預約</h4>
+        <a href="${LINKS.appointment}">預約須知</a>
+        <a href="${LINKS.reminder}">溫馨提醒</a>
+        <a href="${LINKS.form}" target="_blank">填寫預約表單</a>
       </div>
 
       <div>
-        <h4>服務主題</h4>
+        <h4>主題</h4>
         <a href="${LINKS.relationship}">情感關係</a>
         <a href="${LINKS.selfExplore}">自我探索</a>
         <a href="${LINKS.pressure}">高成就壓力</a>
@@ -85,23 +78,20 @@ function renderFooter(){
       </div>
 
       <div>
-        <h4>預約與社群</h4>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
-        <a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a>
+        <h4>社群</h4>
+        <a href="${LINKS.facebook}" target="_blank">Facebook</a>
+        <a href="${LINKS.instagram}" target="_blank">Instagram</a>
+        <a href="${LINKS.form}" target="_blank">LINE@／預約表單</a>
       </div>
     </div>
 
     <div class="site-container legal">
-      © 2026 瑞光沙舟心流所 All Rights Reserved ｜ 本服務為自我覺察與潛意識探索引導，不涉及醫療或心理治療
+      © 2026 瑞光沙舟心流所 All Rights Reserved
     </div>
   </div>`;
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
-  const header = document.getElementById('site-header');
-  const footer = document.getElementById('site-footer');
-  if(header){header.innerHTML = renderHeader();}
-  if(footer){footer.innerHTML = renderFooter();}
+  document.getElementById('site-header').innerHTML = renderHeader();
+  document.getElementById('site-footer').innerHTML = renderFooter();
 });
