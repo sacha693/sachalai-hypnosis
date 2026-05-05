@@ -42,12 +42,19 @@ function renderHeader(){
             </div>
           </div>
 
-          <a href="${LINKS.appointment}">預約須知</a>
-          <a href="${LINKS.reminder}">溫馨提醒</a>
-          <a href="${LINKS.articles}" target="_blank">文章分享</a>
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button">預約探索</button>
+            <div class="dropdown-menu">
+              <a href="${LINKS.appointment}">預約前須知</a>
+              <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
+              <a href="${LINKS.reminder}">預約後叮嚀</a>
+            </div>
+          </div>
+
+          <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
         </div>
 
-        <a href="${LINKS.appointment}" class="btn-primary">預約探索</a>
+        <a href="${LINKS.appointment}" class="btn-primary nav-cta">預約探索</a>
       </div>
     </div>
   </div>`;
@@ -64,9 +71,9 @@ function renderFooter(){
 
       <div>
         <h4>預約</h4>
-        <a href="${LINKS.appointment}">預約須知</a>
-        <a href="${LINKS.reminder}">溫馨提醒</a>
-        <a href="${LINKS.form}" target="_blank">填寫預約表單</a>
+        <a href="${LINKS.appointment}">預約前須知</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a>
+        <a href="${LINKS.reminder}">預約後叮嚀</a>
       </div>
 
       <div>
@@ -79,9 +86,9 @@ function renderFooter(){
 
       <div>
         <h4>社群</h4>
-        <a href="${LINKS.facebook}" target="_blank">Facebook</a>
-        <a href="${LINKS.instagram}" target="_blank">Instagram</a>
-        <a href="${LINKS.form}" target="_blank">LINE@／預約表單</a>
+        <a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a>
       </div>
     </div>
 
