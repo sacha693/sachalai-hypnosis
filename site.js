@@ -19,7 +19,7 @@ const LINKS = {
   articles: 'https://cjrs693.wordpress.com/',
   facebook: 'https://www.facebook.com/profile.php?id=61566762881113',
   instagram: 'https://www.instagram.com/cgrs693/?hl=zh-tw',
-  logo: 'https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true'
+  logo: 'https://github.com/sacha693/sachalai-hypnosis/blob/main/LOGO.png?raw=true'
 };
 
 function renderHeader(){
