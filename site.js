@@ -29,7 +29,7 @@ function renderHeader(){
       <div class="site-nav">
         <div class="site-nav-top">
           <a href="${LINKS.home}" class="brand brand-with-logo" aria-label="回到瑞光沙舟心流所首頁">
-            <img src="${LINKS.LOGO}" alt="瑞光沙舟心流所 Logo" class="brand-logo">
+            <img src="${LINKS.logo}" alt="瑞光沙舟心流所 Logo" class="brand-logo">
             <span>瑞光沙舟心流所</span>
           </a>
           <button class="mobile-menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
@@ -72,7 +72,7 @@ function renderFooter(){
   <div class="footer">
     <div class="site-container footer-grid">
       <div class="footer-brand-block">
-        <img src="${LINKS.LOGO}" alt="瑞光沙舟心流所 Logo" class="footer-logo">
+        <img src="${LINKS.logo}" alt="瑞光沙舟心流所 Logo" class="footer-logo">
         <h3>瑞光沙舟心流所</h3>
         <p>潛意識引導・自我覺察<br>台中・線上｜一對一陪伴</p>
         <p class="footer-poem">承載著希盼，靜靜地抵達瑞光沙舟。</p>
