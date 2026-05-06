@@ -1,6 +1,8 @@
 /*
 ============================================================
- site.js（整理版）
+ site.js（品牌共用版）
+ - 統一管理全站 Header / Footer / 導覽連結
+ - 搭配深海星夜藍 × 星霧極光 × 水波流動品牌 CSS
 ============================================================ */
 
 const LINKS = {
@@ -16,7 +18,8 @@ const LINKS = {
   resources: 'keygame.html',
   articles: 'https://cjrs693.wordpress.com/',
   facebook: 'https://www.facebook.com/profile.php?id=61566762881113',
-  instagram: 'https://www.instagram.com/cgrs693/?hl=zh-tw'
+  instagram: 'https://www.instagram.com/cgrs693/?hl=zh-tw',
+  logo: 'https://github.com/sacha693/sachalai-hypnosis/blob/main/logo.jpg?raw=true'
 };
 
 function renderHeader(){
@@ -25,7 +28,10 @@ function renderHeader(){
     <div class="site-container">
       <div class="site-nav">
         <div class="site-nav-top">
-          <a href="${LINKS.home}" class="brand">瑞光沙舟心流所</a>
+          <a href="${LINKS.home}" class="brand brand-with-logo" aria-label="回到瑞光沙舟心流所首頁">
+            <img src="${LINKS.logo}" alt="瑞光沙舟心流所 Logo" class="brand-logo">
+            <span>瑞光沙舟心流所</span>
+          </a>
           <button class="mobile-menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
         </div>
 
@@ -55,7 +61,7 @@ function renderHeader(){
           <a href="${LINKS.articles}" target="_blank" rel="noopener noreferrer">文章分享</a>
         </div>
 
-        <a href="${LINKS.appointment}" class="btn-primary nav-cta">先了解方式</a>
+        <a href="${LINKS.appointment}" class="btn-primary nav-cta">先了解這段旅程</a>
       </div>
     </div>
   </div>`;
@@ -65,7 +71,12 @@ function renderFooter(){
   return `
   <div class="footer">
     <div class="site-container footer-grid">
-      <div><h3>瑞光沙舟心流所</h3><p>潛意識引導・自我覺察<br>台中・線上｜一對一陪伴</p></div>
+      <div class="footer-brand-block">
+        <img src="${LINKS.logo}" alt="瑞光沙舟心流所 Logo" class="footer-logo">
+        <h3>瑞光沙舟心流所</h3>
+        <p>潛意識引導・自我覺察<br>台中・線上｜一對一陪伴</p>
+        <p class="footer-poem">承載著希盼，靜靜地抵達瑞光沙舟。</p>
+      </div>
       <div><h4>預約</h4><a href="${LINKS.appointment}">預約前須知</a><a href="${LINKS.reminder}">預約後叮嚀</a><a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">填寫預約表單</a></div>
       <div><h4>主題</h4><a href="${LINKS.relationship}">情感關係</a><a href="${LINKS.selfExplore}">自我探索</a><a href="${LINKS.pressure}">高成就壓力</a><a href="${LINKS.resources}">轉動思維</a></div>
       <div><h4>社群</h4><a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a><a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a></div>
