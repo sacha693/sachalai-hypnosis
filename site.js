@@ -29,7 +29,7 @@ function renderHeader(){
       <div class="site-nav">
         <div class="site-nav-top">
           <a href="${LINKS.home}" class="brand brand-with-logo" aria-label="回到瑞光沙舟心流所首頁">
-            <img src="${LINKS.logo}" alt="瑞光沙舟心流所 Logo" class="brand-logo">
+            <img src="${LINKS.LOGO}" alt="瑞光沙舟心流所 Logo" class="brand-logo">
             <span>瑞光沙舟心流所</span>
           </a>
           <button class="mobile-menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
