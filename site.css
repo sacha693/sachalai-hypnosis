@@ -16,14 +16,19 @@
 
 .hero:before{
   background:
-    radial-gradient(circle at 18% 18%,rgba(244,241,236,.34) 0 1px,transparent 1.8px),
-    radial-gradient(circle at 70% 24%,rgba(216,180,106,.34) 0 1.2px,transparent 2px),
-    linear-gradient(115deg,transparent 0 18%,rgba(175,198,217,.18) 28%,rgba(140,123,179,.18) 42%,rgba(216,180,106,.14) 54%,transparent 70% 100%),
-    radial-gradient(ellipse at 30% 30%,rgba(175,198,217,.24),transparent 35%),
-    radial-gradient(ellipse at 78% 40%,rgba(140,123,179,.22),transparent 34%) !important;
-  background-size:96px 96px,138px 138px,100% 100%,100% 100%,100% 100% !important;
-  filter:blur(2px) !important;
-  animation:starlightVeil 18s ease-in-out infinite !important;
+    radial-gradient(circle at 7% 13%,rgba(244,241,236,.32) 0 1px,transparent 1.8px),
+    radial-gradient(circle at 23% 68%,rgba(216,180,106,.28) 0 1.2px,transparent 2px),
+    radial-gradient(circle at 41% 29%,rgba(175,198,217,.28) 0 .9px,transparent 1.7px),
+    radial-gradient(circle at 62% 76%,rgba(244,241,236,.24) 0 1.1px,transparent 2px),
+    radial-gradient(circle at 81% 19%,rgba(216,180,106,.26) 0 1px,transparent 1.9px),
+    radial-gradient(circle at 91% 57%,rgba(175,198,217,.24) 0 .8px,transparent 1.6px),
+    linear-gradient(115deg,transparent 0 18%,rgba(175,198,217,.15) 28%,rgba(140,123,179,.16) 42%,rgba(216,180,106,.12) 54%,transparent 70% 100%),
+    radial-gradient(ellipse at 30% 30%,rgba(175,198,217,.22),transparent 35%),
+    radial-gradient(ellipse at 78% 40%,rgba(140,123,179,.20),transparent 34%) !important;
+  background-size:287px 211px,331px 257px,419px 293px,367px 241px,503px 349px,461px 317px,100% 100%,100% 100%,100% 100% !important;
+  background-position:11px 23px,73px 101px,151px 37px,209px 159px,17px 211px,307px 89px,0 0,0 0,0 0 !important;
+  filter:blur(1.4px) !important;
+  animation:starlightVeil 22s ease-in-out infinite !important;
 }
 
 .hero:after{
@@ -33,9 +38,14 @@
   right:0 !important;
   bottom:0 !important;
   background:
+    radial-gradient(circle at 12% 72%,rgba(244,241,236,.20) 0 .9px,transparent 1.8px),
+    radial-gradient(circle at 38% 18%,rgba(216,180,106,.18) 0 1px,transparent 1.9px),
+    radial-gradient(circle at 74% 84%,rgba(175,198,217,.18) 0 .8px,transparent 1.7px),
     linear-gradient(90deg,rgba(31,58,95,.42),rgba(244,241,236,.14) 42%,rgba(31,58,95,.28)),
     linear-gradient(180deg,rgba(31,58,95,.10),rgba(31,58,95,.42)) !important;
-  animation:softVeilFlow 16s ease-in-out infinite !important;
+  background-size:239px 181px,347px 263px,431px 311px,100% 100%,100% 100% !important;
+  background-position:31px 77px,119px 13px,211px 149px,0 0,0 0 !important;
+  animation:softVeilFlow 18s ease-in-out infinite !important;
 }
 
 .hero-copy-soft{
@@ -65,24 +75,24 @@
 
 @keyframes starlightVeil{
   0%,100%{
-    transform:translateX(-2%) translateY(0) rotate(0deg);
-    opacity:.64;
-    background-position:0 0,20px 40px,0 0,0 0,0 0;
+    transform:translateX(-1.8%) translateY(0) rotate(0deg);
+    opacity:.58;
+    background-position:11px 23px,73px 101px,151px 37px,209px 159px,17px 211px,307px 89px,0 0,0 0,0 0;
   }
   50%{
-    transform:translateX(3%) translateY(-2%) rotate(3deg);
-    opacity:.9;
-    background-position:40px 18px,70px 10px,0 0,0 0,0 0;
+    transform:translateX(2.8%) translateY(-1.6%) rotate(2deg);
+    opacity:.86;
+    background-position:47px 41px,101px 71px,127px 83px,251px 119px,43px 177px,279px 137px,0 0,0 0,0 0;
   }
 }
 
 @keyframes softVeilFlow{
   0%,100%{
-    opacity:.68;
+    opacity:.66;
     transform:translateX(0);
   }
   50%{
-    opacity:.92;
+    opacity:.9;
     transform:translateX(-2%);
   }
 }
