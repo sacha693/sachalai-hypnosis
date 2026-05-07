@@ -107,21 +107,23 @@
   }
 }
 
-/* ===== 全站深藍背景星點：自然隨機版 ===== */
+/* ===== 全站深藍背景星點：修復可見自然版 ===== */
 body:after{
   content:'' !important;
   position:fixed !important;
   inset:0 !important;
-  z-index:-3 !important;
+  z-index:-1 !important;
   pointer-events:none !important;
   background:
-    radial-gradient(circle at 8% 18%,rgba(244,241,236,.50) 0 1px,transparent 1.8px),
-    radial-gradient(circle at 21% 72%,rgba(175,198,217,.36) 0 .9px,transparent 1.7px),
-    radial-gradient(circle at 37% 31%,rgba(216,180,106,.32) 0 1.1px,transparent 2px),
-    radial-gradient(circle at 58% 64%,rgba(244,241,236,.34) 0 .8px,transparent 1.6px),
-    radial-gradient(circle at 76% 24%,rgba(175,198,217,.30) 0 1px,transparent 1.8px),
-    radial-gradient(circle at 91% 81%,rgba(216,180,106,.26) 0 .9px,transparent 1.7px) !important;
-  background-size:313px 227px,421px 319px,367px 251px,503px 389px,449px 307px,557px 431px !important;
-  background-position:17px 31px,73px 111px,151px 43px,229px 167px,41px 213px,319px 97px !important;
-  opacity:.46 !important;
+    radial-gradient(circle at 8% 18%,rgba(244,241,236,.72) 0 1.4px,transparent 2.4px),
+    radial-gradient(circle at 21% 72%,rgba(175,198,217,.58) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 37% 31%,rgba(216,180,106,.52) 0 1.3px,transparent 2.3px),
+    radial-gradient(circle at 58% 64%,rgba(244,241,236,.54) 0 1px,transparent 2px),
+    radial-gradient(circle at 76% 24%,rgba(175,198,217,.50) 0 1.2px,transparent 2.2px),
+    radial-gradient(circle at 91% 81%,rgba(216,180,106,.44) 0 1px,transparent 2px),
+    radial-gradient(circle at 48% 86%,rgba(244,241,236,.38) 0 .9px,transparent 1.9px),
+    radial-gradient(circle at 67% 43%,rgba(175,198,217,.34) 0 .8px,transparent 1.8px) !important;
+  background-size:313px 227px,421px 319px,367px 251px,503px 389px,449px 307px,557px 431px,389px 281px,467px 353px !important;
+  background-position:17px 31px,73px 111px,151px 43px,229px 167px,41px 213px,319px 97px,181px 251px,267px 59px !important;
+  opacity:.78 !important;
 }
