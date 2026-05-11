@@ -19,6 +19,9 @@ const LINKS = {
   articles: 'https://cjrs693.wordpress.com/',
   facebook: 'https://www.facebook.com/profile.php?id=61566762881113',
   instagram: 'https://www.instagram.com/cgrs693/?hl=zh-tw',
+  terms: 'terms.html',
+  privacy: 'privacy.html',
+  cookies: 'cookies.html',
   logo: 'https://github.com/sacha693/sachalai-hypnosis/blob/main/LOGO.png?raw=true'
 };
 
@@ -81,7 +84,16 @@ function renderFooter(){
       <div><h4>主題</h4><a href="${LINKS.relationship}">情感關係</a><a href="${LINKS.selfExplore}">自我探索</a><a href="${LINKS.pressure}">高成就壓力</a><a href="${LINKS.resources}">轉動思維</a></div>
       <div><h4>社群</h4><a href="${LINKS.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a><a href="${LINKS.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a><a href="${LINKS.form}" target="_blank" rel="noopener noreferrer">LINE@／預約表單</a></div>
     </div>
-    <div class="site-container legal">© 2026 瑞光沙舟心流所 All Rights Reserved</div>
+    <div class="site-container legal">
+      <div>© 2026 瑞光沙舟心流所 All Rights Reserved</div>
+      <div class="legal-links">
+        <a href="${LINKS.terms}">服務條款</a>
+        <span>／</span>
+        <a href="${LINKS.privacy}">隱私權政策</a>
+        <span>／</span>
+        <a href="${LINKS.cookies}">Cookie 政策</a>
+      </div>
+    </div>
   </div>`;
 }
 
